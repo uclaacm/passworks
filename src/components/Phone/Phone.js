@@ -14,6 +14,7 @@ class Phone extends React.Component {
     render() {
         return(
             <div className="phoneContainer">
+                <div className="buffer" style={{height: 100+"px"}}></div>
                 <div className="phoneScreen">
                     <h2>{this.state.toptitle}</h2>
                     <br/>
@@ -23,6 +24,7 @@ class Phone extends React.Component {
             </div>
         )
     }
+    // <div className="buffer" style={{height: 20+"vh"}}>asdf</div>
 }
 
 export default Phone;

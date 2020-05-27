@@ -26,13 +26,13 @@ code {
 .phoneContainer {
   position: relative;
   background: no-repeat center url(iphone.svg);
-  height: 100vh;
+  background-position: top center;
+  margin: 60px 0px 0px 0px;
   flex-grow: 1;
 }
 
 .phoneScreen {
   position: relative;
-  padding: 20vh 8vw 0 8vw;
 }
 
 .insta {
