@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-.mainContainer {
+.main-container {
   display: inline-flex;
   justify-content: space-between;
   height: 100vh;
@@ -23,18 +23,42 @@ code {
   flex-grow: 1;
 }
 
-.phoneContainer {
+.phone-bezel {
   position: relative;
-  background: no-repeat center url(iphone.svg);
-  background-position: top center;
-  margin: 60px 0px 0px 0px;
-  flex-grow: 1;
+  display: block;
+  margin: auto;
+  border-radius: 50px;
+  background-color: aquamarine;
+  height: 700px;
+  width: 350px;
 }
 
-.phoneScreen {
-  position: relative;
+.phone-cutout {
+  position: absolute;
+  margin: 0% 25%;
+  border-radius: 0% 0% 5% 5% / 0% 0% 50% 50%;
+  height: 3%;
+  width: 50%;
+  background-color: aquamarine;
 }
 
-.insta {
-  margin-left: -7vw;
+.phone-content {
+  position: absolute;
+  margin: 3% 5%;
+  width: 90%;
+  height: 94%;
 }
+
+.phone-screen {
+  position: absolute;
+  border-radius: 40px;
+  background-color: azure;
+  margin: 5% 5% 5% 5%;
+  height: 95%;
+  width: 90%;
+}
+
+p {
+  text-align: left;
+}
+
