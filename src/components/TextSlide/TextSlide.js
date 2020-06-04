@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
     // height: 180,
   },
   wrapper: {
-    // width: 150,
+    width: 200,
   }
 }));
 
