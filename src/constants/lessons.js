@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
  *  input: true if slide requires user input
  *  inputType: defines the expected type of the user's input
  *  inputLength: the required length of the user's input
+ *  regexp: regular expression matching the accepted inputs
  *  usesInput: true if slide requires result of last user input
  */   
 export const lessonSlides = [
@@ -15,8 +16,9 @@ export const lessonSlides = [
         Try submitting a 4-digit password!
         </Typography>,
       input: true,
-      inputType: 'num',
-      inputLength: 4
+      inputType: 'digits',
+      inputLength: 4,
+      regexp: /^\d{4}$/
     },
     {
       slide: <Typography>Let's see how long it takes for a computer to
@@ -29,8 +31,9 @@ export const lessonSlides = [
         a 6-digit password!
         </Typography>,
       input: true,
-      inputType: 'num',
-      inputLength: 6
+      inputType: 'digits',
+      inputLength: 6,
+      regexp: /^\d{6}$/
     },
     { 
       slide: <Typography>Let's see how long it takes for the computer

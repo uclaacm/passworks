@@ -12,7 +12,9 @@ class Main extends React.Component {
 			count: 0,
 			lessonNum: 0,
       value: '',
-			userInput: ''
+			userInput: '',
+			inputError: false,
+			errorString: ''
 		};
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleInputSubmit = this.handleInputSubmit.bind(this);
@@ -25,10 +27,30 @@ class Main extends React.Component {
   }
 
   handleInputSubmit(event) {
-    // alert('A name was submitted: ' + this.state.value);
-    this.setState({ userInput: this.state.value, value: '' });
-    event.preventDefault();
-    this.setCount(this.state.count + 1);
+		event.preventDefault();
+		
+		const inputType = lessonSlides[this.state.lessonNum][this.state.count].inputType;
+		const inputLength = lessonSlides[this.state.lessonNum][this.state.count].inputLength;
+		const regexp = lessonSlides[this.state.lessonNum][this.state.count].regexp;
+		
+		let newError;
+		let inputValid = true;
+
+		if (this.state.value.length !== inputLength) {
+			inputValid = false;
+		}
+		if (!this.state.value.match(regexp)) {
+			inputValid = false;
+		}
+
+		if (!inputValid) {
+			newError = `Please enter ${inputLength} ${inputType}.`;
+			this.setState({ value: '', errorString: newError, inputError: true });
+		} else {
+			this.setState({ userInput: this.state.value, value: '', inputError: false });
+    	this.setCount(this.state.count + 1);
+		}
+    
 	}
 
 	setCount = newCount => {
@@ -40,18 +62,22 @@ class Main extends React.Component {
 	}
 
 	renderInputForm = () => {
-		return ((lessonSlides[this.state.lessonNum][this.state.count].input) ? 
-		<form onSubmit={this.handleInputSubmit}>
-			<input type="text" value={this.state.value} onChange={this.handleInputChange} />
-		</form>
-		: null);
+		if (lessonSlides[this.state.lessonNum][this.state.count].input) {
+			return (
+				<>
+					<form onSubmit={this.handleInputSubmit}>
+						<input type="text" value={this.state.value} onChange={this.handleInputChange} />
+					</form>
+					<div>{this.state.inputError ? this.state.errorString : null}</div>
+				</>
+			);
+		}
 	}
 
 	renderLessonText = () => {
 		return (
 			<LessonText
 					count={this.state.count}
-					setCount={this.setCount}
 					lessonSlides={lessonSlides[this.state.lessonNum]}
 					userInput={this.state.userInput}
 			/>
@@ -81,15 +107,6 @@ class Main extends React.Component {
 				);
 			}
 		}
-		// (this.state.count === lessonSlides[this.state.lessonNum].length - 1) ?
-		// (this.state.lessonNum === lessonSlides.length - 1) ? null : 
-		// 	<Button onClick={() => { this.setLessonNum(this.state.lessonNum + 1); this.setCount(0); }}>
-		// 		Next Lesson
-		// 	</Button> :
-		// 		lessonSlides[this.state.lessonNum][this.state.count].input ? null :
-		// 		<Button onClick={() => this.setCount(this.state.count + 1)}>
-		// 			Next
-		// 		</Button>
 	}
 
 	render() {
