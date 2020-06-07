@@ -2,7 +2,7 @@ import React from 'react';
 import TextSlide from '../TextSlide/TextSlide.js';
 import Grid from '@material-ui/core/Grid';
 
-class Lesson extends React.Component {
+class LessonText extends React.Component {
   render () {
     const lessonItems = this.props.lessonSlides.map(item => {
       return (item.slide);
@@ -26,4 +26,4 @@ class Lesson extends React.Component {
   }
 }
 
-export default Lesson;
+export default LessonText;
