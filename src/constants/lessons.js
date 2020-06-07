@@ -1,6 +1,13 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 
+/** keys and fields:
+ *  slide: the text that should appear
+ *  input: true if slide requires user input
+ *  inputType: defines the expected type of the user's input
+ *  inputLength: the required length of the user's input
+ *  usesInput: true if slide requires result of last user input
+ */   
 export const lessonSlides = [
   [
     { 
@@ -14,7 +21,8 @@ export const lessonSlides = [
     {
       slide: <Typography>Let's see how long it takes for a computer to
         guess your 4-digit password!
-        </Typography>
+        </Typography>,
+      usesInput: true
     },
     {
       slide: <Typography>Wow, that was really fast! Now let's try using
@@ -27,7 +35,8 @@ export const lessonSlides = [
     { 
       slide: <Typography>Let's see how long it takes for the computer
         to guess your 6-digit password!
-      </Typography>
+      </Typography>,
+      usesInput: true
     }
   ],
   [

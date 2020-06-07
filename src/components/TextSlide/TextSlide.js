@@ -1,6 +1,7 @@
 import React from 'react';
 import Slide from '@material-ui/core/Slide';
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 export default function TextSlide(props) {
   const classes = useStyles();
 
-  const lessonSlides = props.lessonItems.map((item, i) => {
+  const slidingItems = props.lessonItems.map((item, i) => {
     return (
       <Slide 
         direction="left" 
@@ -23,7 +24,15 @@ export default function TextSlide(props) {
         unmountOnExit
         key={i}
       >
-        {item}
+        <Grid container
+          direction='column'
+        >
+          {item}
+          {(props.lessonSlides[props.count].usesInput === true) ? 
+            <>
+            Hello, you submitted {props.userInput}
+            </> : null}
+        </Grid>
       </Slide>
     );
   });
@@ -31,7 +40,7 @@ export default function TextSlide(props) {
   return (
     <div className={classes.root}>
       <div className={classes.wrapper}>
-        {lessonSlides.map((slide, i) => {
+        {slidingItems.map((slide, i) => {
           return (
             props.count === i ? slide : null
           );

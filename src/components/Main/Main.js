@@ -1,10 +1,9 @@
 import React from 'react';
 
-
 import { Button } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
 import { lessonSlides } from '../../constants/lessons.js';
 import LessonText from '../LessonText/LessonText.js';
+import Grid from '@material-ui/core/Grid';
 
 class Main extends React.Component {
 	constructor(props) {
@@ -54,6 +53,7 @@ class Main extends React.Component {
 					count={this.state.count}
 					setCount={this.setCount}
 					lessonSlides={lessonSlides[this.state.lessonNum]}
+					userInput={this.state.userInput}
 			/>
 		);
 	}
@@ -94,11 +94,16 @@ class Main extends React.Component {
 
 	render() {
 		return(
-			<>
+			<Grid 
+				container
+				direction='column'
+				justify='center'
+				alignItems='center'
+			>
 				{this.renderInputForm()}
 				{this.renderLessonText()}
 				{this.renderNextButton()}
-			</>
+			</Grid>
 		);
 	}
 }
