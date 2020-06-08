@@ -2,6 +2,7 @@ import React from 'react';
 import Slide from '@material-ui/core/Slide';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import CountUp from 'react-countup';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,7 +31,25 @@ export default function TextSlide(props) {
           {item}
           {(props.lessonSlides[props.count].usesInput === true) ? 
             <>
-            Hello, you submitted {props.userInput}
+            {/* Hello, you submitted {props.userInput} */}
+            <CountUp
+              start={0}
+              end={props.userInput}
+              // separator=" "
+              formattingFn={num => {
+                let inputLen = props.lessonSlides[props.count - 1].inputLength;
+                return ("0".repeat(inputLen) + num).slice(-inputLen);
+              }}
+              onEnd={() => console.log('Ended! 👏')}
+              onStart={() => console.log('Started! 💨')}
+            >
+              {({ countUpRef, start }) => (
+                <div>
+                  <span ref={countUpRef} />
+                  <button onClick={start}>Start</button>
+                </div>
+              )}
+            </CountUp>
             </> : null}
         </Grid>
       </Slide>

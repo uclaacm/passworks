@@ -77,9 +77,9 @@ class Main extends React.Component {
 	renderLessonText = () => {
 		return (
 			<LessonText
-					count={this.state.count}
-					lessonSlides={lessonSlides[this.state.lessonNum]}
-					userInput={this.state.userInput}
+				count={this.state.count}
+				lessonSlides={lessonSlides[this.state.lessonNum]}
+				userInput={this.state.userInput}
 			/>
 		);
 	}
