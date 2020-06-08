@@ -29,7 +29,7 @@ class Main extends React.Component {
   handleInputSubmit(event) {
 		event.preventDefault();
 		
-		const inputType = lessonSlides[this.state.lessonNum][this.state.count].inputType;
+		const inputDesc = lessonSlides[this.state.lessonNum][this.state.count].inputDesc;
 		const inputLength = lessonSlides[this.state.lessonNum][this.state.count].inputLength;
 		const regexp = lessonSlides[this.state.lessonNum][this.state.count].regexp;
 		
@@ -44,7 +44,7 @@ class Main extends React.Component {
 		}
 
 		if (!inputValid) {
-			newError = `Please enter ${inputLength} ${inputType}.`;
+			newError = `Please enter ${inputLength} ${inputDesc}.`;
 			this.setState({ value: '', errorString: newError, inputError: true });
 		} else {
 			this.setState({ userInput: this.state.value, value: '', inputError: false });

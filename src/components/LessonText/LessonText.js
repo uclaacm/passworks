@@ -13,7 +13,10 @@ class LessonText extends React.Component {
         count={this.props.count}
         lessonItems={lessonItems}
         lessonSlides={this.props.lessonSlides}
+        usesInput={this.props.lessonSlides[this.props.count].usesInput}
         userInput={this.props.userInput}
+        inputLength={this.props.lessonSlides[this.props.count].inputLength}
+        inputType={this.props.lessonSlides[this.props.count].inputType}
       />
     );
   }

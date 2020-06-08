@@ -1,20 +1,27 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 import Slide from '@material-ui/core/Slide';
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import CountUp from 'react-countup';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    // height: 180,
-  },
-  wrapper: {
-    width: 200,
-  }
-}));
-
 export default function TextSlide(props) {
-  const classes = useStyles();
+  const passwordGuesser = (
+    (props.usesInput !== true) ? null :
+    (props.inputType === 'num') ? (
+      <CountUp
+        start={0}
+        duration={1/10000 * parseInt(props.userInput, 10)}
+        end={parseInt(props.userInput, 10)}
+        formattingFn={num => ("0".repeat(props.inputLength) + num).slice(-props.inputLength)}
+        useEasing={false}>
+        {({ countUpRef, start }) => (
+          <div>
+            <span ref={countUpRef} />
+            <Button onClick={start}>Start</Button>
+          </div>
+        )}
+      </CountUp>) : null
+  );
 
   const slidingItems = props.lessonItems.map((item, i) => {
     return (
@@ -25,46 +32,27 @@ export default function TextSlide(props) {
         unmountOnExit
         key={i}
       >
-        <Grid container
-          direction='column'
-        >
-          {item}
-          {(props.lessonSlides[props.count].usesInput === true) ? 
-            <>
-            {/* Hello, you submitted {props.userInput} */}
-            <CountUp
-              start={0}
-              end={props.userInput}
-              // separator=" "
-              formattingFn={num => {
-                let inputLen = props.lessonSlides[props.count - 1].inputLength;
-                return ("0".repeat(inputLen) + num).slice(-inputLen);
-              }}
-              onEnd={() => console.log('Ended! 👏')}
-              onStart={() => console.log('Started! 💨')}
-            >
-              {({ countUpRef, start }) => (
-                <div>
-                  <span ref={countUpRef} />
-                  <button onClick={start}>Start</button>
-                </div>
-              )}
-            </CountUp>
-            </> : null}
-        </Grid>
+          <Grid container
+            direction='column'
+            justify='center'
+            alignItems='center'
+          >
+            <Grid item sm={6}>
+              {item}
+              {passwordGuesser}
+            </Grid>
+          </Grid>
       </Slide>
     );
   });
 
   return (
-    <div className={classes.root}>
-      <div className={classes.wrapper}>
-        {slidingItems.map((slide, i) => {
-          return (
-            props.count === i ? slide : null
-          );
-        })}
-      </div>
-    </div>
+    <>
+      {slidingItems.map((slide, i) => {
+        return (
+          props.count === i ? slide : null
+        );
+      })}
+    </>
   );
 }
