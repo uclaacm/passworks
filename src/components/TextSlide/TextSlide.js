@@ -12,7 +12,7 @@ export default function TextSlide(props) {
         start={0}
         duration={1/10000 * parseInt(props.userInput, 10)}
         end={parseInt(props.userInput, 10)}
-        formattingFn={num => ("0".repeat(props.inputLength) + num).slice(-props.inputLength)}
+        formattingFn={num => String(num).padStart(props.inputLength, '0')}
         useEasing={false}>
         {({ countUpRef, start }) => (
           <div>
