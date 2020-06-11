@@ -16,17 +16,13 @@ class Main extends React.Component {
 			inputError: false,
 			errorString: ''
 		};
-		this.handleInputChange = this.handleInputChange.bind(this);
-		this.handleInputSubmit = this.handleInputSubmit.bind(this);
-		this.setCount = this.setCount.bind(this);
-		this.setLessonNum = this.setLessonNum.bind(this);
 	}
 
-  handleInputChange(event) {
+  handleInputChange = event => {
     this.setState({value: event.target.value});
   }
 
-  handleInputSubmit(event) {
+  handleInputSubmit = event => {
 		event.preventDefault();
 		
 		const inputDesc = lessonSlides[this.state.lessonNum][this.state.count].inputDesc;
@@ -50,7 +46,6 @@ class Main extends React.Component {
 			this.setState({ userInput: this.state.value, value: '', inputError: false });
     	this.setCount(this.state.count + 1);
 		}
-    
 	}
 
 	setCount = newCount => {
