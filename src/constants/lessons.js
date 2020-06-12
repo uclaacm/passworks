@@ -4,10 +4,10 @@ import Typography from '@material-ui/core/Typography';
 /** keys and fields:
  *  slide: the text that should appear
  *  input: true if slide requires user input
- *  inputType: 'num', 'alpha', 
- *  inputDesc: describes the expected type of the user's input
- *  inputLength: the required length of the user's input
- *  regexp: regular expression matching the accepted inputs
+ *  inputType: 'num', 'vowels', 'Vowels'
+ *  inputDesc: a more verbose description the expected type of the user's input
+ *  inputLength: the required/expected length of the user's input
+ *  checkInput: predicate that returns true if input was valid, false otherwise
  *  usesInput: true if slide requires result of last user input
  */   
 export const lessonSlides = [
@@ -59,6 +59,11 @@ export const lessonSlides = [
     }
   ],
   [
+    // The lesson uses just vowels instead of the full a-z set of characters. This
+    // is to reduce the size of the alphabet and thus add more flexibility with
+    // the length of passwords we can generate in a reasonable time. Also, just
+    // using vowels (as opposed to a full alphabet or just consonants) circumvents
+    // the need to check for profanity.
     { 
       slide: <Typography>You’ll often see sites recommend that you use
         uppercase letters, numbers, and symbols in your password. Why is that?
