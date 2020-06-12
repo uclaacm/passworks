@@ -96,9 +96,20 @@ class Main extends React.Component {
 				return null;
 			else {
 				return (
-					<Button onClick={() => this.setCount(this.state.count + 1)}>
-					Next
-					</Button>
+					<Grid container
+						direction='row'
+						justify='center'
+						alignItems='center'
+					>
+						{lessonSlides[this.state.lessonNum][this.state.count].usesInput ? (
+							<Button onClick={() => this.setCount(this.state.count - 1)}>
+								Try Again
+							</Button>
+						) : null}
+						<Button onClick={() => this.setCount(this.state.count + 1)}>
+						Next
+						</Button>
+					</Grid>
 				);
 			}
 		}
