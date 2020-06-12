@@ -50,8 +50,31 @@ export const lessonSlides = [
     }
   ],
   [
-    { slide: <Typography>Goodbye, world!</Typography>},
-    { slide: <Typography>You finished our passworks lesson!</Typography>},
-    { slide: <Typography>We hope you had fun :)</Typography>}
+    { 
+      slide: <Typography>Another important aspect of password security is
+        randomness. Phrases like "happy", "jackie", and "asdfghjkl"
+        are NOT secure passwords, because they aren't very random and are thus
+        quite popularly used. In fact, there are many lists available containing
+        the most popularly used passwords.
+      </Typography>
+    },
+    { 
+      slide: <Typography>Try experimenting with submitting a password (of 4 or
+        more characters), and we'll see if it's in the list of the 10,000 most
+        common passwords.
+      </Typography>,
+      input: true,
+      inputType: 'common',
+      inputLength: -1,
+      checkInput: str => /^.{4,}$/.test(str)
+    },
+    {
+      usesInput: true,
+      inputType: 'common',
+      inputLength: -1,
+    },
+    { 
+      slide: <Typography>We hope you had fun :)</Typography>
+    }
   ]
 ];

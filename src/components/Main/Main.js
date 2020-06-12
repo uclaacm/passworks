@@ -32,7 +32,7 @@ class Main extends React.Component {
 		let newError;
 		let inputValid = true;
 
-		if (this.state.value.length !== inputLength) {
+		if (this.state.value.length !== inputLength && inputLength !== -1) {
 			inputValid = false;
 		}
 		if (!this.state.value.match(regexp)) {
