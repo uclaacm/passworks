@@ -123,8 +123,8 @@ export const lessonSlides = [
       </Typography>
     },
     { 
-      slide: <Typography>Try experimenting with submitting a password (of 4 or
-        more characters), and we'll see if it's in the list of the 10,000 most
+      slide: <Typography>Try experimenting with submitting passwords (of 4 or
+        more characters) and seeing which ones are in the list of the 10,000 most
         common passwords.
       </Typography>,
       input: true,
@@ -136,6 +136,15 @@ export const lessonSlides = [
       usesInput: true,
       inputType: 'common',
       inputLength: -1,
+    },
+    {
+      slide: <Typography>Though it's a good sign if your password isn't in the list,
+        it still may not be secure enough. For example, "h3ll0" isn't on this list,
+        but it's common for hackers to try tricks like substituting letters for numbers
+        and "h3ll0" thus would be fairly easy to crack. Also, there are much bigger
+        lists with millions of common passwords, so just because a password isn't
+        on the list we checked does not mean it is hack-proof.
+      </Typography>
     }
   ]
 ];
