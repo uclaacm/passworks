@@ -31,6 +31,11 @@ function fromLetters(str, alphabet) {
   return out;
 }
 
+// const alpha_lower = 'abcdefghijklmnopqrstuvwxyz';
+// const alpha_mixed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const vowels_lower = 'aeiou';
+const vowels_mixed = 'aeiouAEIOU';
+
 export default function TextSlide(props) {
   const passwordGuesser = (
     (props.usesInput !== true) ? null :
@@ -47,7 +52,37 @@ export default function TextSlide(props) {
             <Button onClick={start}>Start</Button>
           </div>
         )}
-      </CountUp>) : null
+      </CountUp>) : 
+    (props.inputType === 'vowels') ? (
+      <CountUp
+        start={0}
+        duration={fromLetters(props.userInput, vowels_lower) / 10000}
+        end={fromLetters(props.userInput, vowels_lower)}
+        formattingFn={num => toLetters(num, vowels_lower).padStart(props.inputLength, vowels_lower[0])}
+        useEasing={false}>
+          {({ countUpRef, start }) => (
+          <div>
+            <span ref={countUpRef} />
+            <Button onClick={start}>Start</Button>
+          </div>
+        )}
+      </CountUp>
+    ) : 
+    (props.inputType === 'Vowels') ? (
+      <CountUp
+        start={0}
+        duration={fromLetters(props.userInput, vowels_mixed) / 10000}
+        end={fromLetters(props.userInput, vowels_mixed)}
+        formattingFn={num => toLetters(num, vowels_mixed).padStart(props.inputLength, vowels_mixed[0])}
+        useEasing={false}>
+          {({ countUpRef, start }) => (
+          <div>
+            <span ref={countUpRef} />
+            <Button onClick={start}>Start</Button>
+          </div>
+        )}
+      </CountUp>
+    ) : null
   );
 
   const slidingItems = props.lessonItems.map((item, i) => {

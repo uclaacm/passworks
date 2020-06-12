@@ -27,7 +27,7 @@ class Main extends React.Component {
 		
 		const inputDesc = lessonSlides[this.state.lessonNum][this.state.count].inputDesc;
 		const inputLength = lessonSlides[this.state.lessonNum][this.state.count].inputLength;
-		const regexp = lessonSlides[this.state.lessonNum][this.state.count].regexp;
+		const checkInput = lessonSlides[this.state.lessonNum][this.state.count].checkInput;
 		
 		let newError;
 		let inputValid = true;
@@ -35,7 +35,7 @@ class Main extends React.Component {
 		if (this.state.value.length !== inputLength) {
 			inputValid = false;
 		}
-		if (!this.state.value.match(regexp)) {
+		if (!checkInput(this.state.value)) {
 			inputValid = false;
 		}
 
