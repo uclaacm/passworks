@@ -4,6 +4,11 @@ import Slide from '@material-ui/core/Slide';
 import Grid from '@material-ui/core/Grid';
 import CountUp from 'react-countup';
 
+import commonPws from '../../constants/common.json';
+import { Typography } from '@material-ui/core';
+
+const commonPasswords = new Set(commonPws);
+
 // function to convert a number to a string based on the given alphabet
 //    example: if alphabet is 'abc',
 //      0 -> 'a'
@@ -82,6 +87,11 @@ export default function TextSlide(props) {
           </div>
         )}
       </CountUp>
+    ) :
+    (props.inputType === 'common') ? (
+      commonPasswords.has(props.userInput) ? (
+        <Typography>Oh no! The password you typed is in the top 10,000 most common passwords.</Typography>) :
+        <Typography>Yay! The password you typed is not in the top 10,000 most common passwords.</Typography>
     ) : null
   );
 
