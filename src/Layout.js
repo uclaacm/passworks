@@ -3,21 +3,18 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import { ThemeProvider, createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
-// import Header from './header';
-// import Footer from './Footer/Footer';
-
 const overwrittenTheme = responsiveFontSizes(createMuiTheme({
 	palette: {
 		primary: {
-			main: '#C960FF',
-			light: '#d37fff',
-			dark: '#352A3A',
+			main: '#A1D900',
+			light: '#C6DC85',
+			dark: '#2C3022',
 			contrastText: '#fff'
 		},
 		secondary: {
-			main: '#ED3266',
-			light: '#f05b84',
-			dark: '#a52347',
+			main: '#F89C12',
+			light: '#FFB13B',
+			dark: '#E07800',
 			contrastText: '#fff'
 		}
 	},

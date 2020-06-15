@@ -9,9 +9,10 @@ import React from 'react';
  *  checkInput: predicate that returns true if input was valid, false otherwise
  *  usesInput: true if slide requires result of last user input
  */   
-export const lessonSlides = [
+export const allLessons = [
   [
     {
+      title: <>Lesson 1: Password Length</>,
       slide: <>First, let's learn about why long passwords are more secure
         than short passwords!</>
     },
@@ -66,6 +67,7 @@ export const lessonSlides = [
     // using vowels (as opposed to a full alphabet or just consonants) circumvents
     // the need to check for profanity.
     { 
+      title: <>Lesson 2: Password Variety</>,
       slide: <>You’ll often see sites recommend that you use
         uppercase letters, numbers, and symbols in your password. Why is that?
         </>
@@ -118,6 +120,7 @@ export const lessonSlides = [
   ],
   [
     { 
+      title: <>Lesson 3: Don't Be Basic</>,
       slide: <>Another important aspect of password security is
         randomness. Phrases like "happy", "jackie", and "asdfghjkl"
         are NOT secure passwords, because they aren't very random and are thus

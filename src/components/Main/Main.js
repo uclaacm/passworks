@@ -1,9 +1,17 @@
 import React from 'react';
 
-import { Button, ButtonGroup } from '@material-ui/core';
-import { lessonSlides } from '../../constants/lessons.js';
+import { Button } from '@material-ui/core';
+import { allLessons } from '../../constants/lessons.js';
 import LessonText from '../LessonText/LessonText.js';
+import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import withStyles from '@material-ui/core/styles/withStyles';
+
+const useStyles = theme => ({
+	lessonName: {
+		color: theme.palette.primary.main
+	}
+})
 
 class Main extends React.Component {
 	constructor(props) {
@@ -26,9 +34,9 @@ class Main extends React.Component {
   handleInputSubmit = event => {
 		event.preventDefault();
 		
-		const inputDesc = lessonSlides[this.state.lessonNum][this.state.count].inputDesc;
-		const expectedLength = lessonSlides[this.state.lessonNum][this.state.count].inputLength;
-		const checkInput = lessonSlides[this.state.lessonNum][this.state.count].checkInput;
+		const inputDesc = allLessons[this.state.lessonNum][this.state.count].inputDesc;
+		const expectedLength = allLessons[this.state.lessonNum][this.state.count].inputLength;
+		const checkInput = allLessons[this.state.lessonNum][this.state.count].checkInput;
 		
 		let newError;
 		let inputValid = true;
@@ -57,8 +65,16 @@ class Main extends React.Component {
 		this.setState({lessonNum: newLessonNum});
 	}
 
+	renderLessonName = classes => {
+		return (
+			<Typography variant='h4' className={classes.lessonName}>
+				{allLessons[this.state.lessonNum][0].title}
+			</Typography>
+		);
+	}
+
 	renderInputForm = () => {
-		if (lessonSlides[this.state.lessonNum][this.state.count].input) {
+		if (allLessons[this.state.lessonNum][this.state.count].input) {
 			return (
 				<>
 					<form onSubmit={this.handleInputSubmit}>
@@ -71,7 +87,7 @@ class Main extends React.Component {
 							value={this.state.value} onChange={this.handleInputChange} />
 						<Button variant='outlined' type='submit'>Submit</Button>
 					</form>
-					<div>{this.state.inputError ? this.state.errorString : null}</div>
+					<Typography color='error'>{this.state.inputError ? this.state.errorString : null}</Typography>
 				</>
 			);
 		}
@@ -81,48 +97,17 @@ class Main extends React.Component {
 		return (
 			<LessonText
 				count={this.state.count}
-				lessonSlides={lessonSlides[this.state.lessonNum]}
+				lessonNum={this.state.lessonNum}
 				userInput={this.state.userInput}
 				inputLength={this.state.inputLength}
+				setCount={this.setCount}
+				setLessonNum={this.setLessonNum}
 			/>
 		);
 	}
 
-	renderButtons = classes => {
-		const isFirstLesson = this.state.lessonNum === 0;
-		const isLastLesson  = this.state.lessonNum === lessonSlides.length - 1;
-		const isFirstSlide  = this.state.count === 0;
-		const isLastSlide   = this.state.count === lessonSlides[this.state.lessonNum].length - 1;
-		const isInputSlide  = lessonSlides[this.state.lessonNum][this.state.count].input;
-
-		const renderNextLesson = !isLastLesson && isLastSlide;
-		const renderLastLesson = !isFirstLesson && isFirstSlide;
-		const renderNext       = !isLastSlide && !isInputSlide;
-		const renderBack       = !isFirstSlide;
-
-		const nextLessonButton = (<Button variant='outlined' onClick={() => {
-			this.setLessonNum(this.state.lessonNum + 1); this.setCount(0); }}> Next
-			Lesson</Button>);
-		const lastLessonButton = (<Button variant='outlined' onClick={() => {
-			this.setLessonNum(this.state.lessonNum - 1); this.setCount(0); }}> Next
-			Lesson</Button>);
-		const nextButton = (<Button variant='outlined' onClick={() => {
-			this.setCount(this.state.count + 1)}}>Next</Button>);
-		const backButton = (<Button variant='outlined' onClick={() => {
-			this.setCount(this.state.count - 1); }}>Back</Button>);
-
-		return (
-			<ButtonGroup>
-				{renderLastLesson && lastLessonButton}
-				{renderBack && backButton}
-				{renderNext && nextButton}
-				{renderNextLesson && nextLessonButton}
-			</ButtonGroup>
-		);
-	}
-
 	render() {
-		const classes = this.props;
+		const { classes } = this.props;
 		return (
 			<Grid 
 				container
@@ -130,12 +115,13 @@ class Main extends React.Component {
 				justify='center'
 				alignItems='center'
 			>
-				{this.renderInputForm()}
+				{this.renderLessonName(classes)}
+				{this.renderInputForm(classes)}
 				{this.renderLessonText()}
-				{this.renderButtons(classes)}
+				{/* {this.renderButtons()} */}
 			</Grid>
 		);
 	}
 }
 
-export default Main;
+export default withStyles(useStyles)(Main);
