@@ -135,6 +135,7 @@ export const allLessons = [
       </>,
       input: true,
       inputType: 'common',
+      inputDesc: 'a password with 4 or more characters',
       inputLength: -1,
       checkInput: str => /^.{4,}$/.test(str)
     },

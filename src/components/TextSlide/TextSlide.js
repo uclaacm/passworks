@@ -74,39 +74,47 @@ export default function TextSlide(props) {
         </CountUp>
       </Typography>) : 
     (props.inputType === 'vowels') ? (
-      <CountUp
-        start={0}
-        duration={fromLetters(props.userInput, vowels_lower) / 10000}
-        end={fromLetters(props.userInput, vowels_lower)}
-        formattingFn={num => toLetters(num, vowels_lower).padStart(props.inputLength, vowels_lower[0])}
-        useEasing={false}>
-          {({ countUpRef, start }) => (
-          <div>
-            <span ref={countUpRef} />
-            <Button onClick={start}>Start</Button>
-          </div>
-        )}
-      </CountUp>
+      <Typography>
+        <CountUp
+          start={0}
+          duration={fromLetters(props.userInput, vowels_lower) / 10000}
+          end={fromLetters(props.userInput, vowels_lower)}
+          formattingFn={num => toLetters(num, vowels_lower).padStart(props.inputLength, vowels_lower[0])}
+          useEasing={false}>
+            {({ countUpRef, start }) => (
+            <div>
+              <span ref={countUpRef} />
+              <Button onClick={start}>Start</Button>
+            </div>
+          )}
+        </CountUp>
+      </Typography>
     ) : 
     (props.inputType === 'Vowels') ? (
-      <CountUp
-        start={0}
-        duration={fromLetters(props.userInput, vowels_mixed) / 10000}
-        end={fromLetters(props.userInput, vowels_mixed)}
-        formattingFn={num => toLetters(num, vowels_mixed).padStart(props.inputLength, vowels_mixed[0])}
-        useEasing={false}>
-          {({ countUpRef, start }) => (
-          <div>
-            <span ref={countUpRef} />
-            <Button onClick={start}>Start</Button>
-          </div>
-        )}
-      </CountUp>
+      <Typography>
+        <CountUp
+          start={0}
+          duration={fromLetters(props.userInput, vowels_mixed) / 10000}
+          end={fromLetters(props.userInput, vowels_mixed)}
+          formattingFn={num => toLetters(num, vowels_mixed).padStart(props.inputLength, vowels_mixed[0])}
+          useEasing={false}>
+            {({ countUpRef, start }) => (
+            <div>
+              <span ref={countUpRef} />
+              <Button onClick={start}>Start</Button>
+            </div>
+          )}
+        </CountUp>
+      </Typography>
     ) :
     (props.inputType === 'common') ? (
       commonPasswords.has(props.userInput) ? (
-        <Typography variant={'body1'}>Oh no! The password you typed is in the top 10,000 most common passwords.</Typography>) :
-        <Typography variant={'body1'}>Yay! The password you typed is not in the top 10,000 most common passwords.</Typography>
+        <Typography variant={'body1'} className={classes.slideText}>
+          Oh no! The password you typed is in the top 10,000 most common passwords.
+        </Typography>) :
+        <Typography variant={'body1'} className={classes.slideText}>
+          Yay! The password you typed is not in the top 10,000 most common passwords.
+        </Typography>
     ) : null
   );
 
