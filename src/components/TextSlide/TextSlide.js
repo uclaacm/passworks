@@ -146,10 +146,10 @@ export default function TextSlide(props) {
             justify='center'
             alignItems='center'
           >
-            <Grid item sm={6}>
+            <Grid item sm={12}>
               <Typography variant='body1' className={classes.slideText}>{item}</Typography>
             </Grid>
-            <Grid item sm={6}>
+            <Grid item sm={12}>
               {passwordGuesser}
             </Grid>
           </Grid>

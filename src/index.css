@@ -13,10 +13,11 @@ code {
 }
 
 .main-container {
-  display: inline-flex;
+  display: inline-block;
   justify-content: space-between;
-  height: 100vh;
-  width: 100vw;
+  max-height: 100vh;
+  width: 100%;
+  margin: auto;
 }
 
 .item {
@@ -61,4 +62,3 @@ code {
 p {
   text-align: left;
 }
-

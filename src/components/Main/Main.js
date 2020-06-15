@@ -1,21 +1,25 @@
 import React from 'react';
-import Phone from '../Phone/Phone.js';
-import succ from "../../successkey.jpg"
-
-import { Button } from '@material-ui/core';
-import { allLessons } from '../../constants/lessons.js';
+import Button from '@material-ui/core/Button';
 import LessonText from '../LessonText/LessonText.js';
 import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import withStyles from '@material-ui/core/styles/withStyles';
+
+import { allLessons } from '../../constants/lessons.js';
+import Phone from '../Phone/Phone.js';
+import succ from '../../successkey.jpg';
 
 const useStyles = theme => ({
 	lessonName: {
-		color: theme.palette.primary.main
+		color: theme.palette.primary.main,
+		textAlign: 'center',
+		padding: '20px 0px'
 	},
 	inputText: {
 		margin: '4px', 
-		padding: '8px', 
+		padding: '8px',
 		borderRadius: '4px',
 		fontFamily: '"Chivo"',
 		fontSize: '1em'
@@ -113,25 +117,33 @@ class Main extends React.Component {
 	render() {
 		const { classes } = this.props;
 		return (
-			<Grid 
-				container
-				direction='column'
-				justify='center'
-				alignItems='center'
-			>
+			<Container maxWidth='lg'>
 				{this.renderLessonName(classes)}
-				{this.renderInputForm(classes)}
-				{<div className="main-container">
-            {/* <div className="item">
-                <h1>Passwords</h1>
-            </div> */}
-            <Phone toptitle="Finstagram" postimg={succ} poster="hack3rman" caption="lesgooo" />
-            {/* <div className="item">
-                <h1>are k00l</h1>
-            </div> */}
-        </div>}
-				{this.renderLessonText()}
-			</Grid>
+				<Grid 
+					container
+					spacing={3}
+					alignItems='center'
+					justify='center'
+				>
+					<Grid item sm={4} xs={12}>
+						{<div className="main-container">
+								{/* <div className="item">
+										<h1>Passwords</h1>
+								</div> */}
+								<Phone toptitle="Finstagram" content={'hello'} />
+								{/* <div className="item">
+										<h1>are k00l</h1>
+								</div> */}
+						</div>}
+					</Grid>
+					<Grid item sm={4} xs={12}>
+						<Box display='flex' flexDirection='column' alignItems='center'>
+							{this.renderInputForm(classes)}
+							{this.renderLessonText()}
+						</Box>
+					</Grid>
+				</Grid>
+			</Container>
 		);
 	}
 }

@@ -50,7 +50,7 @@ class LessonText extends React.Component {
     });
     
     return (
-      <>
+      <Box display='flex' flexDirection='column' alignItems='center'>
         <TextSlide 
           count={this.props.count}
           lessonItems={lessonItems}
@@ -61,7 +61,7 @@ class LessonText extends React.Component {
           inputType={lessonSlides[this.props.count].inputType}
         />
         {this.renderButtons()}
-      </>
+      </Box>
     );
   }
 }
