@@ -20,8 +20,10 @@ class LessonText extends React.Component {
 			this.props.setLessonNum(this.props.lessonNum + 1); this.props.setCount(0); }}> Next
 			Lesson</Button>);
 		const lastLessonButton = (<Button variant='outlined' onClick={() => {
-			this.props.setLessonNum(this.props.lessonNum - 1); this.props.setCount(0); }}> Last
-			Lesson</Button>);
+			this.props.setLessonNum(this.props.lessonNum - 1); 
+			this.props.setCount(allLessons[this.props.lessonNum - 1].length - 1); 
+		}}> Back
+		</Button>);
 		const nextButton = (<Button variant='outlined' onClick={() => {
 			this.props.setCount(this.props.count + 1)}}>Next</Button>);
 		const backButton = (<Button variant='outlined' onClick={() => {

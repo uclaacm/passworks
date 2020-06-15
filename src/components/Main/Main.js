@@ -118,7 +118,6 @@ class Main extends React.Component {
 				{this.renderLessonName(classes)}
 				{this.renderInputForm(classes)}
 				{this.renderLessonText()}
-				{/* {this.renderButtons()} */}
 			</Grid>
 		);
 	}
