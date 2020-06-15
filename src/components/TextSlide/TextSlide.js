@@ -3,9 +3,27 @@ import Button from '@material-ui/core/Button';
 import Slide from '@material-ui/core/Slide';
 import Grid from '@material-ui/core/Grid';
 import CountUp from 'react-countup';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 import commonPws from '../../constants/common.json';
-import { Typography } from '@material-ui/core';
+
+const useStyles = makeStyles({
+  slideText: {
+    textAlign: 'center'
+  },
+  counter: {
+    fontSize: '2em',
+    fontFamily: 'Monospace',
+    letterSpacing: 6
+  },
+  start: {
+    height: '2em',
+    fontSize: '.5em',
+    fontWeight: 600
+  }
+});
 
 const commonPasswords = new Set(commonPws);
 
@@ -42,56 +60,75 @@ const vowels_lower = 'aeiou';
 const vowels_mixed = 'aeiouAEIOU';
 
 export default function TextSlide(props) {
+  const classes = useStyles();
+
   const passwordGuesser = (
     (props.usesInput !== true) ? null :
     (props.inputType === 'num') ? (
-      <CountUp
-        start={0}
-        duration={parseInt(props.userInput, 10) / 10000}
-        end={parseInt(props.userInput, 10)}
-        formattingFn={num => String(num).padStart(props.inputLength, '0')}
-        useEasing={false}>
-        {({ countUpRef, start }) => (
-          <div>
-            <span ref={countUpRef} />
-            <Button onClick={start}>Start</Button>
-          </div>
-        )}
-      </CountUp>) : 
-    (props.inputType === 'vowels') ? (
-      <CountUp
-        start={0}
-        duration={fromLetters(props.userInput, vowels_lower) / 10000}
-        end={fromLetters(props.userInput, vowels_lower)}
-        formattingFn={num => toLetters(num, vowels_lower).padStart(props.inputLength, vowels_lower[0])}
-        useEasing={false}>
+      <Box className={classes.counter}>
+        <CountUp
+          start={0}
+          duration={parseInt(props.userInput, 10) / 10000}
+          end={parseInt(props.userInput, 10)}
+          formattingFn={num => String(num).padStart(props.inputLength, '0')}
+          useEasing={false}
+        >
           {({ countUpRef, start }) => (
-          <div>
-            <span ref={countUpRef} />
-            <Button onClick={start}>Start</Button>
-          </div>
-        )}
-      </CountUp>
+            <Box display='flex' alignItems='center'>
+              <span ref={countUpRef}/>
+              <Button disableRipple onClick={start} variant='outlined' className={classes.start}>
+                >
+              </Button>
+            </Box>
+          )}
+        </CountUp>
+      </Box>) : 
+    (props.inputType === 'vowels') ? (
+      <Box className={classes.counter}>
+        <CountUp
+          start={0}
+          duration={fromLetters(props.userInput, vowels_lower) / 10000}
+          end={fromLetters(props.userInput, vowels_lower)}
+          formattingFn={num => toLetters(num, vowels_lower).padStart(props.inputLength, vowels_lower[0])}
+          useEasing={false}>
+            {({ countUpRef, start }) => (
+            <div>
+              <span ref={countUpRef} />
+              <Button disableRipple onClick={start} variant='outlined' className={classes.start}>
+                >
+              </Button>
+            </div>
+          )}
+        </CountUp>
+      </Box>
     ) : 
     (props.inputType === 'Vowels') ? (
-      <CountUp
-        start={0}
-        duration={fromLetters(props.userInput, vowels_mixed) / 10000}
-        end={fromLetters(props.userInput, vowels_mixed)}
-        formattingFn={num => toLetters(num, vowels_mixed).padStart(props.inputLength, vowels_mixed[0])}
-        useEasing={false}>
-          {({ countUpRef, start }) => (
-          <div>
-            <span ref={countUpRef} />
-            <Button onClick={start}>Start</Button>
-          </div>
-        )}
-      </CountUp>
+      <Box className={classes.counter}>
+        <CountUp
+          start={0}
+          duration={fromLetters(props.userInput, vowels_mixed) / 10000}
+          end={fromLetters(props.userInput, vowels_mixed)}
+          formattingFn={num => toLetters(num, vowels_mixed).padStart(props.inputLength, vowels_mixed[0])}
+          useEasing={false}>
+            {({ countUpRef, start }) => (
+            <div>
+              <span ref={countUpRef} />
+              <Button disableRipple onClick={start} variant='outlined' className={classes.start}>
+                >
+              </Button>
+            </div>
+          )}
+        </CountUp>
+      </Box>
     ) :
     (props.inputType === 'common') ? (
       commonPasswords.has(props.userInput) ? (
-        <Typography>Oh no! The password you typed is in the top 10,000 most common passwords.</Typography>) :
-        <Typography>Yay! The password you typed is not in the top 10,000 most common passwords.</Typography>
+        <Typography variant={'body1'} className={classes.slideText}>
+          Oh no! The password you typed is in the top 10,000 most common passwords.
+        </Typography>) :
+        <Typography variant={'body1'} className={classes.slideText}>
+          Yay! The password you typed is not in the top 10,000 most common passwords.
+        </Typography>
     ) : null
   );
 
@@ -110,7 +147,9 @@ export default function TextSlide(props) {
             alignItems='center'
           >
             <Grid item sm={6}>
-              {item}
+              <Typography variant='body1' className={classes.slideText}>{item}</Typography>
+            </Grid>
+            <Grid item sm={6}>
               {passwordGuesser}
             </Grid>
           </Grid>

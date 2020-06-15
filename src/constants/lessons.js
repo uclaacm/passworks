@@ -1,5 +1,4 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 
 /** keys and fields:
  *  slide: the text that should appear
@@ -10,52 +9,55 @@ import Typography from '@material-ui/core/Typography';
  *  checkInput: predicate that returns true if input was valid, false otherwise
  *  usesInput: true if slide requires result of last user input
  */   
-export const lessonSlides = [
+export const allLessons = [
   [
+    {
+      title: <>Lesson 1: Password Length</>,
+      slide: <>First, let's learn about why long passwords are more secure
+        than short passwords!</>
+    },
     { 
-      slide: <Typography>Why are long passwords more secure than short ones?
-        Try submitting a 4-digit password!
-        </Typography>,
+      slide: <>Try submitting a 4-digit password!</>,
       input: true,
       inputType: 'num',
-      inputDesc: 'digits',
+      inputDesc: '4 digits',
       inputLength: 4,
       checkInput: str => /^\d{4}$/.test(str)
     },
     {
-      slide: <Typography>Press start to see how long it takes for a computer to
+      slide: <>Press start to see how long it takes for a computer to
         guess your 4-digit password!
-        </Typography>,
+        </>,
       usesInput: true,
       inputType: 'num',
       inputLength: 4
     },
     {
-      slide: <Typography>Wow, that was really fast! Now let's try using
+      slide: <>Wow, that was really fast! Now let's try using
         a longer password! Enter a password consisting of 6 or more digits.
-        </Typography>,
+        </>,
       input: true,
       inputType: 'num',
-      inputDesc: 'digits',
+      inputDesc: '6 or more digits',
       inputLength: -1,
       checkInput: str => /^\d{6,}$/.test(str)
     },
     { 
-      slide: <Typography>Let's see how long it takes for the computer
+      slide: <>Let's see how long it takes for the computer
         to guess your longer password! This might take a while, so feel free
         to click the next button if you're tired of waiting :)
-      </Typography>,
+      </>,
       usesInput: true,
       inputType: 'num',
       inputLength: -1
     },
     {
-      slide: <Typography>Depending on exactly which numbers you picked for your
+      slide: <>Depending on exactly which numbers you picked for your
       passwords, you should have noticed that the longer password took much
       more time to crack than the 4-digit password! This is because as you
       increase the length of your password, there are more and more possible
       values for your password to have.
-      </Typography>
+      </>
     }
   ],
   [
@@ -65,72 +67,75 @@ export const lessonSlides = [
     // using vowels (as opposed to a full alphabet or just consonants) circumvents
     // the need to check for profanity.
     { 
-      slide: <Typography>You’ll often see sites recommend that you use
+      title: <>Lesson 2: Password Variety</>,
+      slide: <>You’ll often see sites recommend that you use
         uppercase letters, numbers, and symbols in your password. Why is that?
-        </Typography>
+        </>
     },
     { 
-      slide: <Typography>Try submitting a 6-letter password with just lowercase
+      slide: <>Try submitting a 6-letter password with just lowercase
         vowels (a e i o u), and we'll see how long it takes for the computer to guess it!
-        </Typography>,
+        </>,
       input: true,
       inputType: 'vowels',
-      inputDesc: 'lowercase vowels',
+      inputDesc: '6 lowercase vowels',
       inputLength: 6,
       checkInput: str => /^[aeiou]{6}$/.test(str)
     },
     { 
-      slide: <Typography>Press start to see how long it takes for a computer to
+      slide: <>Press start to see how long it takes for a computer to
         guess your 6-letter lowercase password!
-        </Typography>,
+        </>,
       usesInput: true,
       inputType: 'vowels',
       inputLength: 6
     },
     { 
-      slide: <Typography>Now let's try adding some variety to our password.
+      slide: <>Now let's try adding some variety to our password.
       Submit another 6-vowel password, this time mixing lowercase and uppercase
       vowels (a e i o u A E I O U). Include at least two uppercase vowels!
-        </Typography>,
+        </>,
       input: true,
       inputType: 'Vowels',
-      inputDesc: 'vowels, with at least 2 uppercase',
+      inputDesc: '6 vowels, with at least 2 uppercase',
       inputLength: 6,
       checkInput: str => /.*[AEIOU].*[AEIOU].*/.test(str) && /^[aeiouAEIOU]{6}$/.test(str)
     },
     { 
-      slide: <Typography>Press start to see how long it takes for a computer to
+      slide: <>Press start to see how long it takes for a computer to
         guess your 6-letter mixed-case password!
-        </Typography>,
+        </>,
       usesInput: true,
       inputType: 'Vowels',
       inputLength: 6
     },
     {
-      slide: <Typography>Hopefully, you saw that the mixed-case password took
+      slide: <>Hopefully, you saw that the mixed-case password took
       longer to generate! This is because when we introduce more variety in
       what letters we use, each character of the password can take on more
       values. Thus, there are more possible passwords we can make, making it
       harder to guess!
-      </Typography>
+      </>
     }
   ],
   [
     { 
-      slide: <Typography>Another important aspect of password security is
+      title: <>Lesson 3: Don't Be Basic</>,
+      slide: <>Another important aspect of password security is
         randomness. Phrases like "happy", "jackie", and "asdfghjkl"
         are NOT secure passwords, because they aren't very random and are thus
         quite popularly used. In fact, there are many lists available containing
         the most popularly used passwords.
-      </Typography>
+      </>
     },
     { 
-      slide: <Typography>Try experimenting with submitting passwords (of 4 or
+      slide: <>Try experimenting with submitting passwords (of 4 or
         more characters) and seeing which ones are in the list of the 10,000 most
         common passwords.
-      </Typography>,
+      </>,
       input: true,
       inputType: 'common',
+      inputDesc: 'a password with 4 or more characters',
       inputLength: -1,
       checkInput: str => /^.{4,}$/.test(str)
     },
@@ -140,13 +145,13 @@ export const lessonSlides = [
       inputLength: -1,
     },
     {
-      slide: <Typography>Though it's a good sign if your password isn't in the list,
+      slide: <>Though it's a good sign if your password isn't in the list,
         it still may not be secure enough. For example, "h3ll0" isn't on this list,
         but it's common for hackers to try tricks like substituting letters for numbers
         and "h3ll0" thus would be fairly easy to crack. Also, there are much bigger
         lists with millions of common passwords, so just because a password isn't
         on the list we checked does not mean it is hack-proof.
-      </Typography>
+      </>
     }
   ]
 ];
