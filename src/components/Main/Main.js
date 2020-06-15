@@ -13,26 +13,27 @@ class Main extends React.Component {
 			lessonNum: 0,
       value: '',
 			userInput: '',
+			inputLength: 0,
 			inputError: false,
 			errorString: ''
 		};
 	}
 
   handleInputChange = event => {
-    this.setState({value: event.target.value});
+    this.setState({value: event.target.value, inputLength: event.target.value.length});
   }
 
   handleInputSubmit = event => {
 		event.preventDefault();
 		
 		const inputDesc = lessonSlides[this.state.lessonNum][this.state.count].inputDesc;
-		const inputLength = lessonSlides[this.state.lessonNum][this.state.count].inputLength;
+		const expectedLength = lessonSlides[this.state.lessonNum][this.state.count].inputLength;
 		const checkInput = lessonSlides[this.state.lessonNum][this.state.count].checkInput;
 		
 		let newError;
 		let inputValid = true;
 
-		if (this.state.value.length !== inputLength && inputLength !== -1) {
+		if (this.state.value.length !== expectedLength && expectedLength !== -1) {
 			inputValid = false;
 		}
 		if (!checkInput(this.state.value)) {
@@ -40,7 +41,7 @@ class Main extends React.Component {
 		}
 
 		if (!inputValid) {
-			newError = `Please enter ${inputLength} ${inputDesc}.`;
+			newError = `Please enter ${expectedLength} ${inputDesc}.`;
 			this.setState({ value: '', errorString: newError, inputError: true });
 		} else {
 			this.setState({ userInput: this.state.value, value: '', inputError: false });
@@ -75,6 +76,7 @@ class Main extends React.Component {
 				count={this.state.count}
 				lessonSlides={lessonSlides[this.state.lessonNum]}
 				userInput={this.state.userInput}
+				inputLength={this.state.inputLength}
 			/>
 		);
 	}
