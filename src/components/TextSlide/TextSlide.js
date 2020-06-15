@@ -6,6 +6,16 @@ import CountUp from 'react-countup';
 
 import commonPws from '../../constants/common.json';
 import { Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  slideText: {
+    textAlign: 'center'
+  },
+  countUp: {
+    fontFamily: 'Roboto, mono'
+  }
+});
 
 const commonPasswords = new Set(commonPws);
 
@@ -42,22 +52,27 @@ const vowels_lower = 'aeiou';
 const vowels_mixed = 'aeiouAEIOU';
 
 export default function TextSlide(props) {
+  const classes = useStyles();
+
   const passwordGuesser = (
     (props.usesInput !== true) ? null :
     (props.inputType === 'num') ? (
-      <CountUp
-        start={0}
-        duration={parseInt(props.userInput, 10) / 10000}
-        end={parseInt(props.userInput, 10)}
-        formattingFn={num => String(num).padStart(props.inputLength, '0')}
-        useEasing={false}>
-        {({ countUpRef, start }) => (
-          <div>
-            <span ref={countUpRef} />
-            <Button onClick={start}>Start</Button>
-          </div>
-        )}
-      </CountUp>) : 
+      <Typography>
+        <CountUp
+          start={0}
+          duration={parseInt(props.userInput, 10) / 10000}
+          end={parseInt(props.userInput, 10)}
+          formattingFn={num => String(num).padStart(props.inputLength, '0')}
+          useEasing={false}
+        >
+          {({ countUpRef, start }) => (
+            <div>
+              <span ref={countUpRef} />
+              <Button onClick={start}>Start</Button>
+            </div>
+          )}
+        </CountUp>
+      </Typography>) : 
     (props.inputType === 'vowels') ? (
       <CountUp
         start={0}
@@ -90,8 +105,8 @@ export default function TextSlide(props) {
     ) :
     (props.inputType === 'common') ? (
       commonPasswords.has(props.userInput) ? (
-        <Typography>Oh no! The password you typed is in the top 10,000 most common passwords.</Typography>) :
-        <Typography>Yay! The password you typed is not in the top 10,000 most common passwords.</Typography>
+        <Typography variant={'body1'}>Oh no! The password you typed is in the top 10,000 most common passwords.</Typography>) :
+        <Typography variant={'body1'}>Yay! The password you typed is not in the top 10,000 most common passwords.</Typography>
     ) : null
   );
 
@@ -110,7 +125,9 @@ export default function TextSlide(props) {
             alignItems='center'
           >
             <Grid item sm={6}>
-              {item}
+              <Typography variant='body1' className={classes.slideText}>{item}</Typography>
+            </Grid>
+            <Grid item sm={6}>
               {passwordGuesser}
             </Grid>
           </Grid>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from '@material-ui/core';
+import { Button, ButtonGroup } from '@material-ui/core';
 import { lessonSlides } from '../../constants/lessons.js';
 import LessonText from '../LessonText/LessonText.js';
 import Grid from '@material-ui/core/Grid';
@@ -61,7 +61,14 @@ class Main extends React.Component {
 			return (
 				<>
 					<form onSubmit={this.handleInputSubmit}>
-						<input type="text" value={this.state.value} onChange={this.handleInputChange} />
+						<input type='text' 
+							style={{
+								margin: '4px', 
+								padding: '8px', 
+								borderRadius: '4px',
+							}} 
+							value={this.state.value} onChange={this.handleInputChange} />
+						<Button variant='outlined' type='submit'>Submit</Button>
 					</form>
 					<div>{this.state.inputError ? this.state.errorString : null}</div>
 				</>
@@ -79,44 +86,42 @@ class Main extends React.Component {
 		);
 	}
 
-	renderNextButton = () => {
-		if (this.state.count === lessonSlides[this.state.lessonNum].length - 1) {
-			if (this.state.lessonNum === lessonSlides.length - 1)
-				return null;
-			else {
-				return (
-					<Button onClick={() => { this.setLessonNum(this.state.lessonNum + 1); this.setCount(0); }}>
-						Next Lesson
-					</Button>
-				);
-			}
-		}
-		else {
-			if (lessonSlides[this.state.lessonNum][this.state.count].input)
-				return null;
-			else {
-				return (
-					<Grid container
-						direction='row'
-						justify='center'
-						alignItems='center'
-					>
-						{lessonSlides[this.state.lessonNum][this.state.count].usesInput ? (
-							<Button onClick={() => this.setCount(this.state.count - 1)}>
-								Try Again
-							</Button>
-						) : null}
-						<Button onClick={() => this.setCount(this.state.count + 1)}>
-						Next
-						</Button>
-					</Grid>
-				);
-			}
-		}
+	renderButtons = classes => {
+		const isFirstLesson = this.state.lessonNum === 0;
+		const isLastLesson  = this.state.lessonNum === lessonSlides.length - 1;
+		const isFirstSlide  = this.state.count === 0;
+		const isLastSlide   = this.state.count === lessonSlides[this.state.lessonNum].length - 1;
+		const isInputSlide  = lessonSlides[this.state.lessonNum][this.state.count].input;
+
+		const renderNextLesson = !isLastLesson && isLastSlide;
+		const renderLastLesson = !isFirstLesson && isFirstSlide;
+		const renderNext       = !isLastSlide && !isInputSlide;
+		const renderBack       = !isFirstSlide;
+
+		const nextLessonButton = (<Button variant='outlined' onClick={() => {
+			this.setLessonNum(this.state.lessonNum + 1); this.setCount(0); }}> Next
+			Lesson</Button>);
+		const lastLessonButton = (<Button variant='outlined' onClick={() => {
+			this.setLessonNum(this.state.lessonNum - 1); this.setCount(0); }}> Next
+			Lesson</Button>);
+		const nextButton = (<Button variant='outlined' onClick={() => {
+			this.setCount(this.state.count + 1)}}>Next</Button>);
+		const backButton = (<Button variant='outlined' onClick={() => {
+			this.setCount(this.state.count - 1); }}>Back</Button>);
+
+		return (
+			<ButtonGroup>
+				{renderLastLesson && lastLessonButton}
+				{renderBack && backButton}
+				{renderNext && nextButton}
+				{renderNextLesson && nextLessonButton}
+			</ButtonGroup>
+		);
 	}
 
 	render() {
-		return(
+		const classes = this.props;
+		return (
 			<Grid 
 				container
 				direction='column'
@@ -125,7 +130,7 @@ class Main extends React.Component {
 			>
 				{this.renderInputForm()}
 				{this.renderLessonText()}
-				{this.renderNextButton()}
+				{this.renderButtons(classes)}
 			</Grid>
 		);
 	}
