@@ -19,7 +19,7 @@ export const lessonSlides = [
       slide: <>Try submitting a 4-digit password!</>,
       input: true,
       inputType: 'num',
-      inputDesc: 'digits',
+      inputDesc: '4 digits',
       inputLength: 4,
       checkInput: str => /^\d{4}$/.test(str)
     },
@@ -33,29 +33,29 @@ export const lessonSlides = [
     },
     {
       slide: <>Wow, that was really fast! Now let's try using
-        a 6-digit password!
+        a longer password! Enter a password consisting of 6 or more digits.
         </>,
       input: true,
       inputType: 'num',
-      inputDesc: 'digits',
-      inputLength: 6,
-      checkInput: str => /^\d{6}$/.test(str)
+      inputDesc: '6 or more digits',
+      inputLength: -1,
+      checkInput: str => /^\d{6,}$/.test(str)
     },
     { 
       slide: <>Let's see how long it takes for the computer
-        to guess your 6-digit password! This might take a while, so feel free
+        to guess your longer password! This might take a while, so feel free
         to click the next button if you're tired of waiting :)
       </>,
       usesInput: true,
       inputType: 'num',
-      inputLength: 6
+      inputLength: -1
     },
     {
-      slide: <>Though it depends somewhat on which numbers you
-        picked for your passwords, you should have noticed that the 6-digit
-        password took a lot longer to crack than the 4-digit password! This is
-        because there are many more possible values you can make with 6 digits
-        compared to with 4 digits.
+      slide: <>Depending on exactly which numbers you picked for your
+      passwords, you should have noticed that the longer password took much
+      more time to crack than the 4-digit password! This is because as you
+      increase the length of your password, there are more and more possible
+      values for your password to have.
       </>
     }
   ],
@@ -76,7 +76,7 @@ export const lessonSlides = [
         </>,
       input: true,
       inputType: 'vowels',
-      inputDesc: 'lowercase vowels',
+      inputDesc: '6 lowercase vowels',
       inputLength: 6,
       checkInput: str => /^[aeiou]{6}$/.test(str)
     },
@@ -89,15 +89,15 @@ export const lessonSlides = [
       inputLength: 6
     },
     { 
-      slide: <>Now try submitting another 6-vowel password, this time
-        mixing lowercase and uppercase vowels (a e i o u A E I O U). Include at
-        least one uppercase vowel!
+      slide: <>Now let's try adding some variety to our password.
+      Submit another 6-vowel password, this time mixing lowercase and uppercase
+      vowels (a e i o u A E I O U). Include at least two uppercase vowels!
         </>,
       input: true,
       inputType: 'Vowels',
-      inputDesc: 'mixed upper and lower case vowels',
+      inputDesc: '6 vowels, with at least 2 uppercase',
       inputLength: 6,
-      checkInput: str => /.*[AEIOU].*/.test(str) && /^[aeiouAEIOU]{6}$/.test(str)
+      checkInput: str => /.*[AEIOU].*[AEIOU].*/.test(str) && /^[aeiouAEIOU]{6}$/.test(str)
     },
     { 
       slide: <>Press start to see how long it takes for a computer to
@@ -109,8 +109,10 @@ export const lessonSlides = [
     },
     {
       slide: <>Hopefully, you saw that the mixed-case password took
-        longer to generate! This is because when we introduce more character
-        variety, there are more possible passwords that can be generated!
+      longer to generate! This is because when we introduce more variety in
+      what letters we use, each character of the password can take on more
+      values. Thus, there are more possible passwords we can make, making it
+      harder to guess!
       </>
     }
   ],
