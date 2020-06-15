@@ -3,17 +3,25 @@ import Button from '@material-ui/core/Button';
 import Slide from '@material-ui/core/Slide';
 import Grid from '@material-ui/core/Grid';
 import CountUp from 'react-countup';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 import commonPws from '../../constants/common.json';
-import { Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   slideText: {
     textAlign: 'center'
   },
-  countUp: {
-    fontFamily: 'Roboto, mono'
+  counter: {
+    fontSize: '2em',
+    fontFamily: 'Monospace',
+    letterSpacing: 6
+  },
+  start: {
+    height: '2em',
+    fontSize: '.5em',
+    fontWeight: 600
   }
 });
 
@@ -57,7 +65,7 @@ export default function TextSlide(props) {
   const passwordGuesser = (
     (props.usesInput !== true) ? null :
     (props.inputType === 'num') ? (
-      <Typography>
+      <Box className={classes.counter}>
         <CountUp
           start={0}
           duration={parseInt(props.userInput, 10) / 10000}
@@ -66,15 +74,17 @@ export default function TextSlide(props) {
           useEasing={false}
         >
           {({ countUpRef, start }) => (
-            <div>
-              <span ref={countUpRef} />
-              <Button onClick={start}>Start</Button>
-            </div>
+            <Box display='flex' alignItems='center'>
+              <span ref={countUpRef}/>
+              <Button disableRipple onClick={start} variant='outlined' className={classes.start}>
+                >
+              </Button>
+            </Box>
           )}
         </CountUp>
-      </Typography>) : 
+      </Box>) : 
     (props.inputType === 'vowels') ? (
-      <Typography>
+      <Box className={classes.counter}>
         <CountUp
           start={0}
           duration={fromLetters(props.userInput, vowels_lower) / 10000}
@@ -84,14 +94,16 @@ export default function TextSlide(props) {
             {({ countUpRef, start }) => (
             <div>
               <span ref={countUpRef} />
-              <Button onClick={start}>Start</Button>
+              <Button disableRipple onClick={start} variant='outlined' className={classes.start}>
+                >
+              </Button>
             </div>
           )}
         </CountUp>
-      </Typography>
+      </Box>
     ) : 
     (props.inputType === 'Vowels') ? (
-      <Typography>
+      <Box className={classes.counter}>
         <CountUp
           start={0}
           duration={fromLetters(props.userInput, vowels_mixed) / 10000}
@@ -101,11 +113,13 @@ export default function TextSlide(props) {
             {({ countUpRef, start }) => (
             <div>
               <span ref={countUpRef} />
-              <Button onClick={start}>Start</Button>
+              <Button disableRipple onClick={start} variant='outlined' className={classes.start}>
+                >
+              </Button>
             </div>
           )}
         </CountUp>
-      </Typography>
+      </Box>
     ) :
     (props.inputType === 'common') ? (
       commonPasswords.has(props.userInput) ? (

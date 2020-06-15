@@ -30,6 +30,30 @@ const overwrittenTheme = responsiveFontSizes(createMuiTheme({
 		h6: { fontFamily: '"Palanquin Dark", sans-serif' },
 		body1: { fontFamily: '"Chivo", sans-serif' },
 		button: { fontFamily: '"Chivo", sans-serif' }
+	},
+	overrides: {
+		MuiButton: {
+			root: {
+				fontFamily: '"Chivo"',
+				margin: 5,
+				color: '#F89C12',
+				background: 'white',
+				fontSize: '1em',
+				textTransform: 'none'
+			},
+			outlined: {
+				borderRadius: '4px',
+				border: '2px solid #F89C12',
+				'&:hover': {
+					background: '#F89C12',
+					color: 'white'
+				},
+				'&:active': {
+					background: 'black',
+					border: '2px solid black'
+				}
+			}
+		}
 	}
 }));
 

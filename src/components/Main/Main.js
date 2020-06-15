@@ -10,6 +10,13 @@ import withStyles from '@material-ui/core/styles/withStyles';
 const useStyles = theme => ({
 	lessonName: {
 		color: theme.palette.primary.main
+	},
+	inputText: {
+		margin: '4px', 
+		padding: '8px', 
+		borderRadius: '4px',
+		fontFamily: '"Chivo"',
+		fontSize: '1em'
 	}
 })
 
@@ -73,19 +80,14 @@ class Main extends React.Component {
 		);
 	}
 
-	renderInputForm = () => {
+	renderInputForm = classes => {
 		if (allLessons[this.state.lessonNum][this.state.count].input) {
 			return (
 				<>
 					<form onSubmit={this.handleInputSubmit}>
-						<input type='text' 
-							style={{
-								margin: '4px', 
-								padding: '8px', 
-								borderRadius: '4px',
-							}} 
+						<input type='text' className={classes.inputText}
 							value={this.state.value} onChange={this.handleInputChange} />
-						<Button variant='outlined' type='submit'>Submit</Button>
+						<Button disableRipple variant='outlined' type='submit'>Submit</Button>
 					</form>
 					<Typography color='error'>{this.state.inputError ? this.state.errorString : null}</Typography>
 				</>

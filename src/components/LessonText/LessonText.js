@@ -1,7 +1,9 @@
 import React from 'react';
 import TextSlide from '../TextSlide/TextSlide.js';
 import { allLessons } from '../../constants/lessons';
-import { Button, ButtonGroup } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+
 
 class LessonText extends React.Component {
   renderButtons = () => {
@@ -16,26 +18,28 @@ class LessonText extends React.Component {
 		const renderNext       = !isLastSlide && !isInputSlide;
 		const renderBack       = !isFirstSlide;
 
-		const nextLessonButton = (<Button variant='outlined' onClick={() => {
+		const nextLessonButton = (<Button disableRipple variant='outlined' onClick={() => {
 			this.props.setLessonNum(this.props.lessonNum + 1); this.props.setCount(0); }}> Next
 			Lesson</Button>);
-		const lastLessonButton = (<Button variant='outlined' onClick={() => {
+		const lastLessonButton = (<Button disableRipple variant='outlined' onClick={() => {
 			this.props.setLessonNum(this.props.lessonNum - 1); 
 			this.props.setCount(allLessons[this.props.lessonNum - 1].length - 1); 
 		}}> Back
 		</Button>);
-		const nextButton = (<Button variant='outlined' onClick={() => {
+		const nextButton = (<Button disableRipple variant='outlined' onClick={() => {
 			this.props.setCount(this.props.count + 1)}}>Next</Button>);
-		const backButton = (<Button variant='outlined' onClick={() => {
+		const backButton = (<Button disableRipple variant='outlined' onClick={() => {
 			this.props.setCount(this.props.count - 1); }}>Back</Button>);
 
 		return (
-			<ButtonGroup>
+			// <ButtonGroup>
+			<Box>
 				{renderLastLesson && lastLessonButton}
 				{renderBack && backButton}
 				{renderNext && nextButton}
 				{renderNextLesson && nextLessonButton}
-			</ButtonGroup>
+			</Box>
+			// </ButtonGroup>
 		);
 	}
 
