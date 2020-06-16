@@ -5,16 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import PasswordGuesser from '../components/PasswordGuesser/PasswordGuesser.js';
 import Profile from '../components/Profile/Profile.js';
 
-/** keys and fields:
- *  slide: the text that should appear
- *  input: true if slide requires user input
- *  inputType: 'num', 'vowels', 'Vowels'
- *  inputDesc: a more verbose description the expected type of the user's input
- *  inputLength: the required/expected length of the user's input
- *  checkInput: predicate that returns true if input was valid, false otherwise
- *  usesInput: true if slide requires result of last user input
- */
-
 const guesser = (userInput, inputType, inputLength) => {
   return (
     <Box display='flex' flexDirection='column' alignItems='center'>
@@ -41,6 +31,15 @@ const inputForm = (classes, value, handleInputChange, handleInputSubmit, inputEr
   );
 }
 
+/** keys and fields:
+ *  slide: the text that should appear
+ *  input: true if slide requires user input
+ *  inputType: 'num', 'vowels', 'Vowels'
+ *  inputDesc: a more verbose description the expected type of the user's input
+ *  inputLength: the required/expected length of the user's input
+ *  checkInput: predicate that returns true if input was valid, false otherwise
+ *  usesInput: true if slide requires result of last user input
+ */
 export const allLessons = [
   [
     {
@@ -198,8 +197,12 @@ export const allLessons = [
   ],
   [
     {
-      title: <>Lesson 4: Social Enyineer</>,
-      slide: <>time to be a hackerman</>,
+      title: <>Lesson 4: Social Engineering</>,
+      slide: <>In this lesson, we'll learn about social engineering. <br />
+      Social engineering is the act of digging into someone's personal
+      information to gain access into things like their accounts. <br/> Note:
+      This demonstration is for educational purposes only. We do not condone
+      hacking into other people's accounts.</>,
       phoneContent: () => <Profile />
     }
   ]
