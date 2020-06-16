@@ -86,14 +86,15 @@ export default function PasswordGuesser(props) {
           duration={fromLetters(props.userInput, vowels_lower) / 10000}
           end={fromLetters(props.userInput, vowels_lower)}
           formattingFn={num => toLetters(num, vowels_lower).padStart(props.inputLength, vowels_lower[0])}
-          useEasing={false}>
-            {({ countUpRef, start }) => (
-            <div>
+          useEasing={false}
+        >
+          {({ countUpRef, start }) => (
+            <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
               <span ref={countUpRef} />
               <Button disableRipple onClick={start} variant='outlined' className={classes.start}>
                 Start
               </Button>
-            </div>
+            </Box>
           )}
         </CountUp>
       </Box>
@@ -105,14 +106,15 @@ export default function PasswordGuesser(props) {
           duration={fromLetters(props.userInput, vowels_mixed) / 10000}
           end={fromLetters(props.userInput, vowels_mixed)}
           formattingFn={num => toLetters(num, vowels_mixed).padStart(props.inputLength, vowels_mixed[0])}
-          useEasing={false}>
-            {({ countUpRef, start }) => (
-            <div>
+          useEasing={false}
+        >
+          {({ countUpRef, start }) => (
+            <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
               <span ref={countUpRef} />
               <Button disableRipple onClick={start} variant='outlined' className={classes.start}>
                 Start
               </Button>
-            </div>
+            </Box>
           )}
         </CountUp>
       </Box>

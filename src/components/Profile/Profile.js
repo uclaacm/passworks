@@ -1,7 +1,7 @@
 import React from 'react';
-import Toolbar from '@material-ui/core/Toolbar';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import Typography from '@material-ui/core/Typography';
+import List from '@material-ui/core/List';
+import ListSubheader from '@material-ui/core/ListSubheader';
 
 import Post from './Post/Post.js';
 import profilePic from '../../images/profilePic.png';
@@ -58,8 +58,15 @@ const posts = [
 ];
 
 const useStyles = makeStyles({
-	root: {
-    paddingTop: 10
+	header: {
+    background: 'azure',
+    top: '0px'
+  },
+  noBar: {
+		'&::-webkit-scrollbar': {
+			width: '0em'
+		},
+		'scrollbar-width': 'none'
   }
 });
 
@@ -81,13 +88,14 @@ export default function Profile() {
   });
 
   return (
-    <>
-      <Toolbar className={classes.root}>
-        <img src={instaLogo} alt='logo' style={{ 
-          float: 'none', width: '50%', marginLeft: 'auto', marginRight: 'auto' }}
-        />
-      </Toolbar>
-      <div style={{marginTop: '-15px'}}>{postList}</div>
-    </>
+    <List className={classes.noBar} style={{maxHeight: '100%', overflow: 'auto', width: '100%'}} subheader={<ListSubheader />} >
+      <ListSubheader className={classes.header}>
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '25px 0px 10px' }}>
+          <img src={instaLogo} alt='logo' style={{ 
+            float: 'none', width: '50%', marginLeft: 'auto', marginRight: 'auto' }}/>
+        </div>
+      </ListSubheader>
+      {postList}
+    </List>
   );
 }
