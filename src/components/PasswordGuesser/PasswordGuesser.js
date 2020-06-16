@@ -46,6 +46,9 @@ const useStyles = makeStyles({
     fontSize: '.6em',
     fontWeight: 400,
     marginTop: 10
+  },
+  text: {
+    textAlign: 'center'
   }
 });
 
@@ -116,10 +119,10 @@ export default function PasswordGuesser(props) {
     ) :
     (props.inputType === 'common') ? (
       commonPasswords.has(props.userInput) ? (
-        <Typography variant={'body1'} className={classes.slideText}>
+        <Typography variant={'body1'} className={classes.text}>
           Oh no! The password you typed is in the top 10,000 most common passwords.
         </Typography>) :
-        <Typography variant={'body1'} className={classes.slideText}>
+        <Typography variant={'body1'} className={classes.text}>
           Yay! The password you typed is not in the top 10,000 most common passwords.
         </Typography>
     ) : null
