@@ -116,6 +116,11 @@ class Main extends React.Component {
 
 	render() {
 		const { classes } = this.props;
+		const phoneContent = allLessons[this.state.lessonNum][this.state.count].phoneContent;
+		const userInput = this.state.userInput;
+		const inputType = allLessons[this.state.lessonNum][this.state.count].inputType;
+		const inputLength = this.state.inputLength;
+
 		return (
 			<Container maxWidth='lg'>
 				{this.renderLessonName(classes)}
@@ -127,7 +132,7 @@ class Main extends React.Component {
 				>
 					<Grid item sm={12} md={5}>
 						<div className="main-container">
-							<Phone content={<Profile />} />
+							<Phone content={phoneContent === null ? null : phoneContent(userInput, inputType, inputLength)} />
 						</div>
 					</Grid>
 					<Grid item sm={12} md={5}>

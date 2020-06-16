@@ -1,4 +1,5 @@
 import React from 'react';
+import PasswordGuesser from '../components/PasswordGuesser/PasswordGuesser.js';
 
 /** keys and fields:
  *  slide: the text that should appear
@@ -9,12 +10,25 @@ import React from 'react';
  *  checkInput: predicate that returns true if input was valid, false otherwise
  *  usesInput: true if slide requires result of last user input
  */   
+
+const guesser = (userInput, inputType, inputLength) => {
+  return (
+    <PasswordGuesser
+      usesInput={true}
+      userInput={userInput}
+      inputType={inputType}
+      inputLength={inputLength}
+    />
+  );
+}
+
 export const allLessons = [
   [
     {
       title: <>Lesson 1: Password Length</>,
       slide: <>First, let's learn about why long passwords are more secure
-        than short passwords!</>
+        than short passwords!</>,
+      phoneContent: null
     },
     { 
       slide: <>Try submitting a 4-digit password!</>,
@@ -22,15 +36,16 @@ export const allLessons = [
       inputType: 'num',
       inputDesc: '4 digits',
       inputLength: 4,
-      checkInput: str => /^\d{4}$/.test(str)
+      checkInput: str => /^\d{4}$/.test(str),
+      phoneContent: null
     },
     {
       slide: <>Press start to see how long it takes for a computer to
-        guess your 4-digit password!
-        </>,
+        guess your 4-digit password!</>,
       usesInput: true,
       inputType: 'num',
-      inputLength: 4
+      inputLength: 4,
+      phoneContent: guesser
     },
     {
       slide: <>Wow, that was really fast! Now let's try using
@@ -40,24 +55,25 @@ export const allLessons = [
       inputType: 'num',
       inputDesc: '6 or more digits',
       inputLength: -1,
-      checkInput: str => /^\d{6,}$/.test(str)
+      checkInput: str => /^\d{6,}$/.test(str),
+      phoneContent: null
     },
     { 
       slide: <>Let's see how long it takes for the computer
         to guess your longer password! This might take a while, so feel free
-        to click the next button if you're tired of waiting :)
-      </>,
+        to click the next button if you're tired of waiting :)</>,
       usesInput: true,
       inputType: 'num',
-      inputLength: -1
+      inputLength: -1,
+      phoneContent: guesser
     },
     {
       slide: <>Depending on exactly which numbers you picked for your
-      passwords, you should have noticed that the longer password took much
-      more time to crack than the 4-digit password! This is because as you
-      increase the length of your password, there are more and more possible
-      values for your password to have.
-      </>
+        passwords, you should have noticed that the longer password took much
+        more time to crack than the 4-digit password! This is because as you
+        increase the length of your password, there are more and more possible
+        values for your password to have.</>,
+      phoneContent: null
     }
   ],
   [
@@ -70,7 +86,8 @@ export const allLessons = [
       title: <>Lesson 2: Password Variety</>,
       slide: <>You’ll often see sites recommend that you use
         uppercase letters, numbers, and symbols in your password. Why is that?
-        </>
+        </>,
+      phoneContent: null
     },
     { 
       slide: <>Try submitting a 6-letter password with just lowercase
@@ -80,7 +97,8 @@ export const allLessons = [
       inputType: 'vowels',
       inputDesc: '6 lowercase vowels',
       inputLength: 6,
-      checkInput: str => /^[aeiou]{6}$/.test(str)
+      checkInput: str => /^[aeiou]{6}$/.test(str),
+      phoneContent: null
     },
     { 
       slide: <>Press start to see how long it takes for a computer to
@@ -88,7 +106,8 @@ export const allLessons = [
         </>,
       usesInput: true,
       inputType: 'vowels',
-      inputLength: 6
+      inputLength: 6,
+      phoneContent: guesser
     },
     { 
       slide: <>Now let's try adding some variety to our password.
@@ -99,7 +118,8 @@ export const allLessons = [
       inputType: 'Vowels',
       inputDesc: '6 vowels, with at least 2 uppercase',
       inputLength: 6,
-      checkInput: str => /.*[AEIOU].*[AEIOU].*/.test(str) && /^[aeiouAEIOU]{6}$/.test(str)
+      checkInput: str => /.*[AEIOU].*[AEIOU].*/.test(str) && /^[aeiouAEIOU]{6}$/.test(str),
+      phoneContent: null
     },
     { 
       slide: <>Press start to see how long it takes for a computer to
@@ -107,15 +127,16 @@ export const allLessons = [
         </>,
       usesInput: true,
       inputType: 'Vowels',
-      inputLength: 6
+      inputLength: 6,
+      phoneContent: guesser
     },
     {
       slide: <>Hopefully, you saw that the mixed-case password took
-      longer to generate! This is because when we introduce more variety in
-      what letters we use, each character of the password can take on more
-      values. Thus, there are more possible passwords we can make, making it
-      harder to guess!
-      </>
+        longer to generate! This is because when we introduce more variety in
+        what letters we use, each character of the password can take on more
+        values. Thus, there are more possible passwords we can make, making it
+        harder to guess!</>,
+      phoneContent: null
     }
   ],
   [
@@ -125,8 +146,8 @@ export const allLessons = [
         randomness. Phrases like "happy", "jackie", and "asdfghjkl"
         are NOT secure passwords, because they aren't very random and are thus
         quite popularly used. In fact, there are many lists available containing
-        the most popularly used passwords.
-      </>
+        the most popularly used passwords.</>,
+      phoneContent: null
     },
     { 
       slide: <>Try experimenting with submitting passwords (of 4 or
@@ -137,12 +158,14 @@ export const allLessons = [
       inputType: 'common',
       inputDesc: 'a password with 4 or more characters',
       inputLength: -1,
-      checkInput: str => /^.{4,}$/.test(str)
+      checkInput: str => /^.{4,}$/.test(str),
+      phoneContent: null
     },
     {
       usesInput: true,
       inputType: 'common',
       inputLength: -1,
+      phoneContent: guesser
     },
     {
       slide: <>Though it's a good sign if your password isn't in the list,
@@ -150,8 +173,8 @@ export const allLessons = [
         but it's common for hackers to try tricks like substituting letters for numbers
         and "h3ll0" thus would be fairly easy to crack. Also, there are much bigger
         lists with millions of common passwords, so just because a password isn't
-        on the list we checked does not mean it is hack-proof.
-      </>
+        on the list we checked does not mean it is hack-proof.</>,
+      phoneContent: null
     }
   ]
 ];
