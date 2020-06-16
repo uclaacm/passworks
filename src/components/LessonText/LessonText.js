@@ -32,14 +32,12 @@ class LessonText extends React.Component {
 			this.props.setCount(this.props.count - 1); }}>Back</Button>);
 
 		return (
-			// <ButtonGroup>
 			<Box>
 				{renderLastLesson && lastLessonButton}
 				{renderBack && backButton}
 				{renderNext && nextButton}
 				{renderNextLesson && nextLessonButton}
 			</Box>
-			// </ButtonGroup>
 		);
 	}
 

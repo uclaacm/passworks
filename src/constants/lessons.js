@@ -1,4 +1,7 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 import PasswordGuesser from '../components/PasswordGuesser/PasswordGuesser.js';
 import Profile from '../components/Profile/Profile.js';
 
@@ -10,16 +13,31 @@ import Profile from '../components/Profile/Profile.js';
  *  inputLength: the required/expected length of the user's input
  *  checkInput: predicate that returns true if input was valid, false otherwise
  *  usesInput: true if slide requires result of last user input
- */   
+ */
 
 const guesser = (userInput, inputType, inputLength) => {
   return (
-    <PasswordGuesser
-      usesInput={true}
-      userInput={userInput}
-      inputType={inputType}
-      inputLength={inputLength}
-    />
+    <Box display='flex' flexDirection='column' alignItems='center'>
+      <PasswordGuesser
+        usesInput={true}
+        userInput={userInput}
+        inputType={inputType}
+        inputLength={inputLength}
+      />
+    </Box>
+  );
+}
+
+const inputForm = (classes, value, handleInputChange, handleInputSubmit, inputError, errorString) => {
+  return (
+    <form onSubmit={handleInputSubmit}>
+      <Box display='flex' flexDirection='column' alignItems='center'>
+          <input type='text' className={classes.inputText}
+            value={value} onChange={handleInputChange} />
+          <Typography color='error'>{inputError ? errorString : null}</Typography>
+          <Button disableRipple variant='outlined' type='submit'>Submit</Button>
+      </Box>
+    </form>
   );
 }
 
@@ -38,7 +56,7 @@ export const allLessons = [
       inputDesc: '4 digits',
       inputLength: 4,
       checkInput: str => /^\d{4}$/.test(str),
-      phoneContent: null
+      phoneContent: inputForm
     },
     {
       slide: <>Press start to see how long it takes for a computer to
@@ -50,14 +68,14 @@ export const allLessons = [
     },
     {
       slide: <>Wow, that was really fast! Now let's try using
-        a longer password! Enter a password consisting of 6 or more digits.
+        a longer password! Enter a password consisting of 6–12 digits.
         </>,
       input: true,
       inputType: 'num',
-      inputDesc: '6 or more digits',
+      inputDesc: '6 to 12 digits',
       inputLength: -1,
-      checkInput: str => /^\d{6,}$/.test(str),
-      phoneContent: null
+      checkInput: str => /^\d{6,12}$/.test(str),
+      phoneContent: inputForm
     },
     { 
       slide: <>Let's see how long it takes for the computer
@@ -99,7 +117,7 @@ export const allLessons = [
       inputDesc: '6 lowercase vowels',
       inputLength: 6,
       checkInput: str => /^[aeiou]{6}$/.test(str),
-      phoneContent: null
+      phoneContent: inputForm
     },
     { 
       slide: <>Press start to see how long it takes for a computer to
@@ -120,7 +138,7 @@ export const allLessons = [
       inputDesc: '6 vowels, with at least 2 uppercase',
       inputLength: 6,
       checkInput: str => /.*[AEIOU].*[AEIOU].*/.test(str) && /^[aeiouAEIOU]{6}$/.test(str),
-      phoneContent: null
+      phoneContent: inputForm
     },
     { 
       slide: <>Press start to see how long it takes for a computer to
@@ -160,7 +178,7 @@ export const allLessons = [
       inputDesc: 'a password with 4 or more characters',
       inputLength: -1,
       checkInput: str => /^.{4,}$/.test(str),
-      phoneContent: null
+      phoneContent: inputForm
     },
     {
       usesInput: true,

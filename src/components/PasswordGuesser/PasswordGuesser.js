@@ -43,13 +43,12 @@ const useStyles = makeStyles({
   },
   start: {
     height: '2em',
-    fontSize: '.5em',
-    fontWeight: 600
+    fontSize: '.6em',
+    fontWeight: 400,
+    marginTop: 10
   }
 });
 
-// const alpha_lower = 'abcdefghijklmnopqrstuvwxyz';
-// const alpha_mixed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const vowels_lower = 'aeiou';
 const vowels_mixed = 'aeiouAEIOU';
 
@@ -68,10 +67,10 @@ export default function PasswordGuesser(props) {
           useEasing={false}
         >
           {({ countUpRef, start }) => (
-            <Box display='flex' alignItems='center'>
+            <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
               <span ref={countUpRef}/>
               <Button disableRipple onClick={start} variant='outlined' className={classes.start}>
-                >
+                Start
               </Button>
             </Box>
           )}
@@ -89,7 +88,7 @@ export default function PasswordGuesser(props) {
             <div>
               <span ref={countUpRef} />
               <Button disableRipple onClick={start} variant='outlined' className={classes.start}>
-                >
+                Start
               </Button>
             </div>
           )}
@@ -108,7 +107,7 @@ export default function PasswordGuesser(props) {
             <div>
               <span ref={countUpRef} />
               <Button disableRipple onClick={start} variant='outlined' className={classes.start}>
-                >
+                Start
               </Button>
             </div>
           )}

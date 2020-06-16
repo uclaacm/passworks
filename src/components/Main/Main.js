@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import LessonText from '../LessonText/LessonText.js';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -85,21 +84,6 @@ class Main extends React.Component {
 		);
 	}
 
-	renderInputForm = classes => {
-		if (allLessons[this.state.lessonNum][this.state.count].input) {
-			return (
-				<>
-					<form onSubmit={this.handleInputSubmit}>
-						<input type='text' className={classes.inputText}
-							value={this.state.value} onChange={this.handleInputChange} />
-						<Button disableRipple variant='outlined' type='submit'>Submit</Button>
-					</form>
-					<Typography color='error'>{this.state.inputError ? this.state.errorString : null}</Typography>
-				</>
-			);
-		}
-	}
-
 	renderLessonText = () => {
 		return (
 			<LessonText
@@ -115,10 +99,26 @@ class Main extends React.Component {
 
 	render() {
 		const { classes } = this.props;
-		const phoneContent = allLessons[this.state.lessonNum][this.state.count].phoneContent;
 		const userInput = this.state.userInput;
 		const inputType = allLessons[this.state.lessonNum][this.state.count].inputType;
 		const inputLength = this.state.inputLength;
+
+		let phoneContent;
+		const renderPhoneContent = allLessons[this.state.lessonNum][this.state.count].phoneContent;
+		if (renderPhoneContent === null) {
+			phoneContent = null;
+		} else if (allLessons[this.state.lessonNum][this.state.count].input) {
+			phoneContent = renderPhoneContent(
+				classes, 
+				this.state.value, 
+				this.handleInputChange, 
+				this.handleInputSubmit,
+				this.state.inputError,
+				this.state.errorString
+			);
+		} else {
+			phoneContent = renderPhoneContent(userInput, inputType, inputLength);
+		}
 
 		return (
 			<Container maxWidth='lg'>
@@ -131,12 +131,11 @@ class Main extends React.Component {
 				>
 					<Grid item sm={12} md={5}>
 						<div className="main-container">
-							<Phone content={phoneContent === null ? null : phoneContent(userInput, inputType, inputLength)} />
+							<Phone content={phoneContent}/>
 						</div>
 					</Grid>
 					<Grid item sm={12} md={5}>
 						<Box display='flex' flexDirection='column' alignItems='center'>
-							{this.renderInputForm(classes)}
 							{this.renderLessonText()}
 						</Box>
 					</Grid>

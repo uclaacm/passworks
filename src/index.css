@@ -49,6 +49,9 @@ code {
   margin: 3% 5%;
   width: 90%;
   height: 94%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .phone-screen {
