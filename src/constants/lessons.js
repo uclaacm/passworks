@@ -24,7 +24,7 @@ const inputForm = (classes, value, handleInputChange, handleInputSubmit, inputEr
       <Box display='flex' flexDirection='column' alignItems='center'>
           <input type='text' className={classes.inputText}
             value={value} onChange={handleInputChange} />
-          <Typography color='error'>{inputError ? errorString : null}</Typography>
+          <Typography color='error' style={{ textAlign: 'center' }}>{inputError ? errorString : null}</Typography>
           <Button disableRipple variant='outlined' type='submit'>Submit</Button>
       </Box>
     </form>
@@ -134,7 +134,7 @@ export const allLessons = [
         </>,
       input: true,
       inputType: 'Vowels',
-      inputDesc: '6 vowels, with at least 2 uppercase',
+      inputDesc: '6 vowels, with at least 2 uppercase vowels',
       inputLength: 6,
       checkInput: str => /.*[AEIOU].*[AEIOU].*/.test(str) && /^[aeiouAEIOU]{6}$/.test(str),
       phoneContent: inputForm
