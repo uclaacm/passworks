@@ -1,5 +1,6 @@
 import React from 'react';
 import PasswordGuesser from '../components/PasswordGuesser/PasswordGuesser.js';
+import Profile from '../components/Profile/Profile.js';
 
 /** keys and fields:
  *  slide: the text that should appear
@@ -175,6 +176,13 @@ export const allLessons = [
         lists with millions of common passwords, so just because a password isn't
         on the list we checked does not mean it is hack-proof.</>,
       phoneContent: null
+    }
+  ],
+  [
+    {
+      title: <>Lesson 4: Social Enyineer</>,
+      slide: <>time to be a hackerman</>,
+      phoneContent: () => <Profile />
     }
   ]
 ];

@@ -9,7 +9,6 @@ import withStyles from '@material-ui/core/styles/withStyles';
 
 import { allLessons } from '../../constants/lessons.js';
 import Phone from '../Phone/Phone.js';
-import Profile from '../Profile/Profile.js';
 
 const useStyles = theme => ({
 	lessonName: {
