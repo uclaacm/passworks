@@ -9,7 +9,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 
 import { allLessons } from '../../constants/lessons.js';
 import Phone from '../Phone/Phone.js';
-import succ from '../../successkey.jpg';
+import Profile from '../Profile/Profile.js';
 
 const useStyles = theme => ({
 	lessonName: {
@@ -125,18 +125,12 @@ class Main extends React.Component {
 					alignItems='center'
 					justify='center'
 				>
-					<Grid item sm={4} xs={12}>
-						{<div className="main-container">
-								{/* <div className="item">
-										<h1>Passwords</h1>
-								</div> */}
-								<Phone toptitle="Finstagram" content={'hello'} />
-								{/* <div className="item">
-										<h1>are k00l</h1>
-								</div> */}
-						</div>}
+					<Grid item sm={12} md={5}>
+						<div className="main-container">
+							<Phone content={<Profile />} />
+						</div>
 					</Grid>
-					<Grid item sm={4} xs={12}>
+					<Grid item sm={12} md={5}>
 						<Box display='flex' flexDirection='column' alignItems='center'>
 							{this.renderInputForm(classes)}
 							{this.renderLessonText()}

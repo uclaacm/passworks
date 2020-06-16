@@ -41,6 +41,7 @@ code {
   height: 3%;
   width: 50%;
   background-color: aquamarine;
+  z-index: 1000;
 }
 
 .phone-content {

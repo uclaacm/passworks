@@ -1,33 +1,29 @@
 import React from 'react';
 import List from '@material-ui/core/List';
-import Paper from '@material-ui/core/Paper';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 
-class Phone extends React.Component {
-	/* just leaving these for filler */
-	constructor(props) {
-			super(props);
-			this.state = {
-					toptitle: this.props.toptitle,
-					postimg: this.props.postimg,
-					poster: this.props.poster,
-					caption: this.props.caption
-			}
+const useStyles = makeStyles({
+	noBar: {
+		'&::-webkit-scrollbar': {
+			width: '0em'
+		},
+		'scrollbar-width': 'none'
 	}
+});
 
-	render() {
-		return (
-			<div class="phone-bezel">
-				<div class="phone-screen">
-					<div class="phone-cutout"></div>
-					<div class="phone-content">
-							<List style={{maxHeight: '100%', overflow: 'auto'}} >
-								{this.props.content}
-							</List>
-					</div>
+export default function Phone(props) {
+	const classes = useStyles();
+
+	return (
+		<div class="phone-bezel">
+			<div class="phone-screen">
+				<div class="phone-cutout"></div>
+				<div class="phone-content">
+						<List className={classes.noBar} style={{maxHeight: '100%', overflow: 'auto'}} >
+							{props.content}
+						</List>
 				</div>
 			</div>
-		)
-	}
+		</div>
+	);
 }
-
-export default Phone;
