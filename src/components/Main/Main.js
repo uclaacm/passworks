@@ -69,7 +69,7 @@ class Main extends React.Component {
 	}
 
 	setCount = newCount => {
-		this.setState({count: newCount});
+		this.setState({count: newCount, errorString: ''});
 	}
 
 	setLessonNum = newLessonNum => {

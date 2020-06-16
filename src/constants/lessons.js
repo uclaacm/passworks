@@ -34,7 +34,7 @@ const inputForm = (classes, value, handleInputChange, handleInputSubmit, inputEr
 /** keys and fields:
  *  slide: the text that should appear
  *  input: true if slide requires user input
- *  inputType: 'num', 'vowels', 'Vowels'
+ *  inputType: 'num', 'alpha', 'Alpha', 'common'
  *  inputDesc: a more verbose description the expected type of the user's input
  *  inputLength: the required/expected length of the user's input
  *  checkInput: predicate that returns true if input was valid, false otherwise
@@ -112,7 +112,7 @@ export const allLessons = [
         vowels (a e i o u), and we'll see how long it takes for the computer to guess it!
         </>,
       input: true,
-      inputType: 'vowels',
+      inputType: 'alpha',
       inputDesc: '6 lowercase vowels',
       inputLength: 6,
       checkInput: str => /^[aeiou]{6}$/.test(str),
@@ -123,7 +123,7 @@ export const allLessons = [
         guess your 6-letter lowercase password!
         </>,
       usesInput: true,
-      inputType: 'vowels',
+      inputType: 'alpha',
       inputLength: 6,
       phoneContent: guesser
     },
@@ -133,7 +133,7 @@ export const allLessons = [
       vowels (a e i o u A E I O U). Include at least two uppercase vowels!
         </>,
       input: true,
-      inputType: 'Vowels',
+      inputType: 'Alpha',
       inputDesc: '6 vowels, with at least 2 uppercase vowels',
       inputLength: 6,
       checkInput: str => /.*[AEIOU].*[AEIOU].*/.test(str) && /^[aeiouAEIOU]{6}$/.test(str),
@@ -144,7 +144,7 @@ export const allLessons = [
         guess your 6-letter mixed-case password!
         </>,
       usesInput: true,
-      inputType: 'Vowels',
+      inputType: 'Alpha',
       inputLength: 6,
       phoneContent: guesser
     },

@@ -4,7 +4,6 @@ import { allLessons } from '../../constants/lessons';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 
-
 class LessonText extends React.Component {
   renderButtons = () => {
 		const isFirstLesson = this.props.lessonNum === 0;

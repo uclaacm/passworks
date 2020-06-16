@@ -52,8 +52,8 @@ const useStyles = makeStyles({
   }
 });
 
-const vowels_lower = 'aeiou';
-const vowels_mixed = 'aeiouAEIOU';
+const alpha_lower = 'aeiou';
+const alpha_mixed = 'aeiouAEIOU';
 
 export default function PasswordGuesser(props) {
   const classes = useStyles();
@@ -79,13 +79,13 @@ export default function PasswordGuesser(props) {
           )}
         </CountUp>
       </Box>) : 
-    (props.inputType === 'vowels') ? (
+    (props.inputType === 'alpha') ? (
       <Box className={classes.counter}>
         <CountUp
           start={0}
-          duration={fromLetters(props.userInput, vowels_lower) / 10000}
-          end={fromLetters(props.userInput, vowels_lower)}
-          formattingFn={num => toLetters(num, vowels_lower).padStart(props.inputLength, vowels_lower[0])}
+          duration={fromLetters(props.userInput, alpha_lower) / 10000}
+          end={fromLetters(props.userInput, alpha_lower)}
+          formattingFn={num => toLetters(num, alpha_lower).padStart(props.inputLength, alpha_lower[0])}
           useEasing={false}
         >
           {({ countUpRef, start }) => (
@@ -99,13 +99,13 @@ export default function PasswordGuesser(props) {
         </CountUp>
       </Box>
     ) : 
-    (props.inputType === 'Vowels') ? (
+    (props.inputType === 'Alpha') ? (
       <Box className={classes.counter}>
         <CountUp
           start={0}
-          duration={fromLetters(props.userInput, vowels_mixed) / 10000}
-          end={fromLetters(props.userInput, vowels_mixed)}
-          formattingFn={num => toLetters(num, vowels_mixed).padStart(props.inputLength, vowels_mixed[0])}
+          duration={fromLetters(props.userInput, alpha_mixed) / 10000}
+          end={fromLetters(props.userInput, alpha_mixed)}
+          formattingFn={num => toLetters(num, alpha_mixed).padStart(props.inputLength, alpha_mixed[0])}
           useEasing={false}
         >
           {({ countUpRef, start }) => (
