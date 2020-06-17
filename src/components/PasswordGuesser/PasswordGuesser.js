@@ -2,11 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import CountUp from 'react-countup';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-
-import commonPws from '../../constants/common.json';
-const commonPasswords = new Set(commonPws);
 
 // function to convert a number to a string based on the given alphabet
 //    example: if alphabet is 'abc',
@@ -118,15 +114,6 @@ export default function PasswordGuesser(props) {
           )}
         </CountUp>
       </Box>
-    ) :
-    (props.inputType === 'common') ? (
-      commonPasswords.has(props.userInput) ? (
-        <Typography variant={'body1'} className={classes.text}>
-          Oh no! The password you typed is in the top 10,000 most common passwords.
-        </Typography>) :
-        <Typography variant={'body1'} className={classes.text}>
-          Yay! The password you typed is not in the top 10,000 most common passwords.
-        </Typography>
     ) : null
   );
 

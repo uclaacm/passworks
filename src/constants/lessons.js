@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import PasswordGuesser from '../components/PasswordGuesser/PasswordGuesser.js';
 import Profile from '../components/Profile/Profile.js';
+import CommonPassword from '../components/CommonPassword/CommonPassword.js';
 
 const guesser = (userInput, inputType, inputLength) => {
   return (
@@ -170,20 +171,8 @@ export const allLessons = [
     { 
       slide: <>Try experimenting with submitting passwords (of 4 or
         more characters) and seeing which ones are in the list of the 10,000 most
-        common passwords.
-      </>,
-      input: true,
-      inputType: 'common',
-      inputDesc: 'a password with 4 or more characters',
-      inputLength: -1,
-      checkInput: str => /^.{4,}$/.test(str),
-      phoneContent: inputForm
-    },
-    {
-      usesInput: true,
-      inputType: 'common',
-      inputLength: -1,
-      phoneContent: guesser
+        common passwords.</>,
+      phoneContent: () => <CommonPassword />
     },
     {
       slide: <>Though it's a good sign if your password isn't in the list,
