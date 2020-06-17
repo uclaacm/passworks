@@ -11,3 +11,58 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.main-container {
+  display: inline-block;
+  justify-content: space-between;
+  /* max-height: 100vh; */
+  width: 100%;
+  margin: auto;
+}
+
+.item {
+  flex-grow: 1;
+}
+
+.phone-bezel {
+  position: relative;
+  display: block;
+  margin: auto;
+  border-radius: 50px;
+  background-color: aquamarine;
+  height: 700px;
+  width: 350px;
+}
+
+.phone-cutout {
+  position: absolute;
+  margin: 0% 25%;
+  border-radius: 0% 0% 5% 5% / 0% 0% 50% 50%;
+  height: 3%;
+  width: 50%;
+  background-color: aquamarine;
+  z-index: 1000;
+}
+
+.phone-content {
+  position: absolute;
+  margin: 3% 5%;
+  width: 90%;
+  height: 94%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.phone-screen {
+  position: absolute;
+  border-radius: 40px;
+  background-color: azure;
+  margin: 5% 5% 5% 5%;
+  height: 95%;
+  width: 90%;
+}
+
+p {
+  text-align: left;
+}

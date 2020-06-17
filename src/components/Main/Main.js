@@ -1,19 +1,23 @@
 import React from 'react';
-
-import { Button } from '@material-ui/core';
-import { allLessons } from '../../constants/lessons.js';
 import LessonText from '../LessonText/LessonText.js';
 import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import withStyles from '@material-ui/core/styles/withStyles';
+
+import { allLessons } from '../../constants/lessons.js';
+import Phone from '../Phone/Phone.js';
 
 const useStyles = theme => ({
 	lessonName: {
-		color: theme.palette.primary.main
+		color: theme.palette.primary.main,
+		textAlign: 'center',
+		padding: '20px 0px'
 	},
 	inputText: {
 		margin: '4px', 
-		padding: '8px', 
+		padding: '8px',
 		borderRadius: '4px',
 		fontFamily: '"Chivo"',
 		fontSize: '1em'
@@ -65,7 +69,7 @@ class Main extends React.Component {
 	}
 
 	setCount = newCount => {
-		this.setState({count: newCount});
+		this.setState({count: newCount, errorString: ''});
 	}
 
 	setLessonNum = newLessonNum => {
@@ -78,21 +82,6 @@ class Main extends React.Component {
 				{allLessons[this.state.lessonNum][0].title}
 			</Typography>
 		);
-	}
-
-	renderInputForm = classes => {
-		if (allLessons[this.state.lessonNum][this.state.count].input) {
-			return (
-				<>
-					<form onSubmit={this.handleInputSubmit}>
-						<input type='text' className={classes.inputText}
-							value={this.state.value} onChange={this.handleInputChange} />
-						<Button disableRipple variant='outlined' type='submit'>Submit</Button>
-					</form>
-					<Typography color='error'>{this.state.inputError ? this.state.errorString : null}</Typography>
-				</>
-			);
-		}
 	}
 
 	renderLessonText = () => {
@@ -110,17 +99,48 @@ class Main extends React.Component {
 
 	render() {
 		const { classes } = this.props;
+		const userInput = this.state.userInput;
+		const inputType = allLessons[this.state.lessonNum][this.state.count].inputType;
+		const inputLength = this.state.inputLength;
+
+		let phoneContent;
+		const renderPhoneContent = allLessons[this.state.lessonNum][this.state.count].phoneContent;
+		if (renderPhoneContent === null) {
+			phoneContent = null;
+		} else if (allLessons[this.state.lessonNum][this.state.count].input) {
+			phoneContent = renderPhoneContent(
+				classes, 
+				this.state.value, 
+				this.handleInputChange, 
+				this.handleInputSubmit,
+				this.state.inputError,
+				this.state.errorString
+			);
+		} else {
+			phoneContent = renderPhoneContent(userInput, inputType, inputLength);
+		}
+
 		return (
-			<Grid 
-				container
-				direction='column'
-				justify='center'
-				alignItems='center'
-			>
+			<Container maxWidth='lg'>
 				{this.renderLessonName(classes)}
-				{this.renderInputForm(classes)}
-				{this.renderLessonText()}
-			</Grid>
+				<Grid 
+					container
+					spacing={3}
+					alignItems='center'
+					justify='center'
+				>
+					<Grid item sm={12} md={5}>
+							<Box>
+							<div className="main-container">
+								<Phone content={phoneContent}/>
+							</div>
+						</Box>
+					</Grid>
+					<Grid item sm={12} md={5}>
+						{this.renderLessonText()}
+					</Grid>
+				</Grid>
+			</Container>
 		);
 	}
 }

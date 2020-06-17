@@ -4,7 +4,6 @@ import { allLessons } from '../../constants/lessons';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 
-
 class LessonText extends React.Component {
   renderButtons = () => {
 		const isFirstLesson = this.props.lessonNum === 0;
@@ -32,14 +31,12 @@ class LessonText extends React.Component {
 			this.props.setCount(this.props.count - 1); }}>Back</Button>);
 
 		return (
-			// <ButtonGroup>
 			<Box>
 				{renderLastLesson && lastLessonButton}
 				{renderBack && backButton}
 				{renderNext && nextButton}
 				{renderNextLesson && nextLessonButton}
 			</Box>
-			// </ButtonGroup>
 		);
 	}
 
@@ -50,7 +47,7 @@ class LessonText extends React.Component {
     });
     
     return (
-      <>
+      <Box display='flex' flexDirection='column' alignItems='center'>
         <TextSlide 
           count={this.props.count}
           lessonItems={lessonItems}
@@ -61,7 +58,7 @@ class LessonText extends React.Component {
           inputType={lessonSlides[this.props.count].inputType}
         />
         {this.renderButtons()}
-      </>
+      </Box>
     );
   }
 }
