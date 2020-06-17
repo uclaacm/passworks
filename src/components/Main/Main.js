@@ -4,7 +4,9 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import withStyles from '@material-ui/core/styles/withStyles';
+import TrendingFlatIcon from '@material-ui/icons/TrendingFlat';
 
 import { allLessons } from '../../constants/lessons.js';
 import Phone from '../Phone/Phone.js';
@@ -16,11 +18,21 @@ const useStyles = theme => ({
 		padding: '20px 0px'
 	},
 	inputText: {
-		margin: '4px', 
+		margin: '4px',
 		padding: '8px',
 		borderRadius: '4px',
 		fontFamily: '"Chivo"',
 		fontSize: '1em'
+	},
+	arrowIcon: {
+		color: theme.palette.secondary.main
+	},
+	selectedLesson: {
+		color: 'black',
+		borderColor: 'black',
+		'&:hover': {
+			borderColor: theme.palette.secondary.main
+		}
 	}
 })
 
@@ -97,6 +109,28 @@ class Main extends React.Component {
 		);
 	}
 
+	renderNavBar = classes => {
+		const lessonButtons = allLessons.map((lesson, i) => {
+			return (
+				<>
+					<Button variant='outlined' size='small' 
+						className={i === this.state.lessonNum ? classes.selectedLesson : null}
+						disabled={i === this.state.lessonNum ? true : false}
+						onClick={() => {this.setLessonNum(i); this.setCount(0);}}>
+							{lesson[0].title}
+					</Button>
+					{i === allLessons.length - 1 ? null : <TrendingFlatIcon className={classes.arrowIcon}/>}
+				</>
+			);
+		});
+
+		return (
+			<Box display='flex' direction='row' alignItems='center' style={{ paddingTop: 40 }}>
+				{lessonButtons}
+			</Box>
+		);
+	}
+
 	render() {
 		const { classes } = this.props;
 		const userInput = this.state.userInput;
@@ -122,24 +156,27 @@ class Main extends React.Component {
 
 		return (
 			<Container maxWidth='lg'>
-				{this.renderLessonName(classes)}
-				<Grid 
-					container
-					spacing={3}
-					alignItems='center'
-					justify='center'
-				>
-					<Grid item sm={12} md={5}>
-							<Box>
-							<div className="main-container">
-								<Phone content={phoneContent}/>
-							</div>
-						</Box>
+				<Box display='flex' flexDirection='column' alignItems='center'>
+					{this.renderLessonName(classes)}
+					<Grid 
+						container
+						spacing={3}
+						alignItems='center'
+						justify='center'
+					>
+						<Grid item sm={12} md={5}>
+								<Box>
+								<div className="main-container">
+									<Phone content={phoneContent}/>
+								</div>
+							</Box>
+						</Grid>
+						<Grid item sm={8} md={5}>
+							{this.renderLessonText()}
+						</Grid>
 					</Grid>
-					<Grid item sm={12} md={5}>
-						{this.renderLessonText()}
-					</Grid>
-				</Grid>
+					{this.renderNavBar(classes)}
+				</Box>
 			</Container>
 		);
 	}
