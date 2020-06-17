@@ -128,7 +128,7 @@ class Main extends React.Component {
 		});
 
 		return (
-			<Box display='flex' direction='row' alignItems='center' style={{ paddingTop: 40 }}>
+			<Box display='flex' direction='row' alignItems='center' style={{ paddingTop: 20 }}>
 				{lessonButtons}
 			</Box>
 		);
