@@ -81,7 +81,7 @@ class Main extends React.Component {
 	}
 
 	setCount = newCount => {
-		this.setState({count: newCount, errorString: ''});
+		this.setState({count: newCount, errorString: '', inputError: false});
 	}
 
 	setLessonNum = newLessonNum => {
@@ -116,7 +116,10 @@ class Main extends React.Component {
 					<Button variant='outlined' size='small' 
 						className={i === this.state.lessonNum ? classes.selectedLesson : null}
 						disabled={i === this.state.lessonNum ? true : false}
-						onClick={() => {this.setLessonNum(i); this.setCount(0);}}>
+						onClick={() => {
+							this.setLessonNum(i); 
+							this.setCount(0); 
+							this.setState({ userInput: '', value: '' })}}>
 							{lesson[0].title}
 					</Button>
 					{i === allLessons.length - 1 ? null : <TrendingFlatIcon className={classes.arrowIcon}/>}
