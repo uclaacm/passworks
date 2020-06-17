@@ -51,11 +51,6 @@ class LessonText extends React.Component {
         <TextSlide 
           count={this.props.count}
           lessonItems={lessonItems}
-          lessonSlides={lessonSlides}
-          usesInput={lessonSlides[this.props.count].usesInput}
-          userInput={this.props.userInput}
-          inputLength={this.props.inputLength}
-          inputType={lessonSlides[this.props.count].inputType}
         />
         {this.renderButtons()}
       </Box>
