@@ -130,14 +130,14 @@ class Main extends React.Component {
 					justify='center'
 				>
 					<Grid item sm={12} md={5}>
-						<div className="main-container">
-							<Phone content={phoneContent}/>
-						</div>
+							<Box>
+							<div className="main-container">
+								<Phone content={phoneContent}/>
+							</div>
+						</Box>
 					</Grid>
 					<Grid item sm={12} md={5}>
-						<Box display='flex' flexDirection='column' alignItems='center'>
-							{this.renderLessonText()}
-						</Box>
+						{this.renderLessonText()}
 					</Grid>
 				</Grid>
 			</Container>
