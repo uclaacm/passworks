@@ -55,7 +55,7 @@ export const allLessons = [
   [
     {
       title: <>Lesson 1: Password Length</>,
-      slide: <>First, let's learn about why long passwords are more secure
+      slide: <>First, let’s learn about why long passwords are more secure
         than short passwords!</>,
       phoneContent: null
     },
@@ -77,7 +77,7 @@ export const allLessons = [
       phoneContent: guesser
     },
     {
-      slide: <>Wow, that was really fast! Now let's try using
+      slide: <>Wow, that was really fast! Now let’s try using
         a longer password! Enter a password consisting of 6–12 digits.
         </>,
       input: true,
@@ -88,9 +88,9 @@ export const allLessons = [
       phoneContent: inputForm
     },
     { 
-      slide: <>Let's see how long it takes for the computer
+      slide: <>Let’s see how long it takes for the computer
         to guess your longer password! This might take a while, so feel free
-        to click the next button if you're tired of waiting :)</>,
+        to click the next button if you’re tired of waiting :)</>,
       usesInput: true,
       inputType: 'num',
       inputLength: -1,
@@ -120,7 +120,7 @@ export const allLessons = [
     },
     { 
       slide: <>Try submitting a 6-letter password with just lowercase
-        vowels (a e i o u), and we'll see how long it takes for the computer to guess it!
+        vowels (a e i o u), and we’ll see how long it takes for the computer to guess it!
         </>,
       input: true,
       inputType: 'alpha',
@@ -139,7 +139,7 @@ export const allLessons = [
       phoneContent: guesser
     },
     { 
-      slide: <>Now let's try adding some variety to our password.
+      slide: <>Now let’s try adding some variety to our password.
       Submit another 6-vowel password, this time mixing lowercase and uppercase
       vowels (a e i o u A E I O U). Include at least two uppercase vowels!
         </>,
@@ -170,10 +170,10 @@ export const allLessons = [
   ],
   [
     { 
-      title: <>Lesson 3: Don't Be Basic</>,
+      title: <>Lesson 3: Don’t Be Basic</>,
       slide: <>Another important aspect of password security is
         randomness. Phrases like "happy", "jackie", and "asdfghjkl"
-        are NOT secure passwords, because they aren't very random and are thus
+        are NOT secure passwords, because they aren’t very random and are thus
         quite popularly used. In fact, there are many lists available containing
         the most popularly used passwords.</>,
       phoneContent: null
@@ -185,11 +185,11 @@ export const allLessons = [
       phoneContent: () => <CommonPassword />
     },
     {
-      slide: <>Though it's a good sign if your password isn't in the list,
-        it still may not be secure enough. For example, "h3ll0" isn't on this list,
-        but it's common for hackers to try tricks like substituting letters for numbers
+      slide: <>Though it’s a good sign if your password isn’t in the list,
+        it still may not be secure enough. For example, "h3ll0" isn’t on this list,
+        but it’s common for hackers to try tricks like substituting letters for numbers
         and "h3ll0" thus would be fairly easy to crack. Also, there are much bigger
-        lists with millions of common passwords, so just because a password isn't
+        lists with millions of common passwords, so just because a password isn’t
         on the list we checked does not mean it is hack-proof.</>,
       phoneContent: null
     }
@@ -197,18 +197,18 @@ export const allLessons = [
   [
     {
       title: <>Lesson 4: Social Engineering</>,
-      slide: <>In this lesson, we'll learn about social engineering. <br />
-      Social engineering is the act of digging into someone's personal
+      slide: <>In this lesson, we’ll learn about social engineering. <br />
+      Social engineering is the act of digging into someone’s personal
       information to gain access into things like their accounts. <br/> Note:
       This demonstration is for educational purposes only. We do not condone
-      hacking into other people's accounts.</>,
+      hacking into other people’s accounts.</>,
       phoneContent: () => <Profile />
     },
     {
-      slide: <>Suppose we want to hack into our "friend" Jason's account. We've
+      slide: <>Suppose we want to hack into our "friend" Jason’s account. We’ve
         successfully entered his username and password, but this account requires
         us to answer some security questions! Luckily, we have access to his Instagram
-        posts, so let's see if we can guess the right answers by doing a little research!</>,
+        posts, so let’s see if we can guess the right answers by doing a little research!</>,
       input: true,
       slideAdd: browser,
       phoneContent: () => <Profile />

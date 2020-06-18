@@ -8,11 +8,15 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 const securityQuestions = [
   {
     q: 'Where did you grow up?',
-    a: 'Antarctica'
+    a: 'San Francisco'
   },
   {
     q: 'What is your favorite animal?',
     a: 'cat'
+  },
+  {
+    q: 'What was the name of your first pet?',
+    a: 'Mufasa'
   }
 ];
 
