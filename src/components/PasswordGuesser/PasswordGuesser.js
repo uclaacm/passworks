@@ -48,8 +48,8 @@ const useStyles = makeStyles({
   }
 });
 
-const alpha_lower = 'aeiou';
-const alpha_mixed = 'aeiouAEIOU';
+const alpha_lower = 'abcdef';
+const alpha_mixed = 'abcdefABCDEF';
 
 export default function PasswordGuesser(props) {
   const classes = useStyles();
