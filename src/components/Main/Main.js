@@ -51,7 +51,7 @@ class Main extends React.Component {
 	}
 
   handleInputChange = event => {
-    this.setState({value: event.target.value, inputLength: event.target.value.length});
+    this.setState({ value: event.target.value, inputLength: event.target.value.length });
   }
 
   handleInputSubmit = event => {
@@ -82,19 +82,17 @@ class Main extends React.Component {
 	}
 
 	setCount = newCount => {
-		this.setState({ count: newCount, errorString: '', inputError: false });
+		this.setState({ count: newCount });
 	}
 
 	setLessonNum = newLessonNum => {
-		this.setState({lessonNum: newLessonNum});
+		this.setState({ lessonNum: newLessonNum, value: '', userInput: '', inputLength: 0 });
 	}
 
 	setLessonAndCount = (newLessonNum, newCount) => {
 		this.setLessonNum(newLessonNum);
 		this.setCount(newCount);
-		if ('defaultInput' in allLessons[newLessonNum][newCount]) {
-			this.setState({ value: allLessons[newLessonNum][newCount].defaultInput() });
-		}
+		this.setState({ errorString: '', inputError: false })
 	}
 
 	renderLessonName = classes => {
@@ -123,8 +121,7 @@ class Main extends React.Component {
 						className={i === this.state.lessonNum ? classes.selectedLesson : null}
 						disabled={i === this.state.lessonNum ? true : false}
 						onClick={() => {
-							this.setLessonNum(i); 
-							this.setCount(0); 
+							this.setLessonAndCount(i, 0);
 							this.setState({ userInput: '', value: '', inputLength: 0 })}}>
 							{lesson[0].title}
 					</Button>
@@ -151,13 +148,26 @@ class Main extends React.Component {
 		if (renderPhoneContent === null) {
 			phoneContent = null;
 		} else if (allLessons[this.state.lessonNum][this.state.count].input) {
+			let randomButton;
+			if ('defaultInput' in allLessons[this.state.lessonNum][this.state.count]) {
+				randomButton = (
+					<Button
+						disableRipple variant='outlined'
+						onClick={() => this.setState({ value: allLessons[this.state.lessonNum][this.state.count].defaultInput() })}
+					>
+						Randomize
+					</Button>);
+			} else {
+				randomButton = null;
+			}
 			phoneContent = renderPhoneContent(
 				classes, 
 				this.state.value, 
 				this.handleInputChange, 
 				this.handleInputSubmit,
 				this.state.inputError,
-				this.state.errorString
+				this.state.errorString,
+				randomButton
 			);
 		} else {
 			phoneContent = renderPhoneContent(userInput, inputType, inputLength);

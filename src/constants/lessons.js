@@ -19,14 +19,18 @@ const guesser = (userInput, inputType, inputLength) => {
   );
 }
 
-const inputForm = (classes, value, handleInputChange, handleInputSubmit, inputError, errorString) => {
+const inputForm = (classes, value, handleInputChange, handleInputSubmit, 
+  inputError, errorString, randomButton) => {
   return (
     <form onSubmit={handleInputSubmit}>
       <Box display='flex' flexDirection='column' alignItems='center'>
           <input type='text' className={classes.inputText}
             value={value} onChange={handleInputChange}/>
           <Typography color='error' style={{ textAlign: 'center' }}>{inputError ? errorString : null}</Typography>
-          <Button disableRipple variant='outlined' type='submit'>Submit</Button>
+          <Box>
+            <Button disableRipple variant='outlined' type='submit'>Submit</Button>
+            {randomButton}
+          </Box>
       </Box>
     </form>
   );
