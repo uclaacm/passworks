@@ -16,7 +16,11 @@ const overwrittenTheme = responsiveFontSizes(createMuiTheme({
 			light: '#FFB13B',
 			dark: '#E07800',
 			contrastText: '#fff'
-		}
+		},
+		// action: {
+		// 	disabled: '#A1D900',
+		// 	disabledBorder: '2px solid #A1D900'
+		// }
 	},
 	typography: {
 		useNextVariants: true,
@@ -43,6 +47,7 @@ const overwrittenTheme = responsiveFontSizes(createMuiTheme({
 			},
 			outlined: {
 				borderRadius: '4px',
+				color: '#F89C12',
 				border: '2px solid #F89C12',
 				'&:hover': {
 					background: '#F89C12',
@@ -51,6 +56,11 @@ const overwrittenTheme = responsiveFontSizes(createMuiTheme({
 				'&:active': {
 					background: 'black',
 					border: '2px solid black'
+				},
+				'&:disabled': {
+					borderRadius: '4px',
+					color: '#A1D900',
+					border: '2px solid #A1D900'
 				}
 			}
 		}
