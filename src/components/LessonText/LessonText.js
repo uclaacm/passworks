@@ -18,17 +18,16 @@ class LessonText extends React.Component {
 		const renderBack       = !isFirstSlide;
 
 		const nextLessonButton = (<Button disableRipple variant='outlined' onClick={() => {
-			this.props.setLessonNum(this.props.lessonNum + 1); this.props.setCount(0); }}> Next
+			this.props.setLessonAndCount(this.props.lessonNum + 1, 0); }}> Next
 			Lesson</Button>);
 		const lastLessonButton = (<Button disableRipple variant='outlined' onClick={() => {
-			this.props.setLessonNum(this.props.lessonNum - 1); 
-			this.props.setCount(allLessons[this.props.lessonNum - 1].length - 1); 
+			this.props.setLessonAndCount(this.props.lessonNum - 1, allLessons[this.props.lessonNum - 1].length - 1);
 		}}> Back
 		</Button>);
 		const nextButton = (<Button disableRipple variant='outlined' onClick={() => {
-			this.props.setCount(this.props.count + 1)}}>Next</Button>);
+			this.props.setLessonAndCount(this.props.lessonNum, this.props.count + 1)}}>Next</Button>);
 		const backButton = (<Button disableRipple variant='outlined' onClick={() => {
-			this.props.setCount(this.props.count - 1); }}>Back</Button>);
+			this.props.setLessonAndCount(this.props.lessonNum, this.props.count - 1); }}>Back</Button>);
 
 		return (
 			<Box>

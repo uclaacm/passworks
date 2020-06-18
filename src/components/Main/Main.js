@@ -75,17 +75,26 @@ class Main extends React.Component {
 			newError = `Please enter ${inputDesc}.`;
 			this.setState({ value: '', errorString: newError, inputError: true });
 		} else {
-			this.setState({ userInput: this.state.value, value: '', inputError: false });
+			this.setState({ userInput: this.state.value, inputLength: this.state.value.length, 
+				value: '', inputError: false });
     	this.setCount(this.state.count + 1);
 		}
 	}
 
 	setCount = newCount => {
-		this.setState({count: newCount, errorString: '', inputError: false });
+		this.setState({ count: newCount, errorString: '', inputError: false });
 	}
 
 	setLessonNum = newLessonNum => {
 		this.setState({lessonNum: newLessonNum});
+	}
+
+	setLessonAndCount = (newLessonNum, newCount) => {
+		this.setLessonNum(newLessonNum);
+		this.setCount(newCount);
+		if ('defaultInput' in allLessons[newLessonNum][newCount]) {
+			this.setState({ value: allLessons[newLessonNum][newCount].defaultInput() });
+		}
 	}
 
 	renderLessonName = classes => {
@@ -101,8 +110,7 @@ class Main extends React.Component {
 			<LessonText
 				count={this.state.count}
 				lessonNum={this.state.lessonNum}
-				setCount={this.setCount}
-				setLessonNum={this.setLessonNum}
+				setLessonAndCount={this.setLessonAndCount}
 			/>
 		);
 	}
