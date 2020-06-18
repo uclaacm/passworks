@@ -119,14 +119,14 @@ export const allLessons = [
       phoneContent: null
     },
     { 
-      slide: <>Try submitting a 6-letter password with just lowercase
-        vowels (a e i o u), and we’ll see how long it takes for the computer to guess it!
-        </>,
+      slide: <>Try submitting a lowercase 6-letter password using only the first 6
+        letters of the alphabet (a b c d e f), and we’ll see how long it takes
+        for the computer to guess it!</>,
       input: true,
       inputType: 'alpha',
-      inputDesc: '6 lowercase vowels',
+      inputDesc: '6 lowercase letters from (a b c d e f)',
       inputLength: 6,
-      checkInput: str => /^[aeiou]{6}$/.test(str),
+      checkInput: str => /^[abcdef]{6}$/.test(str),
       phoneContent: inputForm
     },
     { 
@@ -140,14 +140,13 @@ export const allLessons = [
     },
     { 
       slide: <>Now let’s try adding some variety to our password.
-      Submit another 6-vowel password, this time mixing lowercase and uppercase
-      vowels (a e i o u A E I O U). Include at least two uppercase vowels!
-        </>,
+      Submit another 6-letter password, this time mixing lowercase and uppercase
+      letters (a b c d e f A B C D E F). Include at least two uppercase letters!</>,
       input: true,
       inputType: 'Alpha',
-      inputDesc: '6 vowels, with at least 2 uppercase vowels',
+      inputDesc: '6 letters from (a b c d e f), with at least 2 uppercase',
       inputLength: 6,
-      checkInput: str => /.*[AEIOU].*[AEIOU].*/.test(str) && /^[aeiouAEIOU]{6}$/.test(str),
+      checkInput: str => /.*[ABCDEF].*[ABCDEF].*/.test(str) && /^[abcdefABCDEF]{6}$/.test(str),
       phoneContent: inputForm
     },
     { 
