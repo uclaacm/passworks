@@ -53,7 +53,7 @@ class Browser extends React.Component {
   renderContent = classes => {
     return (
       this.state.questionNum === securityQuestions.length ? (
-        <>
+        <Box display='flex' flexDirection='column' alignItems='center'>
           <CheckCircleIcon style={{ 
             color: 'green', 
             fontSize: '4em', 
@@ -67,7 +67,7 @@ class Browser extends React.Component {
             onClick={() => this.props.setCount(this.props.count + 1)}>
             Continue
           </Button>
-        </>
+        </Box>
       ) :
       <>
         <Typography variant='body1' style={{ textAlign: 'center' }}>
