@@ -6,7 +6,6 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import Post from './Post/Post.js';
 import profilePic from '../../images/profilePic.png';
 import instaLogo from '../../images/instaLogo.png';
-import penguin from '../../images/penguin.jpg';
 import birthday from '../../images/birthday.jpg';
 import mufasa from '../../images/mufasa_baby.jpg';
 import bridge from '../../images/bridge.jpg';
