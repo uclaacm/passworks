@@ -41,16 +41,11 @@ class LessonText extends React.Component {
 	}
 
   render () {
-    const lessonSlides = allLessons[this.props.lessonNum];
-    const lessonItems = lessonSlides.map(item => {
-      return (item.slide);
-    });
-    
     return (
       <Box display='flex' flexDirection='column' alignItems='center'>
         <TextSlide 
           count={this.props.count}
-          lessonItems={lessonItems}
+          lessonItems={this.props.lessonItems}
         />
         {this.renderButtons()}
       </Box>

@@ -40,7 +40,7 @@ export default function Post(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <li className={classes.root}>
       <Box display='flex' direction='row' alignItems='center' className={classes.header}>
         <img src={props.profileImg} alt='profile pic' className={classes.profileImg} />
         <div>
@@ -55,6 +55,6 @@ export default function Post(props) {
         {' ' + props.caption}
       </Typography>
       <Typography className={classes.timestamp}>{props.date}</Typography>
-    </div>
+    </li>
   );
 }

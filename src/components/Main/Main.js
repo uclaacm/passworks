@@ -81,11 +81,11 @@ class Main extends React.Component {
 	}
 
 	setCount = newCount => {
-		this.setState({count: newCount, errorString: '', inputError: false });
+		this.setState({ count: newCount, errorString: '', inputError: false });
 	}
 
 	setLessonNum = newLessonNum => {
-		this.setState({lessonNum: newLessonNum});
+		this.setState({ lessonNum: newLessonNum });
 	}
 
 	renderLessonName = classes => {
@@ -97,12 +97,31 @@ class Main extends React.Component {
 	}
 
 	renderLessonText = () => {
+    const lessonSlides = allLessons[this.state.lessonNum];
+    const lessonItems = lessonSlides.map(item => {
+			let extraContent;
+			if (!('slideAdd' in item)) {
+				extraContent = null;
+			} else {
+				extraContent = item.slideAdd(this.state.count, this.setCount);
+			}
+      return (
+				<>
+					<Typography variant='body1' style={{ textAlign: 'center' }}>
+						{item.slide}
+					</Typography>
+					{extraContent}
+				</>
+			);
+    });
+    
 		return (
 			<LessonText
 				count={this.state.count}
 				lessonNum={this.state.lessonNum}
 				setCount={this.setCount}
 				setLessonNum={this.setLessonNum}
+				lessonItems={lessonItems}
 			/>
 		);
 	}
@@ -110,7 +129,7 @@ class Main extends React.Component {
 	renderNavBar = classes => {
 		const lessonButtons = allLessons.map((lesson, i) => {
 			return (
-				<>
+				<React.Fragment key={i}>
 					<Button variant='outlined' size='small' 
 						className={i === this.state.lessonNum ? classes.selectedLesson : null}
 						disabled={i === this.state.lessonNum ? true : false}
@@ -121,7 +140,7 @@ class Main extends React.Component {
 							{lesson[0].title}
 					</Button>
 					{i === allLessons.length - 1 ? null : <TrendingFlatIcon className={classes.arrowIcon}/>}
-				</>
+				</React.Fragment>
 			);
 		});
 
@@ -166,11 +185,7 @@ class Main extends React.Component {
 						justify='center'
 					>
 						<Grid item sm={12} md={5}>
-								<Box>
-								<div className="main-container">
-									<Phone content={phoneContent}/>
-								</div>
-							</Box>
+							<Phone content={phoneContent}/>
 						</Grid>
 						<Grid item sm={8} md={5}>
 							{this.renderLessonText()}

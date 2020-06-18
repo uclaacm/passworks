@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import PasswordGuesser from '../components/PasswordGuesser/PasswordGuesser.js';
 import Profile from '../components/Profile/Profile.js';
 import CommonPassword from '../components/CommonPassword/CommonPassword.js';
+import Browser from '../components/Browser/Browser';
 
 const guesser = (userInput, inputType, inputLength) => {
   return (
@@ -32,6 +33,15 @@ const inputForm = (classes, value, handleInputChange, handleInputSubmit, inputEr
   );
 }
 
+const browser = (count, setCount) => {
+  return (
+    <Browser
+      count={count}
+      setCount={setCount}
+    />
+  )
+}
+
 /** keys and fields:
  *  slide: the text that should appear
  *  input: true if slide requires user input
@@ -45,7 +55,7 @@ export const allLessons = [
   [
     {
       title: <>Lesson 1: Password Length</>,
-      slide: <>First, let's learn about why long passwords are more secure
+      slide: <>First, let’s learn about why long passwords are more secure
         than short passwords!</>,
       phoneContent: null
     },
@@ -67,7 +77,7 @@ export const allLessons = [
       phoneContent: guesser
     },
     {
-      slide: <>Wow, that was really fast! Now let's try using
+      slide: <>Wow, that was really fast! Now let’s try using
         a longer password! Enter a password consisting of 6–12 digits.
         </>,
       input: true,
@@ -78,9 +88,9 @@ export const allLessons = [
       phoneContent: inputForm
     },
     { 
-      slide: <>Let's see how long it takes for the computer
+      slide: <>Let’s see how long it takes for the computer
         to guess your longer password! This might take a while, so feel free
-        to click the next button if you're tired of waiting :)</>,
+        to click the next button if you’re tired of waiting :)</>,
       usesInput: true,
       inputType: 'num',
       inputLength: -1,
@@ -110,9 +120,8 @@ export const allLessons = [
     },
     { 
       slide: <>Try submitting a lowercase 6-letter password using only the first 6
-        letters of the alphabet (a b c d e f), and we'll see how long it takes
-        for the computer to guess it!
-        </>,
+        letters of the alphabet (a b c d e f), and we’ll see how long it takes
+        for the computer to guess it!</>,
       input: true,
       inputType: 'alpha',
       inputDesc: '6 lowercase letters from (a b c d e f)',
@@ -130,10 +139,9 @@ export const allLessons = [
       phoneContent: guesser
     },
     { 
-      slide: <>Now let's try adding some variety to our password.
+      slide: <>Now let’s try adding some variety to our password.
       Submit another 6-letter password, this time mixing lowercase and uppercase
-      letters (a b c d e f A B C D E F). Include at least two uppercase letters!
-        </>,
+      letters (a b c d e f A B C D E F). Include at least two uppercase letters!</>,
       input: true,
       inputType: 'Alpha',
       inputDesc: '6 letters from (a b c d e f), with at least 2 uppercase',
@@ -161,10 +169,10 @@ export const allLessons = [
   ],
   [
     { 
-      title: <>Lesson 3: Don't Be Basic</>,
+      title: <>Lesson 3: Don’t Be Basic</>,
       slide: <>Another important aspect of password security is
         randomness. Phrases like "happy", "jackie", and "asdfghjkl"
-        are NOT secure passwords, because they aren't very random and are thus
+        are NOT secure passwords, because they aren’t very random and are thus
         quite popularly used. In fact, there are many lists available containing
         the most popularly used passwords.</>,
       phoneContent: null
@@ -176,11 +184,11 @@ export const allLessons = [
       phoneContent: () => <CommonPassword />
     },
     {
-      slide: <>Though it's a good sign if your password isn't in the list,
-        it still may not be secure enough. For example, "h3ll0" isn't on this list,
-        but it's common for hackers to try tricks like substituting letters for numbers
+      slide: <>Though it’s a good sign if your password isn’t in the list,
+        it still may not be secure enough. For example, "h3ll0" isn’t on this list,
+        but it’s common for hackers to try tricks like substituting letters for numbers
         and "h3ll0" thus would be fairly easy to crack. Also, there are much bigger
-        lists with millions of common passwords, so just because a password isn't
+        lists with millions of common passwords, so just because a password isn’t
         on the list we checked does not mean it is hack-proof.</>,
       phoneContent: null
     }
@@ -188,11 +196,24 @@ export const allLessons = [
   [
     {
       title: <>Lesson 4: Social Engineering</>,
-      slide: <>In this lesson, we'll learn about social engineering. <br />
-      Social engineering is the act of digging into someone's personal
+      slide: <>In this lesson, we’ll learn about social engineering. <br />
+      Social engineering is the act of digging into someone’s personal
       information to gain access into things like their accounts. <br/> Note:
       This demonstration is for educational purposes only. We do not condone
-      hacking into other people's accounts.</>,
+      hacking into other people’s accounts.</>,
+      phoneContent: () => <Profile />
+    },
+    {
+      slide: <>Suppose we want to hack into our "friend" Jason’s account. We’ve
+        successfully entered his username and password, but this account requires
+        us to answer some security questions! Luckily, we have access to his Instagram
+        posts, so let’s see if we can guess the right answers by doing a little research!</>,
+      input: true,
+      slideAdd: browser,
+      phoneContent: () => <Profile />
+    },
+    {
+      slide: <>As you can see, social engineering is quite powerful!</>,
       phoneContent: () => <Profile />
     }
   ]
