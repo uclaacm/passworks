@@ -6,54 +6,38 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import Post from './Post/Post.js';
 import profilePic from '../../images/profilePic.png';
 import instaLogo from '../../images/instaLogo.png';
-import penguin from '../../images/penguin.jpg';
+import birthday from '../../images/birthday.jpg';
+import mufasa from '../../images/mufasa_baby.jpg';
+import bridge from '../../images/bridge.jpg';
 const username = 'jas0nlovescatz';
 
 const posts = [
   {
     username: username,
     profileImg: profilePic,
-    location: 'Antarctica',
-    likes: 93,
-    caption: 'Home sweet home <3',
-    image: penguin,
-    date: 'Dec 9, 2010'
+    location: '',
+    likes: 156,
+    caption: 'another year down! 🥳',
+    image: birthday,
+    date: 'Feb 3, 2019'
   },
   {
     username: username,
     profileImg: profilePic,
-    location: 'Antarctica',
+    location: '',
     likes: 93,
-    caption: 'Home sweet home <3',
-    image: penguin,
-    date: 'Dec 9, 2010'
+    caption: 'throwback to when we first brought Mufasa home <3',
+    image: mufasa,
+    date: 'Dec 9, 2018'
   },
   {
     username: username,
     profileImg: profilePic,
-    location: 'Antarctica',
+    location: 'San Francisco',
     likes: 93,
-    caption: 'Home sweet home <3',
-    image: penguin,
-    date: 'Dec 9, 2010'
-  },
-  {
-    username: username,
-    profileImg: profilePic,
-    location: 'Antarctica',
-    likes: 93,
-    caption: 'Home sweet home <3',
-    image: penguin,
-    date: 'Dec 9, 2010'
-  },
-  {
-    username: username,
-    profileImg: profilePic,
-    location: 'Antarctica',
-    likes: 93,
-    caption: 'Home sweet home <3',
-    image: penguin,
-    date: 'Dec 9, 2010'
+    caption: 'vacation was fun, but it’s good to be home 🥰',
+    image: bridge,
+    date: 'Aug 21, 2018'
   },
 ];
 
@@ -73,7 +57,7 @@ const useStyles = makeStyles({
 export default function Profile() {
   const classes = useStyles();
 
-  const postList = posts.map(post => {
+  const postList = posts.map((post, i) => {
     return (
       <Post
         profileImg={post.profileImg}
@@ -83,6 +67,7 @@ export default function Profile() {
         location={post.location}
         date={post.date}
         likes={post.likes}
+        key={i}
       />
     );
   });

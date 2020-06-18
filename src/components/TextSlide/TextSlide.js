@@ -1,19 +1,8 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import Slide from '@material-ui/core/Slide';
 import Grid from '@material-ui/core/Grid';
-import makeStyles from '@material-ui/core/styles/makeStyles';
-
-
-const useStyles = makeStyles({
-  slideText: {
-    textAlign: 'center'
-  }
-});
 
 export default function TextSlide(props) {
-  const classes = useStyles();
-
   const slidingItems = props.lessonItems.map((item, i) => {
     return (
       <Slide 
@@ -29,7 +18,7 @@ export default function TextSlide(props) {
             alignItems='center'
           >
             <Grid item sm={12}>
-              <Typography variant='body1' className={classes.slideText}>{item}</Typography>
+              {item}
             </Grid>
           </Grid>
       </Slide>

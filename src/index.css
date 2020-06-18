@@ -15,7 +15,6 @@ code {
 .main-container {
   display: inline-block;
   justify-content: space-between;
-  /* max-height: 100vh; */
   width: 100%;
   margin: auto;
 }
@@ -61,6 +60,60 @@ code {
   margin: 5% 5% 5% 5%;
   height: 95%;
   width: 90%;
+}
+
+/* mock browser */
+.browser-container {
+  position: relative;
+  display: block;
+  margin: 10px auto;
+  border-radius: 5px;
+  border: 1px solid rgb(175, 175, 175);
+  background-color: #ffffff;
+  height: 300px;
+  width: 400px;
+}
+
+.browser-header {
+  position: absolute;
+  display: flex;
+  border-radius: 5px 5px 0px 0px;
+  height: 20px;
+  width: 100%;
+  background-color: #DEE0E5;
+  z-index: 1000;
+}
+
+.dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  left: 6px;
+  top: 6px;
+  border-radius: 50%;
+  margin: 0px 2px 0px;
+}
+
+#red-dot {
+  background-color: #DB615A;
+}
+
+#yellow-dot {
+  background-color: #EDC041;
+}
+
+#green-dot {
+  background-color: #7DCE50;
+}
+
+.browser-content {
+  position: absolute;
+  margin: 3% 5%;
+  height: 94%;
+  width: 92%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 p {
