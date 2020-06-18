@@ -16,11 +16,7 @@ const overwrittenTheme = responsiveFontSizes(createMuiTheme({
 			light: '#FFB13B',
 			dark: '#E07800',
 			contrastText: '#fff'
-		},
-		// action: {
-		// 	disabled: '#A1D900',
-		// 	disabledBorder: '2px solid #A1D900'
-		// }
+		}
 	},
 	typography: {
 		useNextVariants: true,

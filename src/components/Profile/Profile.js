@@ -73,7 +73,7 @@ const useStyles = makeStyles({
 export default function Profile() {
   const classes = useStyles();
 
-  const postList = posts.map(post => {
+  const postList = posts.map((post, i) => {
     return (
       <Post
         profileImg={post.profileImg}
@@ -83,6 +83,7 @@ export default function Profile() {
         location={post.location}
         date={post.date}
         likes={post.likes}
+        key={i}
       />
     );
   });

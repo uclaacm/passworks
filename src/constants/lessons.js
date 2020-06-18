@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import PasswordGuesser from '../components/PasswordGuesser/PasswordGuesser.js';
 import Profile from '../components/Profile/Profile.js';
 import CommonPassword from '../components/CommonPassword/CommonPassword.js';
+import Browser from '../components/Browser/Browser';
 
 const guesser = (userInput, inputType, inputLength) => {
   return (
@@ -30,6 +31,15 @@ const inputForm = (classes, value, handleInputChange, handleInputSubmit, inputEr
       </Box>
     </form>
   );
+}
+
+const browser = (count, setCount) => {
+  return (
+    <Browser
+      count={count}
+      setCount={setCount}
+    />
+  )
 }
 
 /** keys and fields:
@@ -192,6 +202,19 @@ export const allLessons = [
       information to gain access into things like their accounts. <br/> Note:
       This demonstration is for educational purposes only. We do not condone
       hacking into other people's accounts.</>,
+      phoneContent: () => <Profile />
+    },
+    {
+      slide: <>Suppose we want to hack into our "friend" Jason's account. We've
+        successfully entered his username and password, but this account requires
+        us to answer some security questions! Luckily, we have access to his Instagram
+        posts, so let's see if we can guess the right answers by doing a little research!</>,
+      input: true,
+      slideAdd: browser,
+      phoneContent: () => <Profile />
+    },
+    {
+      slide: <>As you can see, social engineering is quite powerful!</>,
       phoneContent: () => <Profile />
     }
   ]
