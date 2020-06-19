@@ -62,7 +62,7 @@ export default function PasswordGuesser(props) {
           start={0}
           duration={parseInt(props.userInput, 10) / 10000}
           end={parseInt(props.userInput, 10)}
-          formattingFn={num => String(num).padStart(props.inputLength, '0')}
+          formattingFn={num => String(num).padStart(props.userInput.length, '0')}
           useEasing={false}
         >
           {({ countUpRef, start }) => (
@@ -81,7 +81,7 @@ export default function PasswordGuesser(props) {
           start={0}
           duration={fromLetters(props.userInput, alpha_lower) / 10000}
           end={fromLetters(props.userInput, alpha_lower)}
-          formattingFn={num => toLetters(num, alpha_lower).padStart(props.inputLength, alpha_lower[0])}
+          formattingFn={num => toLetters(num, alpha_lower).padStart(props.userInput.length, alpha_lower[0])}
           useEasing={false}
         >
           {({ countUpRef, start }) => (
@@ -101,7 +101,7 @@ export default function PasswordGuesser(props) {
           start={0}
           duration={fromLetters(props.userInput, alpha_mixed) / 10000}
           end={fromLetters(props.userInput, alpha_mixed)}
-          formattingFn={num => toLetters(num, alpha_mixed).padStart(props.inputLength, alpha_mixed[0])}
+          formattingFn={num => toLetters(num, alpha_mixed).padStart(props.userInput.length, alpha_mixed[0])}
           useEasing={false}
         >
           {({ countUpRef, start }) => (

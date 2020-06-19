@@ -20,17 +20,44 @@ const guesser = (userInput, inputType, inputLength) => {
   );
 }
 
-const inputForm = (classes, value, handleInputChange, handleInputSubmit, inputError, errorString) => {
+const inputForm = (classes, value, handleInputChange, handleInputSubmit, 
+  inputError, errorString, randomButton) => {
   return (
     <form onSubmit={handleInputSubmit}>
       <Box display='flex' flexDirection='column' alignItems='center'>
           <input type='text' className={classes.inputText}
-            value={value} onChange={handleInputChange} />
+            value={value} onChange={handleInputChange}/>
           <Typography color='error' style={{ textAlign: 'center' }}>{inputError ? errorString : null}</Typography>
-          <Button disableRipple variant='outlined' type='submit'>Submit</Button>
+          <Box>
+            <Button disableRipple variant='outlined' type='submit'>Submit</Button>
+            {randomButton}
+          </Box>
       </Box>
     </form>
   );
+}
+
+const randomInt = (min, max) => { // min and max included 
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+const getRandom = (str, n) => {
+  var result = '';
+  while (n--) {
+    result += str.charAt(Math.floor(Math.random() * str.length));
+  }
+  return result;
+}
+
+const shuffleString = str => {
+  var res = str.split('');
+  for (let i = res.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * i)
+    const temp = res[i];
+    res[i] = res[j];
+    res[j] = temp;
+  }
+  return res.join('');
 }
 
 const browser = (count, setCount) => {
@@ -49,7 +76,8 @@ const browser = (count, setCount) => {
  *  inputDesc: a more verbose description the expected type of the user's input
  *  inputLength: the required/expected length of the user's input
  *  checkInput: predicate that returns true if input was valid, false otherwise
- *  usesInput: true if slide requires result of last user input
+ *  defaultInput: callback to randomly generated a default password
+ *  phoneContent: what to render on the phone
  */
 export const allLessons = [
   [
@@ -66,12 +94,12 @@ export const allLessons = [
       inputDesc: '4 digits',
       inputLength: 4,
       checkInput: str => /^\d{4}$/.test(str),
+      defaultInput: () => getRandom('0123456789', 4),
       phoneContent: inputForm
     },
     {
       slide: <>Press start to see how long it takes for a computer to
         guess your 4-digit password!</>,
-      usesInput: true,
       inputType: 'num',
       inputLength: 4,
       phoneContent: guesser
@@ -85,13 +113,16 @@ export const allLessons = [
       inputDesc: '6 to 12 digits',
       inputLength: -1,
       checkInput: str => /^\d{6,12}$/.test(str),
+      defaultInput: () => {
+        const len = randomInt(6, 12);
+        return getRandom('0123456789', len);
+      },
       phoneContent: inputForm
     },
     { 
       slide: <>Let’s see how long it takes for the computer
         to guess your longer password! This might take a while, so feel free
         to click the next button if you’re tired of waiting :)</>,
-      usesInput: true,
       inputType: 'num',
       inputLength: -1,
       phoneContent: guesser
@@ -127,13 +158,13 @@ export const allLessons = [
       inputDesc: '6 lowercase letters from (a b c d e f)',
       inputLength: 6,
       checkInput: str => /^[abcdef]{6}$/.test(str),
+      defaultInput: () => getRandom('abcdef', 6),
       phoneContent: inputForm
     },
     { 
       slide: <>Press start to see how long it takes for a computer to
         guess your 6-letter lowercase password!
         </>,
-      usesInput: true,
       inputType: 'alpha',
       inputLength: 6,
       phoneContent: guesser
@@ -147,13 +178,18 @@ export const allLessons = [
       inputDesc: '6 letters from (a b c d e f), with at least 2 uppercase',
       inputLength: 6,
       checkInput: str => /.*[ABCDEF].*[ABCDEF].*/.test(str) && /^[abcdefABCDEF]{6}$/.test(str),
+      defaultInput: () => {
+        const numUppercase = randomInt(2, 6);
+        const lowercase = getRandom('abcdef', 6 - numUppercase);
+        const uppercase = getRandom('ABCDEF', numUppercase);
+        return shuffleString(lowercase + uppercase);
+      },
       phoneContent: inputForm
     },
     { 
       slide: <>Press start to see how long it takes for a computer to
         guess your 6-letter mixed-case password!
         </>,
-      usesInput: true,
       inputType: 'Alpha',
       inputLength: 6,
       phoneContent: guesser

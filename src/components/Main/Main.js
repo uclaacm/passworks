@@ -51,7 +51,7 @@ class Main extends React.Component {
 	}
 
   handleInputChange = event => {
-    this.setState({value: event.target.value, inputLength: event.target.value.length});
+    this.setState({ value: event.target.value, inputLength: event.target.value.length });
   }
 
   handleInputSubmit = event => {
@@ -75,17 +75,24 @@ class Main extends React.Component {
 			newError = `Please enter ${inputDesc}.`;
 			this.setState({ value: '', errorString: newError, inputError: true });
 		} else {
-			this.setState({ userInput: this.state.value, value: '', inputError: false });
+			this.setState({ userInput: this.state.value, inputLength: this.state.value.length, 
+				value: '', inputError: false });
     	this.setCount(this.state.count + 1);
 		}
 	}
 
 	setCount = newCount => {
-		this.setState({ count: newCount, errorString: '', inputError: false });
+		this.setState({ count: newCount });
 	}
 
 	setLessonNum = newLessonNum => {
-		this.setState({ lessonNum: newLessonNum });
+		this.setState({ lessonNum: newLessonNum, value: '', userInput: '', inputLength: 0 });
+	}
+
+	setLessonAndCount = (newLessonNum, newCount) => {
+		this.setLessonNum(newLessonNum);
+		this.setCount(newCount);
+		this.setState({ errorString: '', inputError: false })
 	}
 
 	renderLessonName = classes => {
@@ -119,8 +126,7 @@ class Main extends React.Component {
 			<LessonText
 				count={this.state.count}
 				lessonNum={this.state.lessonNum}
-				setCount={this.setCount}
-				setLessonNum={this.setLessonNum}
+				setLessonAndCount={this.setLessonAndCount}
 				lessonItems={lessonItems}
 			/>
 		);
@@ -134,8 +140,7 @@ class Main extends React.Component {
 						className={i === this.state.lessonNum ? classes.selectedLesson : null}
 						disabled={i === this.state.lessonNum ? true : false}
 						onClick={() => {
-							this.setLessonNum(i); 
-							this.setCount(0); 
+							this.setLessonAndCount(i, 0);
 							this.setState({ userInput: '', value: '', inputLength: 0 })}}>
 							{lesson[0].title}
 					</Button>
@@ -162,13 +167,26 @@ class Main extends React.Component {
 		if (renderPhoneContent === null) {
 			phoneContent = null;
 		} else if (allLessons[this.state.lessonNum][this.state.count].input) {
+			let randomButton;
+			if ('defaultInput' in allLessons[this.state.lessonNum][this.state.count]) {
+				randomButton = (
+					<Button
+						disableRipple variant='outlined'
+						onClick={() => this.setState({ value: allLessons[this.state.lessonNum][this.state.count].defaultInput() })}
+					>
+						Randomize
+					</Button>);
+			} else {
+				randomButton = null;
+			}
 			phoneContent = renderPhoneContent(
 				classes, 
 				this.state.value, 
 				this.handleInputChange, 
 				this.handleInputSubmit,
 				this.state.inputError,
-				this.state.errorString
+				this.state.errorString,
+				randomButton
 			);
 		} else {
 			phoneContent = renderPhoneContent(userInput, inputType, inputLength);
