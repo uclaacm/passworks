@@ -3,6 +3,7 @@ import { useCountUp } from 'react-countup';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import TimerIcon from '@material-ui/icons/Timer';
 
 const useStyles = makeStyles({
   counter: {
@@ -64,7 +65,10 @@ export default function GuesserAndTimer(props) {
         Start
       </Button>
       <Box className={classes.timer}>
-        <div>{countUp2}</div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <TimerIcon style={{ fontSize: '1em', marginRight: '5px' }}/>
+          {countUp2}
+        </div>
       </Box>
     </>
   );
