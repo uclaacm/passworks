@@ -95,7 +95,7 @@ export default function PasswordGuesser(props) {
       />
       <Typography style= {{ fontSize: '.8em', paddingTop: '1.25em', textAlign: 'center' }}>
         Note: The animation above is set to generate {speedStr} passwords per second.
-        In reality, the average laptop/computer can easily perform hundreds or thousands
+        In reality, the average laptop/computer can easily perform hundreds
         of millions of calculations per second.
       </Typography>
     </>
