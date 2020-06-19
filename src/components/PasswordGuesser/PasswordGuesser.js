@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import CountUp from 'react-countup';
 import Box from '@material-ui/core/Box';
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import Typography from '@material-ui/core/Typography';
 
 // function to convert a number to a string based on the given alphabet
 //    example: if alphabet is 'abc',
@@ -117,5 +118,10 @@ export default function PasswordGuesser(props) {
     ) : null
   );
 
-  return passwordGuesser;
+  return (
+    <>
+      <Typography style={{ textAlign: 'center' }}>Your password was {props.userInput}.</Typography>
+      {passwordGuesser}
+    </>
+  );
 }

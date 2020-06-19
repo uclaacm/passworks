@@ -25,7 +25,9 @@ class LessonText extends React.Component {
 		}}> Back
 		</Button>);
 		const nextButton = (<Button disableRipple variant='outlined' onClick={() => {
-			this.props.setLessonAndCount(this.props.lessonNum, this.props.count + 1)}}>Next</Button>);
+			this.props.setCount(this.props.count + 1)}}>
+				Next
+			</Button>);
 		const backButton = (<Button disableRipple variant='outlined' onClick={() => {
 			this.props.setLessonAndCount(this.props.lessonNum, this.props.count - 1); }}>Back</Button>);
 
