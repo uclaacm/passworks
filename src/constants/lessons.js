@@ -12,7 +12,6 @@ const guesser = (userInput, inputType, inputLength) => {
   return (
     <Box display='flex' flexDirection='column' alignItems='center'>
       <PasswordGuesser
-        usesInput={true}
         userInput={userInput}
         inputType={inputType}
         inputLength={inputLength}
