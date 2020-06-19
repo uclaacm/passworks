@@ -72,8 +72,7 @@ export default function Comparison(props) {
           <br />possible passwords.</Typography>
         <Divider light />
         <Typography>
-          The longer password you submitted had {props.inputLength} digits, and
-          with {props.inputLength} digits there are<br/>
+          With both uppercase and lowercase characters, there are<br/>
           12<sup>{props.inputLength}</sup>={morePasswords}<br/>possible
           passwords.
         </Typography>
