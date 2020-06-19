@@ -61,10 +61,11 @@ export default function PasswordGuesser(props) {
       <Box className={classes.counter}>
         <CountUp
           start={0}
-          duration={parseInt(props.userInput, 10) / 10000}
+          duration={parseInt(props.userInput, 10) / 1000000}
           end={parseInt(props.userInput, 10)}
           formattingFn={num => String(num).padStart(props.userInput.length, '0')}
           useEasing={false}
+          ref={countUp => { this.myCountUp = countUp; }}
         >
           {({ countUpRef, start }) => (
             <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
@@ -80,7 +81,7 @@ export default function PasswordGuesser(props) {
       <Box className={classes.counter}>
         <CountUp
           start={0}
-          duration={fromLetters(props.userInput, alpha_lower) / 10000}
+          duration={fromLetters(props.userInput, alpha_lower) / 1000000}
           end={fromLetters(props.userInput, alpha_lower)}
           formattingFn={num => toLetters(num, alpha_lower).padStart(props.userInput.length, alpha_lower[0])}
           useEasing={false}
@@ -100,7 +101,7 @@ export default function PasswordGuesser(props) {
       <Box className={classes.counter}>
         <CountUp
           start={0}
-          duration={fromLetters(props.userInput, alpha_mixed) / 10000}
+          duration={fromLetters(props.userInput, alpha_mixed) / 1000000}
           end={fromLetters(props.userInput, alpha_mixed)}
           formattingFn={num => toLetters(num, alpha_mixed).padStart(props.userInput.length, alpha_mixed[0])}
           useEasing={false}
@@ -120,8 +121,13 @@ export default function PasswordGuesser(props) {
 
   return (
     <>
-      <Typography style={{ textAlign: 'center' }}>Your password was {props.userInput}.</Typography>
+      <Typography style={{ textAlign: 'center', paddingBottom: '20px' }}>Your password was {props.userInput}.</Typography>
       {passwordGuesser}
+      <Typography style= {{ fontSize: '.8em', paddingTop: '20px' }}>
+        Note: The animation above is set to generate 1 million passwords per second.
+        In reality, normal laptops and computers can easily perform hundreds to thousands
+        of millions of calculations per second.
+      </Typography>
     </>
   );
 }
