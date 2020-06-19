@@ -214,7 +214,8 @@ export const allLessons = [
         what letters we use, each character of the password can take on more
         values. Thus, there are more possible passwords we can make, making it
         harder to guess!</>,
-      phoneContent: null
+      comparison: true,
+      phoneContent: (inputLength) => comparison('variety', inputLength)
     }
   ],
   [
