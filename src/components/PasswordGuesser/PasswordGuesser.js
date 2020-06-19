@@ -1,9 +1,7 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import CountUp from 'react-countup';
-import Box from '@material-ui/core/Box';
-import makeStyles from '@material-ui/core/styles/makeStyles';
 import Typography from '@material-ui/core/Typography';
+
+import GuesserAndTimer from './GuesserAndTimer/GuesserAndTimer.js';
 
 // function to convert a number to a string based on the given alphabet
 //    example: if alphabet is 'abc',
@@ -32,106 +30,72 @@ function fromLetters(str, alphabet) {
   return out;
 }
 
-const useStyles = makeStyles({
-  counter: {
-    fontSize: '2em',
-    fontFamily: 'Monospace',
-    letterSpacing: 6
-  },
-  start: {
-    height: '2em',
-    fontSize: '.6em',
-    fontWeight: 400,
-    marginTop: 10
-  },
-  text: {
-    textAlign: 'center'
-  }
-});
-
 const alpha_lower = 'abcdef';
 const alpha_mixed = 'abcdefABCDEF';
 
 export default function PasswordGuesser(props) {
-  const classes = useStyles();
+  let genEnd;
+  let speed;
+  let duration;
+  let decimals;
+  let genFormattingFn, timeFormattingFn;
 
-  const passwordGuesser = (
-    (props.usesInput !== true) ? null :
-    (props.inputType === 'num') ? (
-      <Box className={classes.counter}>
-        <CountUp
-          start={0}
-          duration={parseInt(props.userInput, 10) / 1000000}
-          end={parseInt(props.userInput, 10)}
-          formattingFn={num => String(num).padStart(props.userInput.length, '0')}
-          useEasing={false}
-        >
-          {({ countUpRef, start }) => (
-            <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
-              <span ref={countUpRef}/>
-              <Button disableRipple onClick={start} variant='outlined' className={classes.start}>
-                Start
-              </Button>
-            </Box>
-          )}
-        </CountUp>
-      </Box>) : 
-    (props.inputType === 'alpha') ? (
-      <Box className={classes.counter}>
-        <CountUp
-          start={0}
-          duration={fromLetters(props.userInput, alpha_lower) / 10000}
-          end={fromLetters(props.userInput, alpha_lower)}
-          formattingFn={num => toLetters(num, alpha_lower).padStart(props.userInput.length, alpha_lower[0])}
-          useEasing={false}
-        >
-          {({ countUpRef, start }) => (
-            <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
-              <span ref={countUpRef} />
-              <Button disableRipple onClick={start} variant='outlined' className={classes.start}>
-                Start
-              </Button>
-            </Box>
-          )}
-        </CountUp>
-      </Box>
-    ) : 
-    (props.inputType === 'Alpha') ? (
-      <Box className={classes.counter}>
-        <CountUp
-          start={0}
-          duration={fromLetters(props.userInput, alpha_mixed) / 10000}
-          end={fromLetters(props.userInput, alpha_mixed)}
-          formattingFn={num => toLetters(num, alpha_mixed).padStart(props.userInput.length, alpha_mixed[0])}
-          useEasing={false}
-        >
-          {({ countUpRef, start }) => (
-            <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
-              <span ref={countUpRef} />
-              <Button disableRipple onClick={start} variant='outlined' className={classes.start}>
-                Start
-              </Button>
-            </Box>
-          )}
-        </CountUp>
-      </Box>
-    ) : null
-  );
-
-  var speed;
   if (props.inputType === 'num') {
-    speed = '1 million';
+    genEnd = parseInt(props.userInput, 10);
+    speed = 500000;
+    decimals = 5;
+    duration = genEnd / speed;
+    genFormattingFn = num => {
+      return String(num).padStart(props.userInput.length, '0');
+    }
+  } else if (props.inputType === 'alpha') {
+    genEnd = fromLetters(props.userInput, alpha_lower);
+    speed = 10000;
+    decimals = 4;
+    duration = genEnd / speed;
+    genFormattingFn = num => {
+      return toLetters(num, alpha_lower).padStart(props.userInput.length, alpha_lower[0]);
+    }
+  } else if (props.inputType === 'Alpha') {
+    genEnd = fromLetters(props.userInput, alpha_mixed);
+    speed = 10000;
+    decimals = 4;
+    duration = genEnd / speed;
+    genFormattingFn = num => {
+      return toLetters(num, alpha_mixed).padStart(props.userInput.length, alpha_mixed[0]);
+    }
+  }
+
+  timeFormattingFn = num => {
+    const min = Math.floor(num / 60);
+    const sec = num % 60;
+    return (
+      min !== 0 ? 
+        (String(min) + 'm ' + sec.toFixed(decimals) + 's') :
+        sec.toFixed(decimals) + 's'
+    );
+  }
+
+  var speedStr;
+  if (props.inputType === 'num') {
+    speedStr = '500,000';
   } else {
-    speed = '10,000';
+    speedStr = '10,000';
   }
 
   return (
     <>
-      <Typography style={{ textAlign: 'center', paddingBottom: '20px' }}>Your password was {props.userInput}.</Typography>
-      {passwordGuesser}
-      <Typography style= {{ fontSize: '.8em', paddingTop: '20px', textAlign: 'center' }}>
-        Note: The animation above is set to generate {speed} passwords per second.
-        In reality, the average laptop/computer can easily perform hundreds or thousands
+      <Typography style={{ textAlign: 'center', paddingBottom: '.5em' }}>Your password was {props.userInput}.</Typography>
+      <GuesserAndTimer 
+        genEnd={genEnd}
+        duration={duration}
+        decimals={decimals}
+        genFormattingFn={genFormattingFn}
+        timeFormattingFn={timeFormattingFn}
+      />
+      <Typography style= {{ fontSize: '.8em', paddingTop: '1.25em', textAlign: 'center' }}>
+        Note: The animation above is set to generate {speedStr} passwords per second.
+        In reality, the average laptop/computer can easily perform hundreds
         of millions of calculations per second.
       </Typography>
     </>
