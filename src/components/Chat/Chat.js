@@ -1,30 +1,48 @@
 import React from 'react';
 
-export default function Chat() {
+const messages = [
+  {
+    type: 'sent',
+    pos: 'last',
+    contents: <>help</>
+  },
+  {
+    type: 'rec',
+    pos: '',
+    contents: <>yo</>
+  },
+  {
+    type: 'rec',
+    pos: '',
+    contents: <>what's up</>
+  },
+  {
+    type: 'rec',
+    pos: 'last',
+    contents: <>u good?</>
+  },
+  {
+    type: 'sent',
+    pos: 'last',
+    contents: <>I need to learn about passwords</>
+  }
+];
+
+export default function Chat(props) {
+  const chatMessages = messages.map(message => {
+    return (
+      <div class={message.type + ' messages'}>
+        <div class={'message ' + message.pos}>
+          {message.contents}
+        </div>
+      </div>
+    );
+  });
+
   return (
     <div class="chat-container">
       <div class="chat">
-        <div class="sent messages">
-          <div class="message last">
-            Uhhh help
-          </div>
-        </div>
-        <div class="rec messages">
-          <div class="message">
-            yo
-          </div>
-          <div class="message">
-            what's up
-          </div>
-          <div class="message last">
-            u good?
-          </div>
-        </div>
-        <div class="sent messages">
-          <div class="message last">
-            i need to learn about passwords
-          </div>
-        </div>
+        {chatMessages}
       </div>
     </div>
   )
