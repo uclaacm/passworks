@@ -80,7 +80,7 @@ export default function PasswordGuesser(props) {
       <Box className={classes.counter}>
         <CountUp
           start={0}
-          duration={fromLetters(props.userInput, alpha_lower) / 1000000}
+          duration={fromLetters(props.userInput, alpha_lower) / 10000}
           end={fromLetters(props.userInput, alpha_lower)}
           formattingFn={num => toLetters(num, alpha_lower).padStart(props.userInput.length, alpha_lower[0])}
           useEasing={false}
@@ -100,7 +100,7 @@ export default function PasswordGuesser(props) {
       <Box className={classes.counter}>
         <CountUp
           start={0}
-          duration={fromLetters(props.userInput, alpha_mixed) / 1000000}
+          duration={fromLetters(props.userInput, alpha_mixed) / 10000}
           end={fromLetters(props.userInput, alpha_mixed)}
           formattingFn={num => toLetters(num, alpha_mixed).padStart(props.userInput.length, alpha_mixed[0])}
           useEasing={false}
