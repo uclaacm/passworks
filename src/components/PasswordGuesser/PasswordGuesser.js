@@ -5,6 +5,8 @@ import Box from '@material-ui/core/Box';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Typography from '@material-ui/core/Typography';
 
+import GuesserAndTimer from './GuesserAndTimer/GuesserAndTimer.js';
+
 // function to convert a number to a string based on the given alphabet
 //    example: if alphabet is 'abc',
 //      0 -> 'a'
@@ -134,6 +136,7 @@ export default function PasswordGuesser(props) {
         In reality, the average laptop/computer can easily perform hundreds or thousands
         of millions of calculations per second.
       </Typography>
+      <GuesserAndTimer />
     </>
   );
 }
