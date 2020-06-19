@@ -37,6 +37,10 @@ const inputForm = (classes, value, handleInputChange, handleInputSubmit,
   );
 }
 
+const randomInt = (min, max) => { // min and max included 
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 const getRandom = (str, n) => {
   var result = '';
   while (n--) {
@@ -109,7 +113,10 @@ export const allLessons = [
       inputDesc: '6 to 12 digits',
       inputLength: -1,
       checkInput: str => /^\d{6,12}$/.test(str),
-      defaultInput: () => getRandom('0123456789', 6),
+      defaultInput: () => {
+        const len = randomInt(6, 12);
+        return getRandom('0123456789', len);
+      },
       phoneContent: inputForm
     },
     { 
@@ -172,8 +179,9 @@ export const allLessons = [
       inputLength: 6,
       checkInput: str => /.*[ABCDEF].*[ABCDEF].*/.test(str) && /^[abcdefABCDEF]{6}$/.test(str),
       defaultInput: () => {
-        const lowercase = getRandom('abcdef', 4);
-        const uppercase = getRandom('ABCDEF', 2);
+        const numUppercase = randomInt(2, 6);
+        const lowercase = getRandom('abcdef', 6 - numUppercase);
+        const uppercase = getRandom('ABCDEF', numUppercase);
         return shuffleString(lowercase + uppercase);
       },
       phoneContent: inputForm
