@@ -7,6 +7,7 @@ import Profile from '../components/Profile/Profile.js';
 import CommonPassword from '../components/CommonPassword/CommonPassword.js';
 import Browser from '../components/Browser/Browser.js';
 import Comparison from '../components/Comparison/Comparison.js';
+import Chat from '../components/Chat/Chat.js';
 
 const guesser = (userInput, inputType, inputLength) => {
   return (
@@ -94,7 +95,7 @@ export const allLessons = [
       title: <>Lesson 1: Password Length</>,
       slide: <>First, let’s learn about why long passwords are more secure
         than short passwords!</>,
-      phoneContent: null
+      phoneContent: () => <Chat />
     },
     { 
       slide: <>Try submitting a 4-digit password!</>,
