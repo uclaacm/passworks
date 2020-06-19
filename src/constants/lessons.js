@@ -95,6 +95,7 @@ export const allLessons = [
       title: <>Lesson 1: Password Length</>,
       slide: <>First, let’s learn about why long passwords are more secure
         than short passwords!</>,
+      topContent: true,
       phoneContent: () => <Chat />
     },
     { 

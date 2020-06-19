@@ -53,6 +53,15 @@ code {
   justify-content: center;
 }
 
+.phone-content-top {
+  position: absolute;
+  margin: 3% 5%;
+  width: 90%;
+  height: 94%;
+  display: flex;
+  flex-direction: column;
+}
+
 .phone-screen {
   position: absolute;
   border-radius: 40px;
@@ -118,17 +127,16 @@ code {
 
 /* mock chat app */
 .chat-container {
-  font-family: helvetica;
-  display: flex ;
+  display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30px;
 }
 
 .chat {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 10px;
 }
 
 .messages {
@@ -139,8 +147,8 @@ code {
 .message {
   border-radius: 20px;
   padding: 8px 15px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
   display: inline-block;
 }
 
