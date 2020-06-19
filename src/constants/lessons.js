@@ -5,7 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import PasswordGuesser from '../components/PasswordGuesser/PasswordGuesser.js';
 import Profile from '../components/Profile/Profile.js';
 import CommonPassword from '../components/CommonPassword/CommonPassword.js';
-import Browser from '../components/Browser/Browser';
+import Browser from '../components/Browser/Browser.js';
+import Comparison from '../components/Comparison/Comparison.js';
 
 const guesser = (userInput, inputType, inputLength) => {
   return (
@@ -66,7 +67,16 @@ const browser = (count, setCount) => {
       count={count}
       setCount={setCount}
     />
-  )
+  );
+}
+
+const comparison = (type, inputLength) => {
+  return (
+    <Comparison
+      type={type}
+      inputLength={inputLength}
+    />
+  );
 }
 
 /** keys and fields:
@@ -100,6 +110,7 @@ export const allLessons = [
     {
       slide: <>Press start to see how long it takes for a computer to
         guess your 4-digit password!</>,
+      usesInput: true,
       inputType: 'num',
       inputLength: 4,
       phoneContent: guesser
@@ -124,6 +135,7 @@ export const allLessons = [
         to guess your longer password! This might take a while, so feel free
         to click the next button if you’re tired of waiting :)</>,
       inputType: 'num',
+      usesInput: true,
       inputLength: -1,
       phoneContent: guesser
     },
@@ -133,7 +145,8 @@ export const allLessons = [
         more time to crack than the 4-digit password! This is because as you
         increase the length of your password, there are more and more possible
         values for your password to have.</>,
-      phoneContent: null
+      comparison: true,
+      phoneContent: (inputLength) => comparison('length', inputLength)
     }
   ],
   [
@@ -165,6 +178,7 @@ export const allLessons = [
       slide: <>Press start to see how long it takes for a computer to
         guess your 6-letter lowercase password!
         </>,
+      usesInput: true,
       inputType: 'alpha',
       inputLength: 6,
       phoneContent: guesser
@@ -188,8 +202,8 @@ export const allLessons = [
     },
     { 
       slide: <>Press start to see how long it takes for a computer to
-        guess your 6-letter mixed-case password!
-        </>,
+        guess your 6-letter mixed-case password!</>,
+      usesInput: true,
       inputType: 'Alpha',
       inputLength: 6,
       phoneContent: guesser
@@ -200,7 +214,8 @@ export const allLessons = [
         what letters we use, each character of the password can take on more
         values. Thus, there are more possible passwords we can make, making it
         harder to guess!</>,
-      phoneContent: null
+      comparison: true,
+      phoneContent: (inputLength) => comparison('variety', inputLength)
     }
   ],
   [

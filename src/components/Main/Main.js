@@ -58,15 +58,11 @@ class Main extends React.Component {
 		event.preventDefault();
 		
 		const inputDesc = allLessons[this.state.lessonNum][this.state.count].inputDesc;
-		const expectedLength = allLessons[this.state.lessonNum][this.state.count].inputLength;
 		const checkInput = allLessons[this.state.lessonNum][this.state.count].checkInput;
 		
 		let newError;
 		let inputValid = true;
 
-		if (this.state.value.length !== expectedLength && expectedLength !== -1) {
-			inputValid = false;
-		}
 		if (!checkInput(this.state.value)) {
 			inputValid = false;
 		}
@@ -82,17 +78,23 @@ class Main extends React.Component {
 	}
 
 	setCount = newCount => {
-		this.setState({ count: newCount });
+		this.setState({ count: newCount, errorString: '', value: '', inputError: false });
 	}
 
 	setLessonNum = newLessonNum => {
-		this.setState({ lessonNum: newLessonNum, value: '', userInput: '', inputLength: 0 });
+		this.setState({ 
+			lessonNum: newLessonNum, 
+			value: '', 
+			userInput: '', 
+			inputLength: 0,
+			errorString: '', 
+			inputError: false 
+		});
 	}
 
 	setLessonAndCount = (newLessonNum, newCount) => {
 		this.setLessonNum(newLessonNum);
 		this.setCount(newCount);
-		this.setState({ errorString: '', inputError: false })
 	}
 
 	renderLessonName = classes => {
@@ -126,8 +128,10 @@ class Main extends React.Component {
 			<LessonText
 				count={this.state.count}
 				lessonNum={this.state.lessonNum}
-				setLessonAndCount={this.setLessonAndCount}
+				setCount={this.setCount}
+				setLessonNum={this.setLessonNum}
 				lessonItems={lessonItems}
+				setLessonAndCount={this.setLessonAndCount}
 			/>
 		);
 	}
@@ -188,6 +192,8 @@ class Main extends React.Component {
 				this.state.errorString,
 				randomButton
 			);
+		} else if (allLessons[this.state.lessonNum][this.state.count].comparison) {
+			phoneContent = renderPhoneContent(inputLength);
 		} else {
 			phoneContent = renderPhoneContent(userInput, inputType, inputLength);
 		}

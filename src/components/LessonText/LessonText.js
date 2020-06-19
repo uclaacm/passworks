@@ -6,32 +6,27 @@ import Box from '@material-ui/core/Box';
 
 class LessonText extends React.Component {
   renderButtons = () => {
-		const isFirstLesson = this.props.lessonNum === 0;
 		const isLastLesson  = this.props.lessonNum === allLessons.length - 1;
-		const isFirstSlide  = this.props.count === 0;
 		const isLastSlide   = this.props.count === allLessons[this.props.lessonNum].length - 1;
 		const isInputSlide  = allLessons[this.props.lessonNum][this.props.count].input;
+		const usesInput  = allLessons[this.props.lessonNum][this.props.count].usesInput;
 
 		const renderNextLesson = !isLastLesson && isLastSlide;
-		const renderLastLesson = !isFirstLesson && isFirstSlide;
 		const renderNext       = !isLastSlide && !isInputSlide;
-		const renderBack       = !isFirstSlide;
+		const renderBack       = usesInput;
 
 		const nextLessonButton = (<Button disableRipple variant='outlined' onClick={() => {
 			this.props.setLessonAndCount(this.props.lessonNum + 1, 0); }}> Next
 			Lesson</Button>);
-		const lastLessonButton = (<Button disableRipple variant='outlined' onClick={() => {
-			this.props.setLessonAndCount(this.props.lessonNum - 1, allLessons[this.props.lessonNum - 1].length - 1);
-		}}> Back
-		</Button>);
 		const nextButton = (<Button disableRipple variant='outlined' onClick={() => {
-			this.props.setLessonAndCount(this.props.lessonNum, this.props.count + 1)}}>Next</Button>);
+			this.props.setCount(this.props.count + 1)}}>
+				Next
+			</Button>);
 		const backButton = (<Button disableRipple variant='outlined' onClick={() => {
 			this.props.setLessonAndCount(this.props.lessonNum, this.props.count - 1); }}>Back</Button>);
 
 		return (
 			<Box>
-				{renderLastLesson && lastLessonButton}
 				{renderBack && backButton}
 				{renderNext && nextButton}
 				{renderNextLesson && nextLessonButton}

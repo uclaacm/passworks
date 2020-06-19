@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import CountUp from 'react-countup';
 import Box from '@material-ui/core/Box';
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import Typography from '@material-ui/core/Typography';
 
 // function to convert a number to a string based on the given alphabet
 //    example: if alphabet is 'abc',
@@ -60,7 +61,7 @@ export default function PasswordGuesser(props) {
       <Box className={classes.counter}>
         <CountUp
           start={0}
-          duration={parseInt(props.userInput, 10) / 10000}
+          duration={parseInt(props.userInput, 10) / 1000000}
           end={parseInt(props.userInput, 10)}
           formattingFn={num => String(num).padStart(props.userInput.length, '0')}
           useEasing={false}
@@ -117,5 +118,22 @@ export default function PasswordGuesser(props) {
     ) : null
   );
 
-  return passwordGuesser;
+  var speed;
+  if (props.inputType === 'num') {
+    speed = '1 million';
+  } else {
+    speed = '10,000';
+  }
+
+  return (
+    <>
+      <Typography style={{ textAlign: 'center', paddingBottom: '20px' }}>Your password was {props.userInput}.</Typography>
+      {passwordGuesser}
+      <Typography style= {{ fontSize: '.8em', paddingTop: '20px', textAlign: 'center' }}>
+        Note: The animation above is set to generate {speed} passwords per second.
+        In reality, the average laptop/computer can easily perform hundreds or thousands
+        of millions of calculations per second.
+      </Typography>
+    </>
+  );
 }
