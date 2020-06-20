@@ -96,7 +96,17 @@ export const allLessons = [
       slide: <>First, let’s learn about why long passwords are more secure
         than short passwords!</>,
       topContent: true,
-      phoneContent: () => <Chat />
+      phoneContent: () => <Chat 
+        messages={
+        [
+          { type: 'sent', pos: 'last', contents: <>help</> },
+          { type: 'rec', pos: '', contents: <>yo</> },
+          { type: 'rec', pos: 'last', contents: <>what's up?</> },
+          { type: 'sent', pos: 'last', contents: <>i need to learn about secure passwords</> },
+          { type: 'rec', pos: '', contents: <>hmm... ok</>},
+          { type: 'rec', pos: 'last', contents: <>my first tip would be to make sure it's not too short</>},
+        ]}
+      />
     },
     { 
       slide: <>Try submitting a 4-digit password!</>,
@@ -161,7 +171,17 @@ export const allLessons = [
       slide: <>You’ll often see sites recommend that you use
         uppercase letters, numbers, and symbols in your password. Why is that?
         </>,
-      phoneContent: null
+      topContent: true,
+      phoneContent: () => <Chat 
+      messages={
+        [
+          { type: 'sent', pos: '', contents: <>alright, i guess i should make my passwords longer</> },
+          { type: 'sent', pos: 'last', contents: <>any other tips??</>},
+          { type: 'rec', pos: '', contents: <>pLeasE iNcluDe aT lEAst 1 caPitaL LeTTer aND 1 sYMbol iN yOUr PasSWorD</> },
+          { type: 'sent', pos: 'last', contents: <>ugh</> },
+          { type: 'rec', pos: 'last', contents: <>but for real though</> },
+        ]}
+      />
     },
     { 
       slide: <>Try submitting a lowercase 6-letter password using only the first 6
@@ -227,7 +247,20 @@ export const allLessons = [
         are NOT secure passwords, because they aren’t very random and are thus
         quite popularly used. In fact, there are many lists available containing
         the most popularly used passwords.</>,
-      phoneContent: null
+      topContent: true,
+      phoneContent: () => <Chat 
+      messages={
+        [
+          { type: 'sent', pos: '', contents: <>ok i've come up with a great password</> },
+          { type: 'sent', pos: '', contents: <>it has a capital letter AND a number, and it isn't super short</>},
+          { type: 'sent', pos: 'last', contents: <>Password1</>},
+          { type: 'rec', pos: '', contents: <>...</> },
+          { type: 'rec', pos: '', contents: <>ok hold ur horses</> },
+          { type: 'rec', pos: 'last', contents: <>also why did you text it to me??</> },
+          { type: 'sent', pos: '', contents: <>uh...</> },
+          { type: 'sent', pos: 'last', contents: <>oops</> }
+        ]}
+      />
     },
     { 
       slide: <>Try experimenting with submitting passwords (of 4 or
@@ -248,18 +281,32 @@ export const allLessons = [
   [
     {
       title: <>Lesson 4: Social Engineering</>,
-      slide: <>In this lesson, we’ll learn about social engineering. <br />
+      slide: <>In this lesson, we’ll learn about social engineering.<br />
       Social engineering is the act of digging into someone’s personal
-      information to gain access into things like their accounts. <br/> Note:
+      information to gain access into things like their accounts.<br/> Note:
       This demonstration is for educational purposes only. We do not condone
       hacking into other people’s accounts.</>,
-      phoneContent: () => <Profile />
+      topContent: true,
+      phoneContent: () => <Chat 
+      messages={
+        [
+          { type: 'rec', pos: 'last', contents: <>hey, how ya doin?</> },
+          { type: 'sent', pos: 'last', contents: <>i'm good, what's up?</>},
+          { type: 'rec', pos: '', contents: <>i'm trying to convince my friend jason
+            that security is important</>},
+          { type: 'rec', pos: 'last', contents: <>can you try to break into his account
+            for me?</>},
+          { type: 'sent', pos: '', contents: <>idk much about hacking...</> },
+          { type: 'sent', pos: 'last', contents: <>i guess i can try though</> }
+        ]}
+      />
     },
     {
-      slide: <>Suppose we want to hack into our "friend" Jason’s account. We’ve
-        successfully entered his username and password, but this account requires
-        us to answer some security questions! Luckily, we have access to his Instagram
-        posts, so let’s see if we can guess the right answers by doing a little research!</>,
+      slide: <>We want to hack into Jason’s account. Suppose Hackerman already
+        gave us Jason's username and password, but we still need to answer some
+        security questions! Luckily, we have access to his Instagram posts, so
+        let’s see if we can guess the right answers by doing a little
+        research!</>,
       input: true,
       slideAdd: browser,
       phoneContent: () => <Profile />
