@@ -79,6 +79,10 @@ const comparison = (type, inputLength) => {
   );
 }
 
+const topPasswords = ["123456","password","12345678","qwerty","123456789",
+  "12345","1234","111111","1234567","dragon","123123","baseball","abc123",
+  "football","monkey","letmein"];
+
 /** keys and fields:
  *  slide: the text that should appear
  *  input: true if slide requires user input
@@ -272,10 +276,37 @@ export const allLessons = [
       slide: <>Though it’s a good sign if your password isn’t in the list,
         it still may not be secure enough. For example, "h3ll0" isn’t on this list,
         but it’s common for hackers to try tricks like substituting letters for numbers
-        and "h3ll0" thus would be fairly easy to crack. Also, there are much bigger
+        and "h3ll0" thus would be fairly easy to crack. <br />Also, there are much bigger
         lists with millions of common passwords, so just because a password isn’t
         on the list we checked does not mean it is hack-proof.</>,
-      phoneContent: null
+      topContent: true,
+      phoneContent: () => {
+        const cells = topPasswords.map((item, i) => {
+          return (
+            <tr>
+              <td>{item}</td>
+              <td>{i + 1}</td>
+            </tr>
+          );
+        });
+
+        return (
+          <div style={{ maxHeight: '100%', overflow: 'auto', width: '100%', marginTop: '30px' }}>
+            <Typography
+              variant='h6'
+              style={{ textAlign: 'center' }}>
+              Commonly Used Passwords
+            </Typography>
+            <table style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+              <tr>
+                <th style={{ textAlign: 'left' }}>password</th>
+                <th>position</th>
+              </tr>
+              {cells}
+            </table>
+          </div>
+        )
+      }
     }
   ],
   [
@@ -309,11 +340,24 @@ export const allLessons = [
         research!</>,
       input: true,
       slideAdd: browser,
+      topContent: true,
       phoneContent: () => <Profile />
     },
     {
       slide: <>As you can see, social engineering is quite powerful!</>,
-      phoneContent: () => <Profile />
+      topContent: true,
+      phoneContent: () => <Chat 
+      messages={
+        [
+          { type: 'sent', pos: 'last', contents: <>i'm in, hackerman</> },
+          { type: 'rec', pos: '', contents: <>ayyy</> },
+          { type: 'rec', pos: 'last', contents: <>how was it?</> },
+          { type: 'sent', pos: '', contents: <>not too bad tbh</> },
+          { type: 'sent', pos: 'last', contents: <>all the info was posted on his instagram lol</> },
+          { type: 'rec', pos: '', contents: <>awesome, thanks!</>},
+          { type: 'rec', pos: 'last', contents: <>hopefully this gives him a wake-up call</>}
+        ]}
+      />
     }
   ]
 ];

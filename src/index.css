@@ -226,3 +226,12 @@ code {
 p {
   text-align: left;
 }
+
+table {
+  text-align: left;
+  position: relative;
+}
+
+th, td {
+  padding: 4px 30px 4px;
+}

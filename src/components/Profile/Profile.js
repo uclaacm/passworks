@@ -45,12 +45,6 @@ const useStyles = makeStyles({
 	header: {
     background: 'azure',
     top: '0px'
-  },
-  noBar: {
-		'&::-webkit-scrollbar': {
-			width: '0em'
-		},
-		'scrollbar-width': 'none'
   }
 });
 
@@ -73,14 +67,16 @@ export default function Profile() {
   });
 
   return (
-    <List className={classes.noBar} style={{maxHeight: '100%', overflow: 'auto', width: '100%'}} subheader={<ListSubheader />} >
+    <List style={{ maxHeight: '90%', width: '100%' }} subheader={<ListSubheader />} >
       <ListSubheader className={classes.header}>
         <div style={{ display: 'flex', justifyContent: 'center', padding: '25px 0px 10px' }}>
           <img src={instaLogo} alt='logo' style={{ 
             float: 'none', width: '50%', marginLeft: 'auto', marginRight: 'auto' }}/>
         </div>
       </ListSubheader>
+      <div style={{ maxHeight: '100%', overflow: 'auto', paddingRight: '5px' }}>
       {postList}
+      </div>
     </List>
   );
 }

@@ -18,8 +18,8 @@ export default function Chat(props) {
 
   const chatMessages = props.messages.map(message => {
     return (
-      <div class={message.type + ' messages'}>
-        <div class={'message ' + message.pos}>
+      <div className={message.type + ' messages'}>
+        <div className={'message ' + message.pos}>
           <Typography variant='body1' className={classes.textMessage}>
             {message.contents}
           </Typography>
@@ -29,8 +29,8 @@ export default function Chat(props) {
   });
 
   return (
-    <div class="chat-container">
-      <div class="chat">
+    <div className="chat-container">
+      <div className="chat">
         <Box display='flex' flexDirection='column' alignItems='center'>
           <AccountCircleIcon style={{ marginTop: '-10', fontSize: '2.2em', color: '#b3b3b3' }}/>
           <Typography variant='body1' style={{ textAlign: 'center' }}>
