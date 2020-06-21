@@ -79,10 +79,6 @@ const comparison = (type, inputLength) => {
   );
 }
 
-const topPasswords = ["123456","password","12345678","qwerty","123456789",
-  "12345","1234","111111","1234567","dragon","123123","baseball","abc123",
-  "football","monkey","letmein"];
-
 /** keys and fields:
  *  slide: the text that should appear
  *  input: true if slide requires user input
