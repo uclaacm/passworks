@@ -262,14 +262,15 @@ export const allLessons = [
           { type: 'rec', pos: '', contents: <>ok hold ur horses</> },
           { type: 'rec', pos: 'last', contents: <>also why did you text it to me??</> },
           { type: 'sent', pos: '', contents: <>uh...</> },
-          { type: 'sent', pos: 'last', contents: <>oops</> }
+          { type: 'sent', pos: '', contents: <>hehe oops</> }
         ]}
       />
     },
     { 
-      slide: <>Try experimenting with submitting passwords (of 4 or
-        more characters) and seeing which ones are in the list of the 10,000 most
-        common passwords.</>,
+      slide: <>Try submitting different passwords (of 4 or
+        more characters) and we'll check if they're in the list of the 10,000 most
+        common passwords. <br />Not sure what to submit? Try
+        foods, animals, hobbies, numbers, your name, etc.</>,
       phoneContent: () => <CommonPassword />
     },
     {
@@ -280,33 +281,18 @@ export const allLessons = [
         lists with millions of common passwords, so just because a password isn’t
         on the list we checked does not mean it is hack-proof.</>,
       topContent: true,
-      phoneContent: () => {
-        const cells = topPasswords.map((item, i) => {
-          return (
-            <tr>
-              <td>{item}</td>
-              <td>{i + 1}</td>
-            </tr>
-          );
-        });
-
-        return (
-          <div style={{ maxHeight: '100%', overflow: 'auto', width: '100%', marginTop: '30px' }}>
-            <Typography
-              variant='h6'
-              style={{ textAlign: 'center' }}>
-              Common Passwords
-            </Typography>
-            <table style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '10px' }}>
-              <tr>
-                <th style={{ textAlign: 'left' }}>password</th>
-                <th>position</th>
-              </tr>
-              {cells}
-            </table>
-          </div>
-        )
-      }
+      phoneContent: () => <Chat
+        messages={
+          [
+            { type: 'sent', pos: '', contents: <>i guess i should be careful to make my passwords more unique...</> },
+            { type: 'sent', pos: 'last', contents: <>apparently Password1 is pretty commonly used</> },
+            { type: 'rec', pos: '', contents: <>yeah</>},
+            { type: 'rec', pos: '', contents: <>also, a little piece of advice...</>},
+            { type: 'rec', pos: 'last', contents: <>don't tell people your passwords!!!!</>},
+            { type: 'sent', pos: 'last', contents: <>i would never do such a thing :)</>},
+            { type: 'rec', pos: 'last', contents: <>...</>}
+          ]}
+      />
     }
   ],
   [

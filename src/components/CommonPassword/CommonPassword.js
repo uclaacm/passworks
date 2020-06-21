@@ -36,7 +36,7 @@ class CommonPassword extends React.Component {
   handleInputSubmit = event => {
     event.preventDefault();
     if (this.state.inputLength < 4) {
-      this.setState({ value: '', inputLength: 0, inputError: true });
+      this.setState({ password: '', value: '', inputLength: 0, inputError: true });
     } else {
       this.setState({ password: this.state.value, value: '', inputError: false });
     }
