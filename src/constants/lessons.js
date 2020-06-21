@@ -295,9 +295,9 @@ export const allLessons = [
             <Typography
               variant='h6'
               style={{ textAlign: 'center' }}>
-              Commonly Used Passwords
+              Common Passwords
             </Typography>
-            <table style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+            <table style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '10px' }}>
               <tr>
                 <th style={{ textAlign: 'left' }}>password</th>
                 <th>position</th>
