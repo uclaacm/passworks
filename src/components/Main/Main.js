@@ -15,7 +15,7 @@ const useStyles = theme => ({
 	lessonName: {
 		color: theme.palette.primary.main,
 		textAlign: 'center',
-		padding: '20px 0px'
+		padding: '10px 0px 20px'
 	},
 	inputText: {
 		margin: '4px',
@@ -201,8 +201,9 @@ class Main extends React.Component {
 		return (
 			<Container maxWidth='lg'>
 				<Box display='flex' flexDirection='column' alignItems='center'>
+					{this.renderNavBar(classes)}
 					{this.renderLessonName(classes)}
-					<Grid 
+					<Grid
 						container
 						spacing={3}
 						alignItems='center'
@@ -216,7 +217,6 @@ class Main extends React.Component {
 							{this.renderLessonText()}
 						</Grid>
 					</Grid>
-					{this.renderNavBar(classes)}
 				</Box>
 			</Container>
 		);
