@@ -30,7 +30,7 @@ const inputForm = (classes, value, handleInputChange, handleInputSubmit,
             value={value} onChange={handleInputChange}/>
           <Typography color='error' style={{ textAlign: 'center' }}>{inputError ? errorString : null}</Typography>
           <Box>
-            <Button disableRipple variant='outlined' type='submit'>Submit</Button>
+            <Button disableRipple variant='contained' disableElevation type='submit'>Submit</Button>
             {randomButton}
           </Box>
       </Box>

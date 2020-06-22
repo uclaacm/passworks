@@ -67,7 +67,7 @@ class Browser extends React.Component {
           <Typography variant='body1' style={{ textAlign: 'center'}}>
             Welcome, Jason!
           </Typography>
-          <Button variant='outlined' size='small' disableRipple
+          <Button variant='contained' disableRipple disableElevation
             onClick={() => this.props.setCount(this.props.count + 1)}>
             Continue
           </Button>
@@ -84,7 +84,7 @@ class Browser extends React.Component {
             <Typography color='error' style={{ textAlign: 'center' }}>
               {this.state.inputError ? this.state.errorString : null}
             </Typography>
-            <Button disableRipple variant='outlined' type='submit' size='small'>Submit</Button>
+            <Button disableRipple variant='contained' disableElevation type='submit'>Submit</Button>
           </Box>
         </form>
       </>

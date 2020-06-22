@@ -74,7 +74,7 @@ class CommonPassword extends React.Component {
             <Typography color='error' style={{ textAlign: 'center' }}>
               {this.state.inputError ? this.state.errorString : null}
             </Typography>
-            <Button disableRipple variant='outlined' type='submit'>Submit</Button>
+            <Button disableRipple variant='contained' disableElevation type='submit'>Submit</Button>
           </Box>
         </form>
         {this.renderResult()}

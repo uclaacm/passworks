@@ -140,7 +140,7 @@ class Main extends React.Component {
 		const lessonButtons = allLessons.map((lesson, i) => {
 			return (
 				<React.Fragment key={i}>
-					<Button variant='outlined' size='small' 
+					<Button variant='outlined' size='small' disableRipple
 						className={i === this.state.lessonNum ? classes.selectedLesson : null}
 						disabled={i === this.state.lessonNum ? true : false}
 						onClick={() => {
@@ -175,7 +175,7 @@ class Main extends React.Component {
 			if ('defaultInput' in allLessons[this.state.lessonNum][this.state.count]) {
 				randomButton = (
 					<Button
-						disableRipple variant='outlined'
+						disableRipple variant='contained' disableElevation
 						onClick={() => this.setState({ value: allLessons[this.state.lessonNum][this.state.count].defaultInput() })}
 					>
 						Randomize
