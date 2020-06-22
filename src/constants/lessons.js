@@ -83,8 +83,8 @@ const comparison = (type, inputLength) => {
  *  slide: the text that should appear
  *  input: true if slide requires user input
  *  inputType: 'num', 'alpha', 'Alpha', 'common'
- *  inputDesc: a more verbose description the expected type of the user's input
- *  inputLength: the required/expected length of the user's input
+ *  inputDesc: a more verbose description the expected type of the user’s input
+ *  inputLength: the required/expected length of the user’s input
  *  checkInput: predicate that returns true if input was valid, false otherwise
  *  defaultInput: callback to randomly generated a default password
  *  phoneContent: what to render on the phone
@@ -101,15 +101,16 @@ export const allLessons = [
         [
           { type: 'sent', pos: 'last', contents: <>help</> },
           { type: 'rec', pos: '', contents: <>yo</> },
-          { type: 'rec', pos: 'last', contents: <>what's up?</> },
+          { type: 'rec', pos: 'last', contents: <>what’s up?</> },
           { type: 'sent', pos: 'last', contents: <>i need to learn about secure passwords</> },
           { type: 'rec', pos: '', contents: <>hmm... ok</>},
-          { type: 'rec', pos: 'last', contents: <>my first tip would be to make sure it's not too short</>},
+          { type: 'rec', pos: 'last', contents: <>my first tip would be to make sure it’s not too short</>},
         ]}
       />
     },
     { 
-      slide: <>Try submitting a 4-digit password!</>,
+      slide: <>Type a 4-digit password (or press Randomize to generate one
+        automatically), and then press Submit!</>,
       input: true,
       inputType: 'num',
       inputDesc: '4 digits',
@@ -119,7 +120,7 @@ export const allLessons = [
       phoneContent: inputForm
     },
     {
-      slide: <>Press start to see how long it takes for a computer to
+      slide: <>Press Start to see how long it takes for a computer to
         guess your 4-digit password!</>,
       usesInput: true,
       inputType: 'num',
@@ -144,7 +145,7 @@ export const allLessons = [
     { 
       slide: <>Let’s see how long it takes for the computer
         to guess your longer password! This might take a while, so feel free
-        to click the next button if you’re tired of waiting :)</>,
+        to click the next button if you don’t want to wait.</>,
       inputType: 'num',
       usesInput: true,
       inputLength: -1,
@@ -251,8 +252,8 @@ export const allLessons = [
       phoneContent: () => <Chat 
       messages={
         [
-          { type: 'sent', pos: '', contents: <>ok i've come up with a great password</> },
-          { type: 'sent', pos: '', contents: <>it has a capital letter AND a number, and it isn't super short</>},
+          { type: 'sent', pos: '', contents: <>ok i’ve come up with a great password</> },
+          { type: 'sent', pos: '', contents: <>it has a capital letter AND a number, and it isn’t super short</>},
           { type: 'sent', pos: 'last', contents: <>Password1</>},
           { type: 'rec', pos: '', contents: <>...</> },
           { type: 'rec', pos: '', contents: <>ok hold ur horses</> },
@@ -264,7 +265,7 @@ export const allLessons = [
     },
     { 
       slide: <>Try submitting different passwords (of 4 or
-        more characters) and we'll check if they're in the list of the 10,000 most
+        more characters) and we’ll check if they’re in the list of the 10,000 most
         common passwords. <br />Not sure what to submit? Try
         foods, animals, hobbies, numbers, your name, etc.</>,
       phoneContent: () => <CommonPassword />
@@ -284,7 +285,7 @@ export const allLessons = [
             { type: 'sent', pos: 'last', contents: <>apparently Password1 is pretty commonly used</> },
             { type: 'rec', pos: '', contents: <>yeah</>},
             { type: 'rec', pos: '', contents: <>also, a little piece of advice...</>},
-            { type: 'rec', pos: 'last', contents: <>don't tell people your passwords!!!!</>},
+            { type: 'rec', pos: 'last', contents: <>don’t tell people your passwords!!!!</>},
             { type: 'sent', pos: 'last', contents: <>i would never do such a thing :)</>},
             { type: 'rec', pos: 'last', contents: <>...</>}
           ]}
@@ -304,8 +305,8 @@ export const allLessons = [
       messages={
         [
           { type: 'rec', pos: 'last', contents: <>hey, how ya doin?</> },
-          { type: 'sent', pos: 'last', contents: <>i'm good, what's up?</>},
-          { type: 'rec', pos: '', contents: <>i'm trying to convince my friend jason
+          { type: 'sent', pos: 'last', contents: <>i’m good, what’s up?</>},
+          { type: 'rec', pos: '', contents: <>i’m trying to convince my friend jason
             that security is important</>},
           { type: 'rec', pos: 'last', contents: <>can you try to break into his account
             for me?</>},
@@ -316,7 +317,7 @@ export const allLessons = [
     },
     {
       slide: <>We want to hack into Jason’s account. Suppose Hackerman already
-        gave us Jason's username and password, but we still need to answer some
+        gave us Jason’s username and password, but we still need to answer some
         security questions! Luckily, we have access to his Instagram posts, so
         let’s see if we can guess the right answers by doing a little
         research!</>,
@@ -331,7 +332,7 @@ export const allLessons = [
       phoneContent: () => <Chat 
       messages={
         [
-          { type: 'sent', pos: 'last', contents: <>i'm in, hackerman</> },
+          { type: 'sent', pos: 'last', contents: <>i’m in, hackerman</> },
           { type: 'rec', pos: '', contents: <>ayyy</> },
           { type: 'rec', pos: 'last', contents: <>how was it?</> },
           { type: 'sent', pos: '', contents: <>not too bad tbh</> },

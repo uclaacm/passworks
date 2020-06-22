@@ -41,7 +41,7 @@ class Browser extends React.Component {
       questionNum: 0,
       attempts: 0,
       inputError: false,
-      errorString: `Sorry, that's incorrect. Please try again.`
+      errorString: `Sorry, that’s incorrect. Please try again.`
     }
   }
 
