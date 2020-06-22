@@ -53,6 +53,15 @@ code {
   justify-content: center;
 }
 
+.phone-content-top {
+  position: absolute;
+  margin: 3% 5%;
+  width: 90%;
+  height: 94%;
+  display: flex;
+  flex-direction: column;
+}
+
 .phone-screen {
   position: absolute;
   border-radius: 40px;
@@ -116,6 +125,113 @@ code {
   justify-content: center;
 }
 
+/* mock chat app */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.chat {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  display: inline-block;
+}
+
+.rec {
+  align-items: flex-start;
+}
+
+.rec .message {
+  margin-right: 25%;
+  background-color: #eee;
+  position: relative;
+}
+
+.rec .message.last:before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: -7px;
+  height: 20px;
+  width: 20px;
+  background: #eee;
+  border-bottom-right-radius: 15px;
+}
+
+.rec .message.last:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: -10px;
+  width: 10px;
+  height: 20px;
+  background: azure;
+  border-bottom-right-radius: 10px;
+}
+
+.sent {
+  align-items: flex-end;
+}
+
+.sent .message {
+  color: white;
+  margin-left: 25%;
+  background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+  background-attachment: fixed;
+  position: relative;
+}
+
+.sent .message.last:before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  right: -8px;
+  height: 20px;
+  width: 20px;
+  background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+  background-attachment: fixed;
+  border-bottom-left-radius: 15px;
+}
+
+.sent .message.last:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  right: -10px;
+  width: 10px;
+  height: 20px;
+  background: azure;
+  border-bottom-left-radius: 10px;
+}
+
 p {
   text-align: left;
+}
+
+table {
+  text-align: left;
+  position: relative;
+}
+
+th, td {
+  padding: 4px 30px 4px;
 }

@@ -209,7 +209,8 @@ class Main extends React.Component {
 						justify='center'
 					>
 						<Grid item sm={12} md={5}>
-							<Phone content={phoneContent}/>
+							<Phone content={phoneContent}
+								topContent={allLessons[this.state.lessonNum][this.state.count].topContent}/>
 						</Grid>
 						<Grid item sm={8} md={5}>
 							{this.renderLessonText()}

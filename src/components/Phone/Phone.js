@@ -6,9 +6,15 @@ export default function Phone(props) {
 			<div className="phone-bezel">
 				<div className="phone-screen">
 					<div className="phone-cutout"></div>
-					<div className="phone-content">
+					{props.topContent ? (
+						<div className="phone-content-top">
 						{props.content}
-					</div>
+						</div> ) : (
+							<div className="phone-content">
+								{props.content}
+							</div>
+						)
+					}
 				</div>
 			</div>
 		</div>
