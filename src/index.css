@@ -235,3 +235,17 @@ table {
 th, td {
   padding: 4px 30px 4px;
 }
+
+.takeaway {
+  background: linear-gradient(180deg,rgba(255,255,255,0) 10%, #ffdcc4 10%);
+}
+
+.vocab {
+  background: linear-gradient(180deg,rgba(255,255,255,0) 10%, #c9ffd7 10%);
+}
+
+.insn {
+  background: linear-gradient(180deg,rgba(255,255,255,0) 10%, #ffdbec 10%);
+  /* font-weight: 500; */
+  /* text-decoration: solid underline #ff3b96; */
+}

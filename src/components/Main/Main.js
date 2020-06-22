@@ -116,9 +116,7 @@ class Main extends React.Component {
 			}
       return (
 				<>
-					<Typography variant='body1' style={{ textAlign: 'center' }}>
-						{item.slide}
-					</Typography>
+					{item.slide}
 					{extraContent}
 				</>
 			);
