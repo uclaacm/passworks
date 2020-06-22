@@ -8,15 +8,18 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 const securityQuestions = [
   {
     q: 'Where did you grow up?',
-    a: 'San Francisco'
+    match: str => (str.toLowerCase() === 'san francisco'),
+    hint: 'Hint: Try checking the locations of Jason’s instagram posts'
   },
   {
     q: 'What is your favorite animal?',
-    a: 'cat'
+    match: str => /^cats?$/.test(str),
+    hint: 'Hint: Look at Jason’s username'
   },
   {
     q: 'What was the name of your first pet?',
-    a: 'Mufasa'
+    match: str => (str.toLowerCase() === 'mufasa'),
+    hint: 'Hint: Read the captions of Jason’s posts more carefully'
   }
 ];
 
@@ -36,6 +39,7 @@ class Browser extends React.Component {
     this.state = {
       answer: '',
       questionNum: 0,
+      attempts: 0,
       inputError: false,
       errorString: `Sorry, that's incorrect. Please try again.`
     }
@@ -47,10 +51,16 @@ class Browser extends React.Component {
 
   handleInputSubmit = event => {
     event.preventDefault();
-    if (this.state.answer === securityQuestions[this.state.questionNum].a) {
-      this.setState({ answer: '', inputError: false, questionNum: this.state.questionNum + 1 });
+    if (securityQuestions[this.state.questionNum].match(this.state.answer)) {
+      this.setState({ answer: '', inputError: false,
+      errorString: 'Sorry, that’s incorrect. Please try again.',
+        questionNum: this.state.questionNum + 1, attempts: 0 });
     } else {
-      this.setState({ answer: '', inputError: true });
+      const updatedAttempts = this.state.attempts + 1;
+      this.setState({ answer: '', inputError: true, attempts: updatedAttempts });
+      if (updatedAttempts > 2) {
+        this.setState({ inputError: true, errorString: securityQuestions[this.state.questionNum].hint })
+      }
     }
   }
 
