@@ -117,7 +117,7 @@ export const allLessons = [
     },
     { 
       slide: <Typography><span class='insn'>Type a 4-digit password</span> (or
-        press Randomize to generate one automatically), and then <span
+        press Randomize to generate one automatically), and <span
         class='insn'>press Submit!</span></Typography>,
       input: true,
       inputType: 'num',
@@ -349,7 +349,7 @@ export const allLessons = [
         Instagram posts, so let’s see if we can social engineer the answers by 
         doing a little research! <span class='insn'>Try looking through
         Jason’s Instagram posts to answer the security questions for his
-        acocunt.</span>
+        account.</span>
         </Typography>,
       input: true,
       slideAdd: (count, setCount) => {
@@ -369,7 +369,7 @@ export const allLessons = [
         that anyone with access to his Instagram could answer. <br/> However,
         hackers can socially engineer information in other ways. For example,
         they can use fraudulent phone calls, emails, or texts impersonating
-        someone you trust (like your bank or maybe a coworker). <span
+        someone you trust (like your bank or maybe a co-worker). <span
         class='takeaway'>Always be wary of your online security, and be
         cautious when providing someone with your private
         credentials.</span></Typography>,
