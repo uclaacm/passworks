@@ -423,8 +423,8 @@ export const allLessons = [
         at the top. We hope you enjoyed your time and learned something useful!
         <br/><br/> made with <FavoriteIcon style={{ fontSize: '1.2em', color:
         'red', verticalAlign: 'top' }}/> by <a
-        href='https://teachla.uclaacm.com' target="_blank" rel="noopener
-        noreferrer">ACM Teach LA</a>'s dev team <a
+        href='https://teachla.uclaacm.com' target="_blank" 
+        rel="noopener noreferrer">ACM Teach LA</a>'s dev team <a
         href='https://github.com/uclaacm/passworks' target="_blank"
         rel="noopener noreferrer"> <GitHubIcon style={{ fontSize: '1.2em',
         verticalAlign: 'top' }}/> </a>
