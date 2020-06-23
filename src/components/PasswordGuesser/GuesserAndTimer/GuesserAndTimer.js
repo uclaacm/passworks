@@ -61,7 +61,7 @@ export default function GuesserAndTimer(props) {
       <Box className={classes.counter}>
         <div>{countUp1}</div>
       </Box>
-      <Button disableRipple onClick={start} variant='outlined' className={classes.start}>
+      <Button disableRipple onClick={start} variant='contained' disableElevation>
         Start
       </Button>
       <Box className={classes.timer}>

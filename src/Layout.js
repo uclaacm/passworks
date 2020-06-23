@@ -46,17 +46,24 @@ const overwrittenTheme = responsiveFontSizes(createMuiTheme({
 				color: '#F89C12',
 				border: '2px solid #F89C12',
 				'&:hover': {
-					background: '#F89C12',
-					color: 'white'
-				},
-				'&:active': {
-					background: 'black',
-					border: '2px solid black'
+					border: '2px solid #A1D900',
+					color: '#A1D900',
+					backgroundColor: 'white'
 				},
 				'&:disabled': {
 					borderRadius: '4px',
 					color: '#A1D900',
 					border: '2px solid #A1D900'
+				},
+			},
+			contained: {
+				boxShadow: 'none',
+				color: 'white',
+				backgroundColor: '#F89C12',
+				'&:hover': {
+					backgroundColor: '#A1D900',
+					color: 'white',
+					boxShadow: 'none'
 				}
 			}
 		}

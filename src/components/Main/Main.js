@@ -15,7 +15,7 @@ const useStyles = theme => ({
 	lessonName: {
 		color: theme.palette.primary.main,
 		textAlign: 'center',
-		padding: '20px 0px'
+		padding: '10px 0px 20px'
 	},
 	inputText: {
 		margin: '4px',
@@ -116,9 +116,7 @@ class Main extends React.Component {
 			}
       return (
 				<>
-					<Typography variant='body1' style={{ textAlign: 'center' }}>
-						{item.slide}
-					</Typography>
+					{item.slide}
 					{extraContent}
 				</>
 			);
@@ -140,7 +138,7 @@ class Main extends React.Component {
 		const lessonButtons = allLessons.map((lesson, i) => {
 			return (
 				<React.Fragment key={i}>
-					<Button variant='outlined' size='small' 
+					<Button variant='outlined' size='small' disableRipple
 						className={i === this.state.lessonNum ? classes.selectedLesson : null}
 						disabled={i === this.state.lessonNum ? true : false}
 						onClick={() => {
@@ -175,7 +173,7 @@ class Main extends React.Component {
 			if ('defaultInput' in allLessons[this.state.lessonNum][this.state.count]) {
 				randomButton = (
 					<Button
-						disableRipple variant='outlined'
+						disableRipple variant='contained' disableElevation
 						onClick={() => this.setState({ value: allLessons[this.state.lessonNum][this.state.count].defaultInput() })}
 					>
 						Randomize
@@ -201,8 +199,9 @@ class Main extends React.Component {
 		return (
 			<Container maxWidth='lg'>
 				<Box display='flex' flexDirection='column' alignItems='center'>
+					{this.renderNavBar(classes)}
 					{this.renderLessonName(classes)}
-					<Grid 
+					<Grid
 						container
 						spacing={3}
 						alignItems='center'
@@ -216,7 +215,6 @@ class Main extends React.Component {
 							{this.renderLessonText()}
 						</Grid>
 					</Grid>
-					{this.renderNavBar(classes)}
 				</Box>
 			</Container>
 		);

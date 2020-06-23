@@ -21,7 +21,7 @@ export default function Comparison(props) {
     return (
       <>
         <Typography variant='h6'>
-          What's the relationship between password length and number of possible
+          What’s the relationship between password length and number of possible
           passwords?
         </Typography>
         <Divider style={{ padding: 1, margin: 4 }} light />
@@ -43,7 +43,7 @@ export default function Comparison(props) {
         </Typography>
         <Divider style={{ padding: 1, margin: 4 }} light />
         <Typography>
-          Thus, increasing the password's length by {props.inputLength - 4} increases the
+          Thus, increasing the password’s length by {props.inputLength - 4} increases the
           number of possible passwords by<br/>
           {morePasswords} - {lessPasswords} = {morePasswords - lessPasswords}
         </Typography>
@@ -56,7 +56,7 @@ export default function Comparison(props) {
     return (
       <>
         <Typography variant='h6'>
-          What's the relationship between password length and number of possible
+          What’s the relationship between password length and number of possible
           passwords?
         </Typography>
         <Divider style={{ padding: 1, margin: 4 }} light />
