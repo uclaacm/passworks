@@ -136,7 +136,9 @@ class Main extends React.Component {
 
 	renderNavBar = classes => {
 		const lessonButtons = allLessons.map((lesson, i) => {
+			const noButton = i === 0 || i === allLessons.length - 1;
 			return (
+				noButton ? null : 
 				<React.Fragment key={i}>
 					<Button variant='outlined' size='small' disableRipple
 						className={i === this.state.lessonNum ? classes.selectedLesson : null}
@@ -146,7 +148,7 @@ class Main extends React.Component {
 							this.setState({ userInput: '', value: '', inputLength: 0 })}}>
 							{lesson[0].title}
 					</Button>
-					{i === allLessons.length - 1 ? null : <TrendingFlatIcon className={classes.arrowIcon}/>}
+					{i === allLessons.length - 2 ? null : <TrendingFlatIcon className={classes.arrowIcon}/>}
 				</React.Fragment>
 			);
 		});

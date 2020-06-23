@@ -246,6 +246,10 @@ th, td {
 
 .insn {
   background: linear-gradient(180deg,rgba(255,255,255,0) 10%, #ffdbec 10%);
-  /* font-weight: 500; */
-  /* text-decoration: solid underline #ff3b96; */
+}
+
+a {
+  color: black;
+  font-weight: 550;
+  text-decoration: none;
 }
