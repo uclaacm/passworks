@@ -42,7 +42,7 @@ export default function PasswordGuesser(props) {
 
   if (props.inputType === 'num') {
     genEnd = parseInt(props.userInput, 10);
-    speed = 500000;
+    speed = 100000;
     decimals = 5;
     duration = genEnd / speed;
     genFormattingFn = num => {
@@ -78,7 +78,7 @@ export default function PasswordGuesser(props) {
 
   var speedStr;
   if (props.inputType === 'num') {
-    speedStr = '500,000';
+    speedStr = '100,000';
   } else {
     speedStr = '10,000';
   }
