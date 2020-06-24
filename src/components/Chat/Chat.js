@@ -17,9 +17,9 @@ const useStyles = makeStyles({
 export default function Chat(props) {
   const classes = useStyles();
 
-  const chatMessages = props.messages.map(message => {
+  const chatMessages = props.messages.map((message, i) => {
     return (
-      <div className={message.type + ' messages'}>
+      <div className={message.type + ' messages'} key={i}>
         <div className={'message ' + message.pos}>
           <Typography variant='body1' className={classes.textMessage}>
             {message.contents}
@@ -40,7 +40,7 @@ export default function Chat(props) {
         </Box>
         <Divider style={{ marginTop: 5, marginBottom: 5}}></Divider>
         <FadeIn
-          delay={1000}
+          delay={1400}
           transitionDuration={1000}
         >
           {chatMessages}
