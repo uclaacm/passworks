@@ -17,9 +17,9 @@ const useStyles = makeStyles({
 export default function Chat(props) {
   const classes = useStyles();
 
-  const chatMessages = props.messages.map((message, i) => {
+  const chatMessages = props.messages.map(message => {
     return (
-      <div className={message.type + ' messages'} key={i}>
+      <div className={message.type + ' messages'}>
         <div className={'message ' + message.pos}>
           <Typography variant='body1' className={classes.textMessage}>
             {message.contents}
@@ -47,5 +47,5 @@ export default function Chat(props) {
         </FadeIn>
       </div>
     </div>
-  )
+  );
 }

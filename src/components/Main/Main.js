@@ -140,7 +140,7 @@ class Main extends React.Component {
 			return (
 				noButton ? null : 
 				<React.Fragment key={i}>
-					<Button variant='outlined' size='small' disableRipple
+					<Button variant='outlined' disableRipple
 						className={i === this.state.lessonNum ? classes.selectedLesson : null}
 						disabled={i === this.state.lessonNum ? true : false}
 						onClick={() => {

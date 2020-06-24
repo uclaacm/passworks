@@ -227,7 +227,7 @@ export const allLessons = [
           { type: 'sent', pos: '', contents: <>alright, i guess i should make
             my passwords longer</> },
           { type: 'sent', pos: 'last', contents: <>any other tips??</>},
-          { type: 'rec', pos: '', contents: <>pLeasE iNcluDe aT lEAst 1 caPitaL
+          { type: 'rec', pos: 'last', contents: <>pLeasE iNcluDe aT lEAst 1 caPitaL
             LeTTer aND 1 sYMbol iN yOUr PasSWorD</> },
           { type: 'sent', pos: 'last', contents: <>ugh</> },
           { type: 'rec', pos: 'last', contents: <>but for real though</> },
@@ -315,7 +315,7 @@ export const allLessons = [
           { type: 'rec', pos: '', contents: <>ok hold ur horses</> },
           { type: 'rec', pos: 'last', contents: <>also why did you text it to me??</> },
           { type: 'sent', pos: '', contents: <>uh...</> },
-          { type: 'sent', pos: '', contents: <>hehe oops</> }
+          { type: 'sent', pos: 'last', contents: <>hehe oops</> }
         ]}
       />
     },

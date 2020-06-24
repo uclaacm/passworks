@@ -1,5 +1,5 @@
 import React from 'react';
-import TextSlide from '../TextSlide/TextSlide.js';
+import TextSlide from './TextSlide/TextSlide.js';
 import { allLessons } from '../../constants/lessons';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
