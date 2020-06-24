@@ -80,6 +80,13 @@ const comparison = (type, inputLength) => {
   );
 }
 
+var chatKey = 0;
+
+const getChatKey = () => {
+  chatKey++;
+  return chatKey
+}
+
 /** keys and fields:
  *  slide: the text that should appear
  *  input: true if slide requires user input
@@ -102,8 +109,8 @@ export const allLessons = [
         attacks than short passwords.</Typography>,
       topContent: true,
       phoneContent: () => <Chat 
-        messages={
-        [
+        key={getChatKey()}
+        messages={[
           { type: 'sent', pos: 'last', contents: <>help</> },
           { type: 'rec', pos: '', contents: <>yo</> },
           { type: 'rec', pos: 'last', contents: <>what’s up?</> },
@@ -189,12 +196,12 @@ export const allLessons = [
         symbols in your passwords. </Typography>,
       topContent: true,
       phoneContent: () => <Chat 
-      messages={
-        [
+        key={getChatKey()}
+        messages={[
           { type: 'sent', pos: '', contents: <>alright, i guess i should make
             my passwords longer</> },
           { type: 'sent', pos: 'last', contents: <>any other tips??</>},
-          { type: 'rec', pos: '', contents: <>pLeasE iNcluDe aT lEAst 1 caPitaL
+          { type: 'rec', pos: 'last', contents: <>pLeasE iNcluDe aT lEAst 1 caPitaL
             LeTTer aND 1 sYMbol iN yOUr PasSWorD</> },
           { type: 'sent', pos: 'last', contents: <>ugh</> },
           { type: 'rec', pos: 'last', contents: <>but for real though</> },
@@ -273,8 +280,8 @@ export const allLessons = [
         accounts.</Typography>,
       topContent: true,
       phoneContent: () => <Chat 
-      messages={
-        [
+        key={getChatKey()}
+        messages={[
           { type: 'sent', pos: '', contents: <>ok i’ve come up with a great password</> },
           { type: 'sent', pos: '', contents: <>it has a capital letter AND a number, and it isn’t super short</>},
           { type: 'sent', pos: 'last', contents: <>Password1</>},
@@ -282,7 +289,7 @@ export const allLessons = [
           { type: 'rec', pos: '', contents: <>ok hold ur horses</> },
           { type: 'rec', pos: 'last', contents: <>also why did you text it to me??</> },
           { type: 'sent', pos: '', contents: <>uh...</> },
-          { type: 'sent', pos: '', contents: <>hehe oops</> }
+          { type: 'sent', pos: 'last', contents: <>hehe oops</> }
         ]}
       />
     },
@@ -305,16 +312,16 @@ export const allLessons = [
         </span></Typography>,
       topContent: true,
       phoneContent: () => <Chat
-        messages={
-          [
-            { type: 'sent', pos: '', contents: <>i guess i should be careful to make my passwords more unique...</> },
-            { type: 'sent', pos: 'last', contents: <>apparently Password1 is pretty commonly used</> },
-            { type: 'rec', pos: '', contents: <>yeah</>},
-            { type: 'rec', pos: '', contents: <>also, a little piece of advice...</>},
-            { type: 'rec', pos: 'last', contents: <>don’t tell people your passwords!!!!</>},
-            { type: 'sent', pos: 'last', contents: <>i would never do such a thing :)</>},
-            { type: 'rec', pos: 'last', contents: <>...</>}
-          ]}
+        key={getChatKey()}
+        messages={[
+          { type: 'sent', pos: '', contents: <>i guess i should be careful to make my passwords more unique...</> },
+          { type: 'sent', pos: 'last', contents: <>apparently Password1 is pretty commonly used</> },
+          { type: 'rec', pos: '', contents: <>yeah</>},
+          { type: 'rec', pos: '', contents: <>also, a little piece of advice...</>},
+          { type: 'rec', pos: 'last', contents: <>don’t tell people your passwords!!!!</>},
+          { type: 'sent', pos: 'last', contents: <>i would never do such a thing :)</>},
+          { type: 'rec', pos: 'last', contents: <>...</>}
+        ]}
       />
     }
   ],
@@ -329,8 +336,8 @@ export const allLessons = [
         hacking into other people’s accounts.</Typography>,
       topContent: true,
       phoneContent: () => <Chat 
-      messages={
-        [
+        key={getChatKey()}
+        messages={[
           { type: 'rec', pos: 'last', contents: <>hey, how ya doin?</> },
           { type: 'sent', pos: 'last', contents: <>i’m good, what’s up?</>},
           { type: 'rec', pos: '', contents: <>i’m trying to convince my friend jason
@@ -375,8 +382,8 @@ export const allLessons = [
         credentials.</span></Typography>,
       topContent: true,
       phoneContent: () => <Chat 
-      messages={
-        [
+        key={getChatKey()}
+        messages={[
           { type: 'sent', pos: 'last', contents: <>i’m in, hackerman</> },
           { type: 'rec', pos: '', contents: <>ayyy</> },
           { type: 'rec', pos: 'last', contents: <>how was it?</> },
@@ -388,27 +395,4 @@ export const allLessons = [
       />
     }
   ]
-  // [
-  //   {
-  //     title: <>The End</>,
-  //     slide: <Typography>You completed our Passworks lessons! If you’d like to
-  //       replay one of the lessons, click the lesson name in the navigation bar
-  //       at the top. We hope you enjoyed your time and learned something useful!
-  //       <br/><br/> made with <FavoriteIcon style={{ fontSize: '1.2em', color:
-  //       'red', verticalAlign: 'top' }}/> by <a
-  //       href='https://teachla.uclaacm.com' target="_blank" 
-  //       rel="noopener noreferrer">ACM Teach LA</a>'s dev team <a
-  //       href='https://github.com/uclaacm/passworks' target="_blank"
-  //       rel="noopener noreferrer"> <GitHubIcon style={{ fontSize: '1.2em',
-  //       verticalAlign: 'top' }}/> </a>
-  //     </Typography>,
-  //     topContent: true,
-  //     phoneContent: () => <Chat
-  //       messages={[
-  //         { type: 'rec', pos: '', contents: <>it was nice chatting with you!</> },
-  //         { type: 'rec', pos: 'last', contents: <>see ya later :)</> }
-  //       ]}
-  //     />
-  //   }
-  // ]
 ];
