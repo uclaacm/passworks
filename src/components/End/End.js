@@ -41,31 +41,31 @@ const cards = [
   {
     title: `Go Long`,
     description: `Make sure your passwords aren’t too short`,
-    img: <LengthImg width='90%' height='auto' style={{ padding: '10px' }}/>
+    img: <LengthImg width='90%' height='90%' style={{ padding: '10px' }}/>
   },
   {
     title: `Don’t be Basic`,
     description: `Avoid using common or easy-to-guess passwords`,
-    img: <CommonImg width='90%' height='auto' style={{ padding: '10px' }}/>
+    img: <CommonImg width='90%' height='90%' style={{ padding: '10px' }}/>
   },
   {
     title: `Spice it Up`,
     description: `Include a variety of characters in your passwords`,
-    img: <SpiceImg width='90%' height='auto' style={{ padding: '10px' }}/>
+    img: <SpiceImg width='90%' height='90%' style={{ padding: '10px' }}/>
   },
   {
     title: `Be Cautious`,
     description: `Always be wary when sharing your personal information with others`,
-    img: <PersonalImg width='90%' height='auto' style={{ padding: '10px' }}/>
+    img: <PersonalImg width='90%' height='90%' style={{ padding: '10px' }}/>
   }
 ];
 
 export default function End() {
   const classes = useStyles();
 
-  const cardItems = cards.map(item => {
+  const cardItems = cards.map((item, i) => {
     return (
-      <Grid item sm={6} md={3}>
+      <Grid item sm={6} md={3} key={i}>
         <Paper elevation={0} variant='outlined' className={classes.paper}>
           <Typography className={classes.subtitle}>{item.title}</Typography>
           {item.img}
@@ -76,12 +76,12 @@ export default function End() {
         </Paper>
       </Grid>
     )
-  })
+  });
 
   return (
     <Container maxWidth='lg' id='EndSection'>
-      <section class='hero is-fullheight'>
-        <div class='hero-body'>
+      <section className='hero is-fullheight'>
+        <div className='hero-body'>
           <div>
               <Typography className={classes.header}>
                 To recap, you’ve learned four important things about password security:

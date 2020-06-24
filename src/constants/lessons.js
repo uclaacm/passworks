@@ -95,7 +95,7 @@ export const allLessons = [
     {
       title: <>Lesson 1: Password Length</>,
       slide: <Typography>First, let’s learn about why long passwords are more secure
-        than short passwords! Password guessers often use <span class='vocab'>
+        than short passwords! Password guessers often use <span className='vocab'>
         brute force</span> techniques to break into accounts by checking all
         possible passwords until the right one is found. In this lesson, we’ll
         demonstrate how long passwords are less susceptible to brute force
@@ -116,9 +116,9 @@ export const allLessons = [
       />
     },
     { 
-      slide: <Typography><span class='insn'>Type a 4-digit password</span> (or
+      slide: <Typography><span className='insn'>Type a 4-digit password</span> (or
         press Randomize to generate one automatically), and <span
-        class='insn'>press Submit!</span></Typography>,
+        className='insn'>press Submit!</span></Typography>,
       input: true,
       inputType: 'num',
       inputDesc: '4 digits',
@@ -128,7 +128,7 @@ export const allLessons = [
       phoneContent: inputForm
     },
     {
-      slide: <Typography><span class='insn'>Press Start</span> to see how long 
+      slide: <Typography><span className='insn'>Press Start</span> to see how long 
         it takes for a brute force password guesser to generate your 4-digit 
         password!</Typography>,
       usesInput: true,
@@ -138,7 +138,7 @@ export const allLessons = [
     },
     {
       slide: <Typography>Wow, that was really fast! Now let’s try using
-        a longer password! <span class='insn'>Enter a password consisting of 
+        a longer password! <span className='insn'>Enter a password consisting of 
         6–12 digits.</span></Typography>,
       input: true,
       inputType: 'num',
@@ -152,7 +152,7 @@ export const allLessons = [
       phoneContent: inputForm
     },
     { 
-      slide: <Typography><span class='insn'>Press Start</span> to see how long
+      slide: <Typography><span className='insn'>Press Start</span> to see how long
         it takes for the password generator to guess your longer password! This 
         might take a while, so feel free to click the next button if you don’t
         want to wait.</Typography>,
@@ -165,7 +165,7 @@ export const allLessons = [
       slide: <Typography>Depending on exactly which numbers you picked for your
         passwords, you should have noticed that the longer password took much
         more time to crack than the 4-digit password! <br/> <span
-        class='takeaway'>There are other password-guessing techniques that are
+        className='takeaway'>There are other password-guessing techniques that are
         more effective for guessing long passwords, but short passwords can be
         very easily cracked with a simple brute-force technique. So, it’s
         important to make sure your passwords aren’t too
@@ -202,7 +202,7 @@ export const allLessons = [
       />
     },
     { 
-      slide: <Typography><span class='insn'>Submit a lowercase 6-letter
+      slide: <Typography><span className='insn'>Submit a lowercase 6-letter
         password using only the first 6 letters of the alphabet (a b c d e
         f)</span>, and we’ll see how long it takes for the computer to guess
         it!</Typography>,
@@ -215,7 +215,7 @@ export const allLessons = [
       phoneContent: inputForm
     },
     { 
-      slide: <Typography><span class='insn'>Press Start</span> to see how long 
+      slide: <Typography><span className='insn'>Press Start</span> to see how long 
         it takes for a computer to guess your 6-letter lowercase password!
         </Typography>,
       usesInput: true,
@@ -225,7 +225,7 @@ export const allLessons = [
     },
     { 
       slide: <Typography>Now, let’s try adding some variety to our password by
-        including uppercase letters. <span class='insn'> Submit another
+        including uppercase letters. <span className='insn'> Submit another
         6-letter password, this time mixing lowercase and uppercase letters (a
         b c d e f A B C D E F). Include at least two uppercase
         letters!</span></Typography>,
@@ -243,7 +243,7 @@ export const allLessons = [
       phoneContent: inputForm
     },
     { 
-      slide: <Typography><span class='insn'>Press Start</span> to see how long
+      slide: <Typography><span className='insn'>Press Start</span> to see how long
         it takes for a computer to guess your 6-letter mixed-case
         password!</Typography>,
       usesInput: true,
@@ -254,7 +254,7 @@ export const allLessons = [
     {
       slide: <Typography>Hopefully, you saw that your mixed-case password took
         longer for the brute force password guesser to generate! <span
-        class='takeaway'>When you use more symbols in your password, it’s
+        className='takeaway'>When you use more symbols in your password, it’s
         harder to use brute force to crack it because the guesser has to try
         more combinations. So, you should try to include a variety of
         different types of characters in your passwords.</span></Typography>,
@@ -288,7 +288,7 @@ export const allLessons = [
     },
     { 
       slide: <Typography>We have a list of the top 10,000 most commonly used
-        passwords. <span class='insn'>Try submitting different passwords (of 4 or
+        passwords. <span className='insn'>Try submitting different passwords (of 4 or
         more characters)</span> and we’ll check if they’re in the list or not.
         <br /> Not sure what to submit? Try foods, animals, hobbies, numbers,
         your name, etc.</Typography>,
@@ -298,7 +298,7 @@ export const allLessons = [
       slide: <Typography>It’s a good sign if your password isn’t in the list, but
         it still may not be secure. There are much longer lists on the internet 
         containing millions of common passwords that hackers can use to break
-        into accounts.<br/><span class='takeaway'>It’s crucial to make unique
+        into accounts.<br/><span className='takeaway'>It’s crucial to make unique
         passwords that other people wouldn’t think of. You should also use
         different passwords for each of your accounts. Otherwise, one account
         getting hacked would mean that <em>all</em> of your accounts are hacked.
@@ -322,7 +322,7 @@ export const allLessons = [
     {
       title: <>Lesson 4: Social Engineering</>,
       slide: <Typography>In this lesson, we’ll learn about <span
-        class='vocab'> social engineering</span>. Social engineering can take
+        className='vocab'> social engineering</span>. Social engineering can take
         on many forms, one of which is digging into someone’s personal 
         information to gain access to their accounts.<br/> Note: This
         demonstration is for educational purposes only. We do not condone
@@ -347,7 +347,7 @@ export const allLessons = [
         Hackerman already gave us Jason’s username and password, but we 
         need to answer some security questions!<br/> Luckily, we have access to his
         Instagram posts, so let’s see if we can social engineer the answers by 
-        doing a little research! <span class='insn'>Try looking through
+        doing a little research! <span className='insn'>Try looking through
         Jason’s Instagram posts to answer the security questions for his
         account.</span>
         </Typography>,
@@ -370,7 +370,7 @@ export const allLessons = [
         hackers can socially engineer information in other ways. For example,
         they can use fraudulent phone calls, emails, or texts impersonating
         someone you trust (like your bank or maybe a co-worker). <span
-        class='takeaway'>Always be wary of your online security, and be
+        className='takeaway'>Always be wary of your online security, and be
         cautious when providing someone with your private
         credentials.</span></Typography>,
       topContent: true,

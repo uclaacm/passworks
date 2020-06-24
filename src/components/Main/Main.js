@@ -197,8 +197,8 @@ class Main extends React.Component {
 		}
 
 		return (
-			<section class='hero is-fullheight'>
-				<div class='hero-body'>
+			<section className='hero is-fullheight'>
+				<div className='hero-body'>
 					<Container maxWidth='lg' id='MainSection'>
 						<Box display='flex' flexDirection='column' alignItems='center'>
 							{this.renderNavBar(classes)}

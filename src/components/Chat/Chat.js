@@ -16,9 +16,9 @@ const useStyles = makeStyles({
 export default function Chat(props) {
   const classes = useStyles();
 
-  const chatMessages = props.messages.map(message => {
+  const chatMessages = props.messages.map((message, i) => {
     return (
-      <div className={message.type + ' messages'}>
+      <div className={message.type + ' messages'} key={i}>
         <div className={'message ' + message.pos}>
           <Typography variant='body1' className={classes.textMessage}>
             {message.contents}

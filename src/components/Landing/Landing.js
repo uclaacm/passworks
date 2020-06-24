@@ -33,8 +33,8 @@ export default function Landing() {
 
   return (
     <Container maxWidth='lg'>
-      <section class='hero is-fullheight'>
-        <div class='hero-body'>
+      <section className='hero is-fullheight'>
+        <div className='hero-body'>
           <div>
             <Typography variant='h1' component='h1' className={classes.title}>
               Passworks
@@ -48,7 +48,7 @@ export default function Landing() {
               Start
             </Button>
           </div>
-          <LandingImg className={classes.img} height='auto' width='auto'/>
+          <LandingImg className={classes.img} height='100%' width='100%'/>
         </div>
       </section>
     </Container>
