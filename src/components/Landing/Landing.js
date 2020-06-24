@@ -2,7 +2,8 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Button from '@material-ui/core/Button';
-import { Container } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
+import { ReactComponent as LandingImg } from './landing-img.svg';
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -19,6 +20,11 @@ const useStyles = makeStyles(theme => ({
   start: {
     fontSize: '2rem',
     padding: '10px 40px'
+  },
+  img: {
+    [theme.breakpoints.down('sm')]: {
+      width: 0
+    }
   }
 }));
 
@@ -26,10 +32,10 @@ export default function Landing() {
   const classes = useStyles();
 
   return (
-    <Container maxWidth='md'>
+    <Container maxWidth='lg'>
       <section class='hero is-fullheight'>
         <div class='hero-body'>
-          <div class="container has-text-centered">
+          <div>
             <Typography variant='h1' component='h1' className={classes.title}>
               Passworks
             </Typography>
@@ -42,6 +48,7 @@ export default function Landing() {
               Start
             </Button>
           </div>
+          <LandingImg className={classes.img} height='auto' width='auto'/>
         </div>
       </section>
     </Container>
