@@ -1,26 +1,8 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .main-container {
   display: inline-block;
   justify-content: space-between;
   width: 100%;
   margin: auto;
-}
-
-.item {
-  flex-grow: 1;
 }
 
 .phone-bezel {
@@ -223,19 +205,6 @@ code {
   border-bottom-left-radius: 10px;
 }
 
-p {
-  text-align: left;
-}
-
-table {
-  text-align: left;
-  position: relative;
-}
-
-th, td {
-  padding: 4px 30px 4px;
-}
-
 .takeaway {
   background: linear-gradient(180deg,rgba(255,255,255,0) 10%, #ffdcc4 10%);
 }
@@ -252,4 +221,32 @@ a {
   color: black;
   font-weight: 550;
   text-decoration: none;
+}
+
+.hero {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-body {
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.hero.is-fullheight .hero-body {
+  align-items: center;
+  display: flex;
+}
+
+.hero.is-fullheight .hero-body > .container {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.hero.is-fullheight {
+  min-height: 100vh;
 }

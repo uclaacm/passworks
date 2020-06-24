@@ -1,12 +1,13 @@
 import React from 'react';
-import './App.css';
 import Layout from './Layout.js';
 
-import Main from './components/Main/Main';
+import Main from './components/Main/Main.js';
+import Landing from './components/Landing/Landing.js';
 
 function App() {
   return (
     <Layout>
+      <Landing />
       <Main />
     </Layout>
   );
