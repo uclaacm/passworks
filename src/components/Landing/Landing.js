@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
   start: {
     fontSize: '2rem',
-    padding: '10px 40px'
+    padding: '4px 40px'
   },
   img: {
     [theme.breakpoints.down('sm')]: {
@@ -40,9 +40,9 @@ export default function Landing() {
               Passworks
             </Typography>
             <Typography variant='body1' component='h2' className={classes.subtitle}>
-              what makes a good password? more importantly, what makes a bad password?
-              in this mini-lesson, we’ll teach you about various aspects of password
-              security. we hope you have fun and learn something! 
+              What makes a good password? More importantly, what makes a bad password?
+              In this mini-lesson, we’ll teach you about various aspects of password
+              security. Are you ready?
             </Typography>
             <Button variant='contained' href='#MainSection' className={classes.start}>
               Start

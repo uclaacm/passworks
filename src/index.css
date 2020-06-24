@@ -235,18 +235,15 @@ a {
   flex-shrink: 0;
   padding: 3rem 1.5rem;
   text-align: center;
-}
-
-.hero.is-fullheight .hero-body {
   align-items: center;
   display: flex;
-}
-
-.hero.is-fullheight .hero-body > .container {
-  flex-grow: 1;
-  flex-shrink: 1;
+  justify-content: center;
 }
 
 .hero.is-fullheight {
   min-height: 100vh;
+}
+
+p {
+  text-align: left;
 }

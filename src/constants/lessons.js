@@ -9,9 +9,6 @@ import Browser from '../components/Browser/Browser.js';
 import Comparison from '../components/Comparison/Comparison.js';
 import Chat from '../components/Chat/Chat.js';
 
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import GitHubIcon from '@material-ui/icons/GitHub';
-
 import withStyles from '@material-ui/core/styles/withStyles';
 
 const Typography = withStyles(theme => ({
@@ -94,30 +91,6 @@ const comparison = (type, inputLength) => {
  *  phoneContent: what to render on the phone
  */
 export const allLessons = [
-  [
-    {
-      title: <>Welcome</>,
-      slide: <Typography>Hello! Welcome to Passworks, a series of lessons
-        designed to teach you about password security. Our mysterious friend,
-        Hackerman, will introduce you to each of our lessons. We hope you have
-        fun and learn something! <span class='insn'>Click Next Lesson</span> to
-        get started!</Typography>,
-      topContent: true,
-      phoneContent: () => <Chat
-        messages={
-          [
-            { type: 'rec', pos: 'last', contents: <>hey, i’m Hackerman </> },
-            { type: 'sent', pos: 'sent', contents: <>is that your real
-              name??</> },
-            { type: 'rec', pos: '', contents: <>uhh... no</> },
-            { type: 'rec', pos: 'last', contents: <>it’s an alias</> },
-            { type: 'sent', pos: '', contents: <>oh ok</> }, 
-            { type: 'sent', pos: 'last', contents: <>well, it’s nice to meet
-              you!</> },
-          ]}
-      />
-    }
-  ],
   [
     {
       title: <>Lesson 1: Password Length</>,
@@ -414,28 +387,28 @@ export const allLessons = [
         ]}
       />
     }
-  ],
-  [
-    {
-      title: <>The End</>,
-      slide: <Typography>You completed our Passworks lessons! If you’d like to
-        replay one of the lessons, click the lesson name in the navigation bar
-        at the top. We hope you enjoyed your time and learned something useful!
-        <br/><br/> made with <FavoriteIcon style={{ fontSize: '1.2em', color:
-        'red', verticalAlign: 'top' }}/> by <a
-        href='https://teachla.uclaacm.com' target="_blank" 
-        rel="noopener noreferrer">ACM Teach LA</a>'s dev team <a
-        href='https://github.com/uclaacm/passworks' target="_blank"
-        rel="noopener noreferrer"> <GitHubIcon style={{ fontSize: '1.2em',
-        verticalAlign: 'top' }}/> </a>
-      </Typography>,
-      topContent: true,
-      phoneContent: () => <Chat
-        messages={[
-          { type: 'rec', pos: '', contents: <>it was nice chatting with you!</> },
-          { type: 'rec', pos: 'last', contents: <>see ya later :)</> }
-        ]}
-      />
-    }
   ]
+  // [
+  //   {
+  //     title: <>The End</>,
+  //     slide: <Typography>You completed our Passworks lessons! If you’d like to
+  //       replay one of the lessons, click the lesson name in the navigation bar
+  //       at the top. We hope you enjoyed your time and learned something useful!
+  //       <br/><br/> made with <FavoriteIcon style={{ fontSize: '1.2em', color:
+  //       'red', verticalAlign: 'top' }}/> by <a
+  //       href='https://teachla.uclaacm.com' target="_blank" 
+  //       rel="noopener noreferrer">ACM Teach LA</a>'s dev team <a
+  //       href='https://github.com/uclaacm/passworks' target="_blank"
+  //       rel="noopener noreferrer"> <GitHubIcon style={{ fontSize: '1.2em',
+  //       verticalAlign: 'top' }}/> </a>
+  //     </Typography>,
+  //     topContent: true,
+  //     phoneContent: () => <Chat
+  //       messages={[
+  //         { type: 'rec', pos: '', contents: <>it was nice chatting with you!</> },
+  //         { type: 'rec', pos: 'last', contents: <>see ya later :)</> }
+  //       ]}
+  //     />
+  //   }
+  // ]
 ];
