@@ -2,7 +2,8 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { Divider } from '@material-ui/core';
+import Divider from '@material-ui/core/Divider';
+import FadeIn from 'react-fade-in';
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
@@ -38,7 +39,12 @@ export default function Chat(props) {
           </Typography>
         </Box>
         <Divider style={{ marginTop: 5, marginBottom: 5}}></Divider>
-        {chatMessages}
+        <FadeIn
+          delay={1000}
+          transitionDuration={1000}
+        >
+          {chatMessages}
+        </FadeIn>
       </div>
     </div>
   )
