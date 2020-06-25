@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -12,6 +12,7 @@ import { ReactComponent as CommonImg } from './common.svg';
 import { ReactComponent as LengthImg } from './length.svg';
 import { ReactComponent as SpiceImg } from './spice.svg';
 import { ReactComponent as PersonalImg } from './personal.svg';
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   header: {
@@ -27,13 +28,6 @@ const useStyles = makeStyles(theme => ({
     fontFamily: theme.typography.fontFamily,
     fontWeight: 600,
     padding: '10px 0px 5px'
-  },
-  start: {
-    fontSize: '2rem',
-    padding: '10px 40px'
-  },
-  paper: {
-    border: '2px solid black'
   }
 }));
 
@@ -65,15 +59,16 @@ export default function End() {
 
   const cardItems = cards.map((item, i) => {
     return (
-      <Grid item sm={6} md={3} key={i}>
-        <Paper elevation={0} variant='outlined' className={classes.paper}>
+      <Grid item xs={12} sm={6} md={3} key={i}>
+        <Box display='flex' flexDirection='column' justifyContent='space-between'
+          height='100%' borderRadius='7px' border='2px solid black'>
           <Typography className={classes.subtitle}>{item.title}</Typography>
-          {item.img}
+          <div>{item.img}</div>
           <Typography style={{ padding: '5px 10px 10px', wordWrap: 'break-word',
             textAlign: 'center' }}>
             {item.description}
           </Typography>
-        </Paper>
+        </Box>
       </Grid>
     )
   });
@@ -86,7 +81,7 @@ export default function End() {
               <Typography className={classes.header}>
                 To recap, you’ve learned four important things about password security:
               </Typography>
-              <Grid container spacing={2} alignItems='center' justify='center'>
+              <Grid container spacing={2}>
                 {cardItems}
               </Grid>
               <Typography variant='body1' style={{ textAlign: 'center', maxWidth: '800px',
