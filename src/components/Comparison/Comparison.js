@@ -78,7 +78,7 @@ export default function Comparison(props) {
         Thus, increasing the password’s length by {props.inputLength - 4} means
         that we can create
         <div className={classes.math}>
-          {morePasswords} - {lessPasswords} = {' '}
+          {morePasswords.toLocaleString('en')} - {lessPasswords.toLocaleString('en')}{' '}={' '}
           {(morePasswords - lessPasswords).toLocaleString('en')}
         </div>
         more passwords.
@@ -121,7 +121,8 @@ export default function Comparison(props) {
         Thus, including both lowercase and uppercase characters in our
         password means we can create
         <div className={classes.math}>
-          {morePasswords} - {lessPasswords}{' '}={' '}{(morePasswords - lessPasswords).toLocaleString('en')}
+          {morePasswords.toLocaleString('en')} - {lessPasswords.toLocaleString('en')}{' '}
+          ={' '}{(morePasswords - lessPasswords).toLocaleString('en')}
         </div>
         more passwords.
       </Typography>
