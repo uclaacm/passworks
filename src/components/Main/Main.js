@@ -136,9 +136,7 @@ class Main extends React.Component {
 
 	renderNavBar = classes => {
 		const lessonButtons = allLessons.map((lesson, i) => {
-			const noButton = i === 0 || i === allLessons.length - 1;
 			return (
-				noButton ? null : 
 				<React.Fragment key={i}>
 					<Button variant='outlined' disableRipple
 						className={i === this.state.lessonNum ? classes.selectedLesson : null}
@@ -148,7 +146,7 @@ class Main extends React.Component {
 							this.setState({ userInput: '', value: '', inputLength: 0 })}}>
 							{lesson[0].title}
 					</Button>
-					{i === allLessons.length - 2 ? null : <TrendingFlatIcon className={classes.arrowIcon}/>}
+					{i === allLessons.length - 1 ? null : <TrendingFlatIcon className={classes.arrowIcon}/>}
 				</React.Fragment>
 			);
 		});
@@ -199,26 +197,30 @@ class Main extends React.Component {
 		}
 
 		return (
-			<Container maxWidth='lg'>
-				<Box display='flex' flexDirection='column' alignItems='center'>
-					{this.renderNavBar(classes)}
-					{this.renderLessonName(classes)}
-					<Grid
-						container
-						spacing={3}
-						alignItems='center'
-						justify='center'
-					>
-						<Grid item sm={12} md={5}>
-							<Phone content={phoneContent}
-								topContent={allLessons[this.state.lessonNum][this.state.count].topContent}/>
-						</Grid>
-						<Grid item sm={8} md={5}>
-							{this.renderLessonText()}
-						</Grid>
-					</Grid>
-				</Box>
-			</Container>
+			<section className='hero is-fullheight'>
+				<div className='hero-body'>
+					<Container maxWidth='lg' id='MainSection'>
+						<Box display='flex' flexDirection='column' alignItems='center'>
+							{this.renderNavBar(classes)}
+							{this.renderLessonName(classes)}
+							<Grid
+								container
+								spacing={3}
+								alignItems='center'
+								justify='center'
+							>
+								<Grid item sm={12} md={5}>
+									<Phone content={phoneContent}
+										topContent={allLessons[this.state.lessonNum][this.state.count].topContent}/>
+								</Grid>
+								<Grid item sm={8} md={5}>
+									{this.renderLessonText()}
+								</Grid>
+							</Grid>
+						</Box>
+					</Container>
+				</div>
+			</section>
 		);
 	}
 }

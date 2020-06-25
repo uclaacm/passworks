@@ -13,7 +13,8 @@
     "react-dom": "^16.13.1",
     "react-fade-in": "^1.1.0",
     "react-helmet": "^6.1.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-visibility-sensor": "^5.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

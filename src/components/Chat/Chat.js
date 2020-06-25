@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Divider from '@material-ui/core/Divider';
 import FadeIn from 'react-fade-in';
+import VisibilitySensor from 'react-visibility-sensor';
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
@@ -17,9 +18,9 @@ const useStyles = makeStyles({
 export default function Chat(props) {
   const classes = useStyles();
 
-  const chatMessages = props.messages.map(message => {
+  const chatMessages = props.messages.map((message, i) => {
     return (
-      <div className={message.type + ' messages'}>
+      <div className={message.type + ' messages'} key={i}>
         <div className={'message ' + message.pos}>
           <Typography variant='body1' className={classes.textMessage}>
             {message.contents}
@@ -30,22 +31,24 @@ export default function Chat(props) {
   });
 
   return (
-    <div className="chat-container">
-      <div className="chat">
-        <Box display='flex' flexDirection='column' alignItems='center'>
-          <AccountCircleIcon style={{ marginTop: '-10', fontSize: '2.2em', color: '#b3b3b3' }}/>
-          <Typography variant='body1' style={{ textAlign: 'center' }}>
-            Hackerman
-          </Typography>
-        </Box>
-        <Divider style={{ marginTop: 5, marginBottom: 5}}></Divider>
-        <FadeIn
-          delay={1400}
-          transitionDuration={1000}
-        >
-          {chatMessages}
-        </FadeIn>
-      </div>
-    </div>
+    <VisibilitySensor>
+      {({isVisible}) =>
+        <div className="chat-container">
+          <div className="chat">
+            <Box display='flex' flexDirection='column' alignItems='center'>
+              <AccountCircleIcon style={{ marginTop: '-10', fontSize: '2.2em', color: '#b3b3b3' }}/>
+              <Typography variant='body1' style={{ textAlign: 'center' }}>
+                Hackerman
+              </Typography>
+            </Box>
+            <Divider style={{ marginTop: 5, marginBottom: 5}}></Divider>
+            {isVisible ? 
+              <FadeIn delay={1400} transitionDuration={1000}>
+                {chatMessages}
+              </FadeIn> : null}
+          </div>
+        </div>
+      }
+    </VisibilitySensor>
   );
 }

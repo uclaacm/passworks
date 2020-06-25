@@ -48,7 +48,7 @@ export default function Post(props) {
           <Typography variant='body1' className={classes.smallerText}>{props.location}</Typography>
         </div>
       </Box>
-      <img src={props.postImg} alt='instagram post' width="100%" ></img>
+      <img src={props.postImg} alt='instagram post' width='100%' ></img>
       <Typography variant='body1' className={classes.smallerText}>{props.likes + ' likes'}</Typography>
       <Typography variant='body1' className={classes.caption}>
         <Box className={classes.capName} component='span'>{props.poster}</Box>

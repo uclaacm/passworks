@@ -14,6 +14,7 @@ class LessonText extends React.Component {
 		const renderNextLesson = !isLastLesson && isLastSlide;
 		const renderNext       = !isLastSlide && !isInputSlide;
 		const renderBack       = usesInput;
+		const renderEnd				 = isLastLesson && isLastSlide;
 
 		const nextLessonButton = (<Button disableRipple variant='outlined' onClick={() => {
 			this.props.setLessonAndCount(this.props.lessonNum + 1, 0); }}> Next
@@ -24,12 +25,14 @@ class LessonText extends React.Component {
 			</Button>);
 		const backButton = (<Button disableRipple variant='outlined' onClick={() => {
 			this.props.setLessonAndCount(this.props.lessonNum, this.props.count - 1); }}>Back</Button>);
+		const endButton = (<Button disableRipple variant='contained' href='#EndSection'>Continue</Button>);
 
 		return (
 			<Box>
 				{renderBack && backButton}
 				{renderNext && nextButton}
 				{renderNextLesson && nextLessonButton}
+				{renderEnd && endButton}
 			</Box>
 		);
 	}
