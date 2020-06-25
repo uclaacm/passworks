@@ -45,6 +45,12 @@ const overwrittenTheme = responsiveFontSizes(createMuiTheme({
 				borderRadius: '4px',
 				color: '#F89C12',
 				border: '2px solid #F89C12',
+				transition: [
+					'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+					'box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+					'border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+					'color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms'
+				].join(','),
 				'&:hover': {
 					border: '2px solid #A1D900',
 					color: '#A1D900',
@@ -59,6 +65,27 @@ const overwrittenTheme = responsiveFontSizes(createMuiTheme({
 					backgroundColor: '#A1D900',
 					color: 'white',
 					boxShadow: 'none'
+				}
+			}
+		},
+		MuiIconButton: {
+			root: {
+				color: '#F89C12',
+				background: 'white',
+				margin: '5px',
+				padding: '2px 6px',
+				borderRadius: '4px',
+				border: '2px solid #F89C12',
+				transition: [
+					'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+					'box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+					'border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+					'color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms'
+				].join(','),
+				'&:hover': {
+					border: '2px solid #A1D900',
+					color: '#A1D900',
+					backgroundColor: 'white'
 				}
 			}
 		}

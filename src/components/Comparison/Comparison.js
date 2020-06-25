@@ -16,26 +16,13 @@ const Typography = withStyles(({
 }))(MuiTypography);
 
 const useStyles = makeStyles({
-  arrowButton: {
-    color: '#F89C12',
-    background: 'white',
-    margin: '5px',
-    padding: '2px 6px',
-    borderRadius: '4px',
-    border: '2px solid #F89C12',
-    '&:hover': {
-      border: '2px solid #A1D900',
-      color: '#A1D900',
-      backgroundColor: 'white'
-    }
-  },
   math: {
     textAlign: 'center',
     fontWeight: 'bold',
     padding: '10px 0px',
     letterSpacing: '2px'
   }
-})
+});
 
 export default function Comparison(props) {
   const classes = useStyles();
@@ -136,14 +123,12 @@ export default function Comparison(props) {
     const nextButton = <IconButton aria-label='next'
       disableRipple
       variant='outlined'
-      className={classes.arrowButton}
       onClick={() => setCount(count + 1)}>
       <NavigateNextIcon />
     </IconButton>;
     const backButton = <IconButton aria-label='back'
       disableRipple
       variant='outlined'
-      className={classes.arrowButton}
       onClick={() => setCount(count - 1)}>
       <NavigateBeforeIcon />
     </IconButton>;
