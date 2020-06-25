@@ -93,12 +93,16 @@ export default function Comparison(props) {
         What’s the relationship between password length and number of possible
         passwords?
       </Typography>,
-      <Typography>
-        With only the first 6 lowercase letters, the number of options for
-        each character is 6. On the other hand, with 6 lowercase letters and
-        6 uppercase characters, the number of options for each character is
-        12. So, we can calculate the number of possible passwords as follows.
-      </Typography>,
+      <>
+        <Typography>
+          Using only the first 6 lowercase letters, there are only 6 options for
+          each character. If we add uppercase characters, there are 12 options
+          for each character.
+        </Typography>
+        <Typography>
+          So, we can calculate the number of possible passwords as follows.
+        </Typography>
+      </>,
       <Typography>
         With just lowercase characters, there are
         <div className={classes.math}>
