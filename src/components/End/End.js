@@ -48,7 +48,7 @@ const cards = [
   },
   {
     title: `Be Cautious`,
-    description: `Always be wary when sharing your personal information with others`,
+    description: `Always be alert when sharing your personal information with others`,
     img: <PersonalImg width='90%' height='90%' style={{ padding: '10px' }}/>
   }
 ];

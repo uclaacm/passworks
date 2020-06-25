@@ -101,12 +101,18 @@ export const allLessons = [
   [
     {
       title: <>Lesson 1: Password Length</>,
-      slide: <Typography>First, let’s learn about why long passwords are more
-        secure than short passwords! Password guessers often use brute force
-        techniques to break into accounts by checking all possible passwords
-        until the right one is found. In this lesson, we’ll demonstrate how
-        long passwords are less susceptible to brute force attacks than short
-        passwords.</Typography>,
+      slide: <>
+        <Typography>
+          First, let’s learn about why long passwords are more secure than
+          short passwords! Password guessers often use brute force techniques
+          to break into accounts by checking all possible passwords until the
+          right one is found.
+        </Typography>
+        <Typography>
+          In this lesson, we’ll demonstrate how long passwords are less
+          susceptible to brute force attacks than short passwords.
+        </Typography>
+      </>,
       topContent: true,
       phoneContent: () => <Chat
         key={getChatKey()}
@@ -192,11 +198,18 @@ export const allLessons = [
     // the need to check for profanity.
     { 
       title: <>Lesson 2: Password Variety</>,
-      slide: <Typography>You might have noticed that many sites require you to
-        use a combination of lowercase letters, uppercase letters, numbers, and
-        symbols in your passwords. In this lesson, we’ll use a brute force
-        password guesser to demonstrate why it’s important to use a variety of
-        symbols in your passwords. </Typography>,
+      slide: <>
+        <Typography>
+          You might have noticed that many sites require you to use a
+          combination of lowercase letters, uppercase letters, numbers, and
+          symbols in your passwords.
+        </Typography>
+        <Typography>
+          In this lesson, we’ll use a brute force password guesser to
+          demonstrate why it’s important to use a variety of symbols in your
+          passwords.
+        </Typography>
+      </>,
       topContent: true,
       phoneContent: () => <Chat 
         key={getChatKey()}
@@ -278,12 +291,18 @@ export const allLessons = [
   [
     { 
       title: <>Lesson 3: Don’t Be Basic</>,
-      slide: <Typography>Another important aspect of password security is
-        randomness and uniqueness. Passwords like "happy", "jackie", and
-        "asdfghjkl" are commonly used and thus NOT secure. There are many lists
-        available containing the most popularly used passwords, and hackers can
-        easily try all the most common passwords when trying to break into
-        accounts.</Typography>,
+      slide: <>
+        <Typography>
+          Another important aspect of password security is randomness and
+          uniqueness. Passwords like "happy", "jackie", and "asdfghjkl" are
+          commonly used and thus NOT secure.
+        </Typography> 
+        <Typography>
+          There are many lists available containing the most popularly used
+          passwords, and hackers can easily try all the most common passwords
+          when trying to break into accounts.
+        </Typography>
+      </>,
       topContent: true,
       phoneContent: () => <Chat 
         key={getChatKey()}
@@ -316,16 +335,16 @@ export const allLessons = [
     {
       slide: <>
         <Typography>
-          It’s a good sign if your password isn’t in the list, but
-          it still may not be secure. There are much longer lists on the internet 
-          containing millions of common passwords that hackers can use to break
-          into accounts.
+          It’s a good sign if your password isn’t in the list, but it still may
+          not be secure. There are much longer lists on the internet containing
+          millions of common passwords that hackers can use to break into
+          accounts.
         </Typography>
         <Typography className='takeaway' style={{ marginBottom: '10px' }}>
           It’s crucial to make unique passwords that other people wouldn’t
           think of. You should also use different passwords for each of your
-          accounts. Otherwise, one account getting hacked would mean that
-          <em>all</em> of your accounts are hacked.
+          accounts. Otherwise, one account getting hacked would mean that <em>
+          all</em> of your accounts are hacked.
         </Typography>
       </>,
       topContent: true,
@@ -405,14 +424,16 @@ export const allLessons = [
         <Typography>
           As you can see, social engineering is quite a powerful tool! In this
           case, Jason made the mistake of using security questions that anyone
-          with access to his Instagram could answer. However, hackers can
-          socially engineer information in other ways. For example, they can
-          use fraudulent phone calls, emails, or texts impersonating someone
-          you trust (like your bank or maybe a co-worker).
+          with access to his Instagram could answer.
+        </Typography>
+        <Typography>
+          However, hackers can socially engineer information in other ways. For
+          example, they can use fraudulent phone calls, emails, or texts
+          impersonating someone you trust (like your bank or maybe a co-worker).
         </Typography> 
         <Typography className='takeaway' style={{ marginBottom: '10px' }}>
-          Always be wary of your online security, and be cautious when
-          providing someone with your private credentials.
+          Always be cautious with your online security, and be especially wary
+          when providing someone with your private credentials or information.
         </Typography>
       </>,
       topContent: true,
