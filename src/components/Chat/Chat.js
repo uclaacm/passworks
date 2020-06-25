@@ -36,7 +36,7 @@ export default function Chat(props) {
         <div className="chat-container">
           <div className="chat">
             <Box display='flex' flexDirection='column' alignItems='center'>
-              <AccountCircleIcon style={{ marginTop: '-10', fontSize: '2.2em', color: '#b3b3b3' }}/>
+              <AccountCircleIcon style={{ marginTop: '-10', fontSize: '2.2em', color: '#b3b3b3' }} />
               <Typography variant='body1' style={{ textAlign: 'center' }}>
                 Hackerman
               </Typography>

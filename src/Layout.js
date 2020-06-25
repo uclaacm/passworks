@@ -38,7 +38,7 @@ const overwrittenTheme = responsiveFontSizes(createMuiTheme({
 				margin: 5,
 				color: '#F89C12',
 				background: 'white',
-				fontSize: '1em',
+				fontSize: '1.1em',
 				textTransform: 'none'
 			},
 			outlined: {

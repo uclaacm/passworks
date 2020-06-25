@@ -32,43 +32,41 @@ const useStyles = makeStyles({
 export default function GuesserAndTimer(props) {
   const classes = useStyles();
 
-  const { countUp: countUp1, start: start1 } = useCountUp({
+  const guesser = useCountUp({
     start: 0,
     end: props.genEnd,
     duration: props.duration,
-    delay: 10,
     useEasing: false,
-    formattingFn: props.genFormattingFn
+    formattingFn: props.genFormattingFn,
+    startOnMount: false
   });
 
-  const { countUp: countUp2, start: start2 } = useCountUp({
+  const timer = useCountUp({
     start: 0,
     end: props.duration,
     duration: props.duration,
-    delay: 10,
     decimals: props.decimals,
     useEasing: false,
-    formattingFn: props.timeFormattingFn
+    formattingFn: props.timeFormattingFn,
+    startOnMount: false
   });
 
   const start = () => {
-    start1();
-    start2();
-  }
+    guesser.start();
+    timer.start();
+  };
 
   return (
     <>
       <Box className={classes.counter}>
-        <div>{countUp1}</div>
+        {guesser.countUp}
       </Box>
       <Button disableRipple onClick={start} variant='contained' disableElevation>
         Start
       </Button>
-      <Box className={classes.timer}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <TimerIcon style={{ fontSize: '1em', marginRight: '5px' }}/>
-          {countUp2}
-        </div>
+      <Box className={classes.timer} style={{ display: 'flex', alignItems: 'center' }}>
+        <TimerIcon style={{ fontSize: '1em', marginRight: '5px' }}/>
+        {timer.countUp}
       </Box>
     </>
   );

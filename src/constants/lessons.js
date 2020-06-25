@@ -14,7 +14,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 const Typography = withStyles(theme => ({
   root: {
     fontSize: '1em',
-    textAlign: 'center',
+    padding: '10px',
     fontFamily: theme.typography.fontFamily
   }
 }))(MuiTypography);
@@ -38,7 +38,7 @@ const inputForm = (classes, value, handleInputChange, handleInputSubmit,
       <Box display='flex' flexDirection='column' alignItems='center'>
           <input type='text' className={classes.inputText}
             value={value} onChange={handleInputChange}/>
-          <Typography color='error' style={{ textAlign: 'center' }}>{inputError ? errorString : null}</Typography>
+          {inputError ? <Typography color='error' style={{ textAlign: 'center' }}>{errorString}</Typography> : null}
           <Box>
             <Button disableRipple variant='contained' disableElevation type='submit'>Submit</Button>
             {randomButton}
@@ -101,14 +101,14 @@ export const allLessons = [
   [
     {
       title: <>Lesson 1: Password Length</>,
-      slide: <Typography>First, let’s learn about why long passwords are more secure
-        than short passwords! Password guessers often use <span className='vocab'>
-        brute force</span> techniques to break into accounts by checking all
-        possible passwords until the right one is found. In this lesson, we’ll
-        demonstrate how long passwords are less susceptible to brute force
-        attacks than short passwords.</Typography>,
+      slide: <Typography>First, let’s learn about why long passwords are more
+        secure than short passwords! Password guessers often use brute force
+        techniques to break into accounts by checking all possible passwords
+        until the right one is found. In this lesson, we’ll demonstrate how
+        long passwords are less susceptible to brute force attacks than short
+        passwords.</Typography>,
       topContent: true,
-      phoneContent: () => <Chat 
+      phoneContent: () => <Chat
         key={getChatKey()}
         messages={[
           { type: 'sent', pos: 'last', contents: <>help</> },
@@ -123,9 +123,8 @@ export const allLessons = [
       />
     },
     { 
-      slide: <Typography><span className='insn'>Type a 4-digit password</span> (or
-        press Randomize to generate one automatically), and <span
-        className='insn'>press Submit!</span></Typography>,
+      slide: <Typography>Type a 4-digit password (or press Randomize to
+        generate one automatically), and press Submit!</Typography>,
       input: true,
       inputType: 'num',
       inputDesc: '4 digits',
@@ -135,7 +134,7 @@ export const allLessons = [
       phoneContent: inputForm
     },
     {
-      slide: <Typography><span className='insn'>Press Start</span> to see how long 
+      slide: <Typography>Press Start to see how long 
         it takes for a brute force password guesser to generate your 4-digit 
         password!</Typography>,
       usesInput: true,
@@ -145,8 +144,8 @@ export const allLessons = [
     },
     {
       slide: <Typography>Wow, that was really fast! Now let’s try using
-        a longer password! <span className='insn'>Enter a password consisting of 
-        6–12 digits.</span></Typography>,
+        a longer password! Enter a password consisting of 6–12
+        digits.</Typography>,
       input: true,
       inputType: 'num',
       inputDesc: '6 to 12 digits',
@@ -159,24 +158,28 @@ export const allLessons = [
       phoneContent: inputForm
     },
     { 
-      slide: <Typography><span className='insn'>Press Start</span> to see how long
-        it takes for the password generator to guess your longer password! This 
-        might take a while, so feel free to click the next button if you don’t
-        want to wait.</Typography>,
+      slide: <Typography>Press Start to see how long it takes for the password
+        generator to guess your longer password! This might take a while, so
+        feel free to click the next button if you don’t want to
+        wait.</Typography>,
       inputType: 'num',
       usesInput: true,
       inputLength: -1,
       phoneContent: guesser
     },
     {
-      slide: <Typography>Depending on exactly which numbers you picked for your
-        passwords, you should have noticed that the longer password took much
-        more time to crack than the 4-digit password! <br/> <span
-        className='takeaway'>There are other password-guessing techniques that are
-        more effective for guessing long passwords, but short passwords can be
-        very easily cracked with a simple brute-force technique. So, it’s
-        important to make sure your passwords aren’t too
-        short.</span></Typography>,
+      slide: <>
+        <Typography>
+          Depending on exactly which numbers you picked for your passwords, you
+          should have noticed that the longer password took much more time to
+          crack than the 4-digit password!
+        </Typography>
+        <Typography className='takeaway' style={{ marginBottom: '10px' }}>
+          Short passwords can be very easily cracked with a simple brute-force
+          technique. So, it’s important to make sure your passwords aren’t too
+          short.
+        </Typography>
+      </>,
       comparison: true,
       phoneContent: (inputLength) => comparison('length', inputLength)
     }
@@ -209,10 +212,9 @@ export const allLessons = [
       />
     },
     { 
-      slide: <Typography><span className='insn'>Submit a lowercase 6-letter
-        password using only the first 6 letters of the alphabet (a b c d e
-        f)</span>, and we’ll see how long it takes for the computer to guess
-        it!</Typography>,
+      slide: <Typography>Submit a lowercase 6-letter password using only the
+        first 6 letters of the alphabet (a b c d e f), and we’ll see how long
+        it takes for the computer to guess it!</Typography>,
       input: true,
       inputType: 'alpha',
       inputDesc: '6 lowercase letters from (a b c d e f)',
@@ -222,7 +224,7 @@ export const allLessons = [
       phoneContent: inputForm
     },
     { 
-      slide: <Typography><span className='insn'>Press Start</span> to see how long 
+      slide: <Typography>Press Start to see how long 
         it takes for a computer to guess your 6-letter lowercase password!
         </Typography>,
       usesInput: true,
@@ -232,10 +234,9 @@ export const allLessons = [
     },
     { 
       slide: <Typography>Now, let’s try adding some variety to our password by
-        including uppercase letters. <span className='insn'> Submit another
-        6-letter password, this time mixing lowercase and uppercase letters (a
-        b c d e f A B C D E F). Include at least two uppercase
-        letters!</span></Typography>,
+        including uppercase letters. Submit another 6-letter password, this
+        time mixing lowercase and uppercase letters (a b c d e f A B C D E F).
+        Include at least two uppercase letters!</Typography>,
       input: true,
       inputType: 'Alpha',
       inputDesc: '6 letters from (a b c d e f), with at least 2 uppercase',
@@ -250,21 +251,26 @@ export const allLessons = [
       phoneContent: inputForm
     },
     { 
-      slide: <Typography><span className='insn'>Press Start</span> to see how long
-        it takes for a computer to guess your 6-letter mixed-case
-        password!</Typography>,
+      slide: <Typography>Press Start to see how long it takes for a computer to
+        guess your 6-letter mixed-case password!</Typography>,
       usesInput: true,
       inputType: 'Alpha',
       inputLength: 6,
       phoneContent: guesser
     },
     {
-      slide: <Typography>Hopefully, you saw that your mixed-case password took
-        longer for the brute force password guesser to generate! <span
-        className='takeaway'>When you use more symbols in your password, it’s
-        harder to use brute force to crack it because the guesser has to try
-        more combinations. So, you should try to include a variety of
-        different types of characters in your passwords.</span></Typography>,
+      slide: <>
+        <Typography>
+          Hopefully, you saw that your mixed-case password took longer for the
+          brute force password guesser to generate!
+        </Typography>
+        <Typography className='takeaway' style={{ marginBottom: '10px' }}>
+          When you use more symbols in your password, it’s harder to use brute
+          force to crack it because the guesser has to try more combinations.
+          So, you should try to include a variety of different types of
+          characters in your passwords.
+        </Typography>
+      </>,
       comparison: true,
       phoneContent: (inputLength) => comparison('variety', inputLength)
     }
@@ -294,28 +300,42 @@ export const allLessons = [
       />
     },
     { 
-      slide: <Typography>We have a list of the top 10,000 most commonly used
-        passwords. <span className='insn'>Try submitting different passwords (of 4 or
-        more characters)</span> and we’ll check if they’re in the list or not.
-        <br /> Not sure what to submit? Try foods, animals, hobbies, numbers,
-        your name, etc.</Typography>,
+      slide: <>
+        <Typography>
+          We have a list of the top 10,000 most commonly used passwords. Try
+          submitting different passwords (of 4 or more characters) and we’ll
+          check if they’re in the list or not.
+        </Typography>
+        <Typography>
+          Not sure what to submit? Try foods, animals, hobbies, numbers,
+          your name, etc.
+        </Typography>
+      </>,
       phoneContent: () => <CommonPassword />
     },
     {
-      slide: <Typography>It’s a good sign if your password isn’t in the list, but
-        it still may not be secure. There are much longer lists on the internet 
-        containing millions of common passwords that hackers can use to break
-        into accounts.<br/><span className='takeaway'>It’s crucial to make unique
-        passwords that other people wouldn’t think of. You should also use
-        different passwords for each of your accounts. Otherwise, one account
-        getting hacked would mean that <em>all</em> of your accounts are hacked.
-        </span></Typography>,
+      slide: <>
+        <Typography>
+          It’s a good sign if your password isn’t in the list, but
+          it still may not be secure. There are much longer lists on the internet 
+          containing millions of common passwords that hackers can use to break
+          into accounts.
+        </Typography>
+        <Typography className='takeaway' style={{ marginBottom: '10px' }}>
+          It’s crucial to make unique passwords that other people wouldn’t
+          think of. You should also use different passwords for each of your
+          accounts. Otherwise, one account getting hacked would mean that
+          <em>all</em> of your accounts are hacked.
+        </Typography>
+      </>,
       topContent: true,
       phoneContent: () => <Chat
         key={getChatKey()}
         messages={[
-          { type: 'sent', pos: '', contents: <>i guess i should be careful to make my passwords more unique...</> },
-          { type: 'sent', pos: 'last', contents: <>apparently Password1 is pretty commonly used</> },
+          { type: 'sent', pos: '', contents: <>i guess i should be careful to 
+            make my passwords more unique...</> },
+          { type: 'sent', pos: 'last', contents: <>apparently Password1 is 
+            pretty commonly used</> },
           { type: 'rec', pos: '', contents: <>yeah</>},
           { type: 'rec', pos: '', contents: <>also, a little piece of advice...</>},
           { type: 'rec', pos: 'last', contents: <>don’t tell people your passwords!!!!</>},
@@ -328,12 +348,17 @@ export const allLessons = [
   [
     {
       title: <>Lesson 4: Social Engineering</>,
-      slide: <Typography>In this lesson, we’ll learn about <span
-        className='vocab'> social engineering</span>. Social engineering can take
-        on many forms, one of which is digging into someone’s personal 
-        information to gain access to their accounts.<br/> Note: This
-        demonstration is for educational purposes only. We do not condone
-        hacking into other people’s accounts.</Typography>,
+      slide: <>
+        <Typography>
+          In this lesson, we’ll learn about social engineering.
+          Social engineering can take on many forms, one of which is digging into
+          someone’s personal information to gain access to their accounts.
+        </Typography>
+        <Typography>
+          Note: This demonstration is for educational purposes only. We do not
+          condone hacking into other people’s accounts.
+        </Typography>
+      </>,
       topContent: true,
       phoneContent: () => <Chat 
         key={getChatKey()}
@@ -350,14 +375,19 @@ export const allLessons = [
       />
     },
     {
-      slide: <Typography>We want to hack into Jason’s account. Suppose
-        Hackerman already gave us Jason’s username and password, but we 
-        need to answer some security questions!<br/> Luckily, we have access to his
-        Instagram posts, so let’s see if we can social engineer the answers by 
-        doing a little research! <span className='insn'>Try looking through
-        Jason’s Instagram posts to answer the security questions for his
-        account.</span>
-        </Typography>,
+      slide: <>
+        <Typography>
+          We want to hack into Jason’s account. Suppose Hackerman already gave
+          us Jason’s username and password, but we need to answer some security
+          questions!
+        </Typography>
+        <Typography> 
+          Luckily, we have access to his Instagram posts, so let’s see if we
+          can social engineer the answers by doing a little research! Try
+          looking through Jason’s Instagram posts to answer the security
+          questions for his account.
+        </Typography>
+      </>,
       input: true,
       slideAdd: (count, setCount) => {
         return (
@@ -371,15 +401,20 @@ export const allLessons = [
       phoneContent: () => <Profile />
     },
     {
-      slide: <Typography>As you can see, social engineering is quite a powerful
-        tool! In this case, Jason made the mistake of using security questions
-        that anyone with access to his Instagram could answer. <br/> However,
-        hackers can socially engineer information in other ways. For example,
-        they can use fraudulent phone calls, emails, or texts impersonating
-        someone you trust (like your bank or maybe a co-worker). <span
-        className='takeaway'>Always be wary of your online security, and be
-        cautious when providing someone with your private
-        credentials.</span></Typography>,
+      slide: <>
+        <Typography>
+          As you can see, social engineering is quite a powerful tool! In this
+          case, Jason made the mistake of using security questions that anyone
+          with access to his Instagram could answer. However, hackers can
+          socially engineer information in other ways. For example, they can
+          use fraudulent phone calls, emails, or texts impersonating someone
+          you trust (like your bank or maybe a co-worker).
+        </Typography> 
+        <Typography className='takeaway' style={{ marginBottom: '10px' }}>
+          Always be wary of your online security, and be cautious when
+          providing someone with your private credentials.
+        </Typography>
+      </>,
       topContent: true,
       phoneContent: () => <Chat 
         key={getChatKey()}

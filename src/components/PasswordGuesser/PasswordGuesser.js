@@ -93,7 +93,7 @@ export default function PasswordGuesser(props) {
         genFormattingFn={genFormattingFn}
         timeFormattingFn={timeFormattingFn}
       />
-      <Typography style= {{ fontSize: '.8em', paddingTop: '1.25em', textAlign: 'center' }}>
+      <Typography style= {{ fontSize: '.8em', paddingTop: '1.25em' }}>
         Note: The animation above is set to generate {speedStr} passwords per second.
         In reality, the average laptop/computer can easily perform hundreds
         of millions of calculations per second.

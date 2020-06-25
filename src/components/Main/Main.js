@@ -28,10 +28,10 @@ const useStyles = theme => ({
 		color: theme.palette.secondary.main
 	},
 	selectedLesson: {
-		color: 'black',
-		borderColor: 'black',
+		color: theme.palette.primary.main,
+		borderColor: theme.palette.primary.main,
 		'&:hover': {
-			borderColor: theme.palette.secondary.main
+			borderColor: theme.palette.primary.main
 		}
 	}
 })
@@ -140,7 +140,6 @@ class Main extends React.Component {
 				<React.Fragment key={i}>
 					<Button variant='outlined' disableRipple
 						className={i === this.state.lessonNum ? classes.selectedLesson : null}
-						disabled={i === this.state.lessonNum ? true : false}
 						onClick={() => {
 							this.setLessonAndCount(i, 0);
 							this.setState({ userInput: '', value: '', inputLength: 0 })}}>
