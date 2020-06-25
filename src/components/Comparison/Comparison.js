@@ -1,88 +1,162 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MuiTypography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import withStyles from '@material-ui/core/styles/withStyles';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import IconButton from '@material-ui/core/IconButton';
+import Box from '@material-ui/core/Box';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
 const Typography = withStyles(({
   root: {
-    fontSize: '.9em',
-    textAlign: 'center'
+    fontSize: '1em',
+    textAlign: 'left',
+    padding: '10px'
   }
 }))(MuiTypography);
 
+const useStyles = makeStyles({
+  arrowButton: {
+    color: '#F89C12',
+    background: 'white',
+    margin: '5px',
+    padding: '2px 6px',
+    borderRadius: '4px',
+    border: '2px solid #F89C12',
+    '&:hover': {
+      border: '2px solid #A1D900',
+      color: '#A1D900',
+      backgroundColor: 'white'
+    }
+  },
+  math: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    padding: '10px 0px',
+    letterSpacing: '2px'
+  }
+})
+
 export default function Comparison(props) {
+  const classes = useStyles();
+  let [count, setCount] = useState(0);
+
   let lessPasswords = 0;
   let morePasswords = 0;
+  let slideItems = [];
 
   if (props.type === 'length') {
     lessPasswords = 10 ** 4;
     morePasswords = 10 ** props.inputLength;
 
-    return (
-      <>
-        <Typography variant='h6'>
-          What’s the relationship between password length and number of possible
-          passwords?
-        </Typography>
-        <Divider style={{ padding: 1, margin: 4 }} light />
-        <Typography>
-          For passwords using digits, there are 10 options for each
-          character of the password. So, we can calculate the number of possible
-          passwords as follows.
-        </Typography>
-        <Divider style={{ padding: 1, margin: 4 }} light />
-        <Typography>
-          For a 4-digit password, there are<br />10<sup>4</sup>={lessPasswords}
-          <br />possible passwords.</Typography>
-        <Divider style={{ padding: 1, margin: 4 }} light />
-        <Typography>
-          The longer password you submitted had {props.inputLength} digits, and
-          with {props.inputLength} digits there are<br/>
-          10<sup>{props.inputLength}</sup>={morePasswords}<br/>possible
-          passwords.
-        </Typography>
-        <Divider style={{ padding: 1, margin: 4 }} light />
-        <Typography>
-          Thus, increasing the password’s length by {props.inputLength - 4} increases the
-          number of possible passwords by<br/>
-          {morePasswords} - {lessPasswords} = {morePasswords - lessPasswords}
-        </Typography>
-      </>
-    );
+    slideItems = [
+      <Typography>
+        What’s the relationship between password length and number of possible
+        passwords?
+      </Typography>,
+      <Typography>
+        For passwords using digits, there are 10 options for each character of
+        the password. So, we can calculate the number of possible passwords as
+        follows.
+      </Typography>,
+      <Typography>
+        For a 4-digit password, there are
+        <div className={classes.math}>
+          10<sup>4</sup>{' '}={' '}{lessPasswords.toLocaleString('en')}
+        </div>
+        possible passwords.
+      </Typography>,
+      <Typography>
+        The longer password you submitted had {props.inputLength} digits, and
+        with {props.inputLength} digits there are 
+        <div className={classes.math}>
+          10<sup>{props.inputLength}</sup>{' '}={' '}{morePasswords.toLocaleString('en')}
+        </div> 
+        possible passwords.
+      </Typography>,
+      <Typography>
+        Thus, increasing the password’s length by {props.inputLength - 4} means
+        that we can create
+        <div className={classes.math}>
+          {morePasswords} - {lessPasswords} = {' '}
+          {(morePasswords - lessPasswords).toLocaleString('en')}
+        </div>
+        more passwords.
+      </Typography>
+    ];
   } else if (props.type === 'variety') {
     lessPasswords = 6 ** 6;
     morePasswords = 12 ** props.inputLength;
 
+    slideItems = [
+      <Typography>
+        What’s the relationship between password length and number of possible
+        passwords?
+      </Typography>,
+      <Typography>
+        With only the first 6 lowercase letters, the number of options for
+        each character is 6. On the other hand, with 6 lowercase letters and
+        6 uppercase characters, the number of options for each character is
+        12. So, we can calculate the number of possible passwords as follows.
+      </Typography>,
+      <Typography>
+        With just lowercase characters, there are
+        <div className={classes.math}>
+          6<sup>6</sup>{' '}={' '}{lessPasswords.toLocaleString('en')}
+        </div>
+        possible passwords.
+      </Typography>,
+      <Typography>
+        With both uppercase and lowercase characters, there are
+        <div className={classes.math}>
+          12<sup>{props.inputLength}</sup>{' '}={' '}{morePasswords.toLocaleString('en')}
+        </div>
+        possible passwords.
+      </Typography>,
+      <Typography>
+        Thus, including both lowercase and uppercase characters in our
+        password means we can create
+        <div className={classes.math}>
+          {morePasswords} - {lessPasswords}{' '}={' '}{(morePasswords - lessPasswords).toLocaleString('en')}
+        </div>
+        more passwords.
+      </Typography>
+    ];
+  }
+
+  const renderButtons = () => {
+    const renderNext = count !== slideItems.length - 1;
+    const renderBack = count !== 0;
+
+    const nextButton = <IconButton aria-label='next'
+      disableRipple
+      variant='outlined'
+      className={classes.arrowButton}
+      onClick={() => setCount(count + 1)}>
+      <NavigateNextIcon />
+    </IconButton>;
+    const backButton = <IconButton aria-label='back'
+      disableRipple
+      variant='outlined'
+      className={classes.arrowButton}
+      onClick={() => setCount(count - 1)}>
+      <NavigateBeforeIcon />
+    </IconButton>;
+
     return (
       <>
-        <Typography variant='h6'>
-          What’s the relationship between password length and number of possible
-          passwords?
-        </Typography>
-        <Divider style={{ padding: 1, margin: 4 }} light />
-        <Typography>
-          With only the first 6 lowercase letters, the number of options for
-          each character is 6. On the other hand, with 6 lowercase letters and
-          6 uppercase characters, the number of options for each character is
-          12. So, we can calculate the number of possible passwords as follows.
-        </Typography>
-        <Divider style={{ padding: 1, margin: 4 }} light />
-        <Typography>
-          For the lowercase password, there are<br />6<sup>6</sup>={lessPasswords}
-          <br />possible passwords.</Typography>
-        <Divider style={{ padding: 1, margin: 4 }} light />
-        <Typography>
-          With both uppercase and lowercase characters, there are<br/>
-          12<sup>{props.inputLength}</sup>={morePasswords}<br/>possible
-          passwords.
-        </Typography>
-        <Divider style={{ padding: 1, margin: 4 }} light />
-        <Typography>
-          Thus, by including both lowercase and uppercase characters in our
-          password, we increase the number of possible passwords by<br/>
-          {morePasswords} - {lessPasswords} = {morePasswords - lessPasswords}
-        </Typography>
+        {renderBack && backButton}
+        {renderNext && nextButton}
       </>
-    );
-  }
+    )
+  };
+
+  return (
+    <Box display='flex' flexDirection='column'>
+      <div style={{ position: 'absolute', bottom: '250px' }}>
+        {slideItems[count]}
+      </div>
+      <div style={{ position: 'absolute', right: '0', left: '0', bottom: '210px' }}>{renderButtons()}</div>
+    </Box>
+  );
 }

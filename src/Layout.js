@@ -49,12 +49,7 @@ const overwrittenTheme = responsiveFontSizes(createMuiTheme({
 					border: '2px solid #A1D900',
 					color: '#A1D900',
 					backgroundColor: 'white'
-				},
-				'&:disabled': {
-					borderRadius: '4px',
-					color: '#A1D900',
-					border: '2px solid #A1D900'
-				},
+				}
 			},
 			contained: {
 				boxShadow: 'none',
