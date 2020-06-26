@@ -1,37 +1,37 @@
-import React from 'react';
-import Slide from '@material-ui/core/Slide';
-import Grid from '@material-ui/core/Grid';
+import React from "react"
+import PropTypes from "prop-types"
+import Slide from "@material-ui/core/Slide"
+import Grid from "@material-ui/core/Grid"
 
-export default function TextSlide(props) {
-  const slidingItems = props.lessonItems.map((item, i) => {
+export default function TextSlide({ lessonItems, count }) {
+  const slidingItems = lessonItems.map((item, i) => {
     return (
-      <Slide 
-        direction="left" 
-        in={props.count === i} 
-        mountOnEnter 
+      <Slide
+        direction="left"
+        in={count === i}
+        mountOnEnter
         unmountOnExit
-        key={i}
+        key={item}
       >
-          <Grid container
-            direction='column'
-            justify='center'
-            alignItems='center'
-          >
-            <Grid item sm={12}>
-              {item}
-            </Grid>
+        <Grid container direction="column" justify="center" alignItems="center">
+          <Grid item sm={12}>
+            {item}
           </Grid>
+        </Grid>
       </Slide>
-    );
-  });
+    )
+  })
 
   return (
     <>
       {slidingItems.map((slide, i) => {
-        return (
-          props.count === i ? slide : null
-        );
+        return count === i ? slide : null
       })}
     </>
-  );
+  )
+}
+
+TextSlide.propTypes = {
+  lessonItems: PropTypes.arrayOf(PropTypes.any).isRequired,
+  count: PropTypes.number.isRequired,
 }
