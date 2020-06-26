@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: check out git repository
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: install Node.js
         uses: actions/setup-node@v1
@@ -19,4 +19,4 @@ jobs:
         run: npm ci
       
       - name: lint
-      - run: npm run lint
+        run: npm run lint
