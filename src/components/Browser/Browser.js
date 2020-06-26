@@ -8,7 +8,7 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 const securityQuestions = [
   {
     q: 'Where did you grow up?',
-    match: str => (str.toLowerCase() === 'san francisco'),
+    match: str => (str === 'san francisco'),
     hint: 'Hint: Try checking the locations of Jason’s instagram posts'
   },
   {
@@ -18,7 +18,7 @@ const securityQuestions = [
   },
   {
     q: 'What was the name of your first pet?',
-    match: str => (str.toLowerCase() === 'mufasa'),
+    match: str => (str === 'mufasa'),
     hint: 'Hint: Read the captions of Jason’s posts more carefully'
   }
 ];
@@ -51,7 +51,7 @@ class Browser extends React.Component {
 
   handleInputSubmit = event => {
     event.preventDefault();
-    if (securityQuestions[this.state.questionNum].match(this.state.answer)) {
+    if (securityQuestions[this.state.questionNum].match(this.state.answer.toLowerCase())) {
       this.setState({ answer: '', inputError: false,
       errorString: 'Sorry, that’s incorrect. Please try again.',
         questionNum: this.state.questionNum + 1, attempts: 0 });

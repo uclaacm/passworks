@@ -71,9 +71,10 @@ class CommonPassword extends React.Component {
           <Box display='flex' flexDirection='column' alignItems='center'>
             <input type='text' className={classes.inputText}
               value={this.state.value} onChange={this.handleInputChange} />
-            <Typography color='error' style={{ textAlign: 'center' }}>
-              {this.state.inputError ? this.state.errorString : null}
-            </Typography>
+            {this.state.inputError ? <Typography color='error' style={{ textAlign: 'center',
+              fontFamily: 'Poppins', fontSize: '1em' }}>
+              {this.state.errorString}
+            </Typography> : null}
             <Button disableRipple variant='contained' disableElevation type='submit'>Submit</Button>
           </Box>
         </form>

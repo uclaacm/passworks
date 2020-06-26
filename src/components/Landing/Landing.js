@@ -7,7 +7,6 @@ import { ReactComponent as LandingImg } from './landing-img.svg';
 
 const useStyles = makeStyles(theme => ({
   title: {
-    textAlign: 'center',
     color: theme.palette.secondary.main,
     fontFamily: theme.typography.fontFamily,
     fontWeight: 600,

@@ -206,15 +206,10 @@
 }
 
 .takeaway {
-  background: linear-gradient(180deg,rgba(255,255,255,0) 10%, #ffdcc4 10%);
-}
-
-.vocab {
-  background: linear-gradient(180deg,rgba(255,255,255,0) 10%, #c9ffd7 10%);
-}
-
-.insn {
-  background: linear-gradient(180deg,rgba(255,255,255,0) 10%, #ffdbec 10%);
+  /* background: linear-gradient(180deg,rgba(255,255,255,0) 10%, #ffdcc4 10%); */
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: 2px solid #A1D900;
 }
 
 a {
