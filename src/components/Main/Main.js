@@ -156,7 +156,7 @@ class Main extends React.Component {
 
     const lessonButtons = allLessons.map((lesson, i) => {
       return (
-        <React.Fragment key={lesson[0].title}>
+        <React.Fragment key={lesson[0].title.props.children}>
           <Button
             variant="outlined"
             disableRipple

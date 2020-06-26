@@ -21,7 +21,10 @@ export default function Chat({ messages }) {
 
   const chatMessages = messages.map((message) => {
     return (
-      <div className={`${message.type} messages`} key={message.contents}>
+      <div
+        className={`${message.type} messages`}
+        key={message.contents.props.children}
+      >
         <div className={`message ${message.pos}`}>
           <Typography variant="body1" className={classes.textMessage}>
             {message.contents}

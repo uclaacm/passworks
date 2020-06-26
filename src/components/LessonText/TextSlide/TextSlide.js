@@ -5,13 +5,14 @@ import Grid from "@material-ui/core/Grid"
 
 export default function TextSlide({ lessonItems, count }) {
   const slidingItems = lessonItems.map((item, i) => {
+    const key = `message: ${i}`
     return (
       <Slide
         direction="left"
         in={count === i}
         mountOnEnter
         unmountOnExit
-        key={item}
+        key={key}
       >
         <Grid container direction="column" justify="center" alignItems="center">
           <Grid item sm={12}>
