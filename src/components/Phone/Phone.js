@@ -1,22 +1,28 @@
-import React from 'react';
+import React from "react"
+import PropTypes from "prop-types"
 
-export default function Phone(props) {
-	return (
-		<div className="main-container">
-			<div className="phone-bezel">
-				<div className="phone-screen">
-					<div className="phone-cutout"></div>
-					{props.topContent ? (
-						<div className="phone-content-top">
-						{props.content}
-						</div> ) : (
-							<div className="phone-content">
-								{props.content}
-							</div>
-						)
-					}
-				</div>
-			</div>
-		</div>
-	);
+export default function Phone({ topContent, content }) {
+  return (
+    <div className="main-container">
+      <div className="phone-bezel">
+        <div className="phone-screen">
+          <div className="phone-cutout" />
+          {topContent ? (
+            <div className="phone-content-top">{content}</div>
+          ) : (
+            <div className="phone-content">{content}</div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+Phone.defaultProps = {
+  topContent: false,
+}
+
+Phone.propTypes = {
+  topContent: PropTypes.bool,
+  content: PropTypes.node.isRequired,
 }

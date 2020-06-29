@@ -1,9 +1,9 @@
-import React from 'react';
-import Layout from './Layout.js';
+import React from "react"
+import Layout from "./Layout"
 
-import Main from './components/Main/Main.js';
-import Landing from './components/Landing/Landing.js';
-import End from './components/End/End.js';
+import Main from "./components/Main/Main"
+import Landing from "./components/Landing/Landing"
+import End from "./components/End/End"
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Main />
       <End />
     </Layout>
-  );
+  )
 }
 
-export default App;
+export default App
