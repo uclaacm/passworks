@@ -43,13 +43,20 @@ const guesser = (userInput, inputType) => {
 const timeDifference = (userInput1, userInput2, inputType) => {
   let duration1
   let duration2
+  let diffMsg
 
   if (inputType === "num") {
     duration1 = parseInt(userInput1, 10) / 100000
     duration2 = parseInt(userInput2, 10) / 100000
+    diffMsg = `With more digits in your password, the computer took
+      ${(duration2 / duration1).toFixed(1)}x as long to brute force your
+      password!`
   } else if (inputType === "alpha") {
     duration1 = fromLetters(userInput1, alphaLower) / 10000
     duration2 = fromLetters(userInput2, alphaMixed) / 10000
+    diffMsg = `With more variety in your password, the computer took
+      ${(duration2 / duration1).toFixed(1)}x as long to brute force your
+      password!`
   }
 
   return (
@@ -70,7 +77,6 @@ const timeDifference = (userInput1, userInput2, inputType) => {
         <Typography1 style={{ fontFamily: "Monospace", fontSize: "1.5rem" }}>
           {formatTime(duration1)}
         </Typography1>
-        <Typography1>to brute force!</Typography1>
       </div>
       <div
         style={{
@@ -88,7 +94,16 @@ const timeDifference = (userInput1, userInput2, inputType) => {
         <Typography1 style={{ fontFamily: "Monospace", fontSize: "1.5rem" }}>
           {formatTime(duration2)}
         </Typography1>
-        <Typography1>to brute force!</Typography1>
+      </div>
+      <div
+        style={{
+          padding: 4,
+          borderRadius: 4,
+          margin: 4,
+          border: "1px solid black",
+        }}
+      >
+        <Typography1>{diffMsg}</Typography1>
       </div>
     </>
   )
