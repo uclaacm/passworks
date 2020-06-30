@@ -242,6 +242,9 @@ class Main extends React.Component {
     } else if (allLessons[lessonNum][count].comparison) {
       // render math comparison
       phoneContent = renderPhoneContent(inputLength)
+    } else if (allLessons[lessonNum][count].timeDifference) {
+      // time difference
+      phoneContent = renderPhoneContent(userInput1, userInput2)
     } else {
       // chat, profile, commonpassword, or guesser
       const userInput = usesInput2 ? userInput2 : userInput1

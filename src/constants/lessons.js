@@ -10,6 +10,8 @@ import Browser from "../components/Browser/Browser"
 import Comparison from "../components/Comparison/Comparison"
 import Chat from "../components/Chat/Chat"
 
+import { fromLetters, alphaLower, alphaMixed } from "../util/password"
+
 const Typography = withStyles((theme) => ({
   root: {
     fontSize: "1em",
@@ -23,6 +25,38 @@ const guesser = (userInput, inputType) => {
     <Box display="flex" flexDirection="column" alignItems="center">
       <PasswordGuesser userInput={userInput} inputType={inputType} />
     </Box>
+  )
+}
+
+const formatTime = (num) => {
+  const min = Math.floor(num / 60)
+  const sec = num % 60
+  return min !== 0 ? `${String(min)}m ${sec.toFixed(5)}s` : `${sec.toFixed(5)}s`
+}
+
+const timeDifference = (userInput1, userInput2, inputType) => {
+  let duration1
+  let duration2
+
+  if (inputType === "num") {
+    duration1 = parseInt(userInput1, 10) / 100000
+    duration2 = parseInt(userInput2, 10) / 100000
+  } else if (inputType === "alpha") {
+    duration1 = fromLetters(userInput1, alphaLower) / 10000
+    duration2 = fromLetters(userInput2, alphaMixed) / 10000
+  }
+
+  return (
+    <>
+      <Typography style={{ textAlign: "center", paddingBottom: ".5em" }}>
+        Your first password was {userInput1}, taking {formatTime(duration1)} to
+        generate!
+      </Typography>
+      <Typography style={{ textAlign: "center", paddingBottom: ".5em" }}>
+        Your second password was {userInput2}, taking {formatTime(duration2)} to
+        generate!
+      </Typography>
+    </>
   )
 }
 
@@ -212,6 +246,14 @@ export default [
     },
     {
       slide: (
+        <Typography>Take a look at the time comparison on the left!</Typography>
+      ),
+      timeDifference: true,
+      phoneContent: (userInput1, userInput2) =>
+        timeDifference(userInput1, userInput2, "num"),
+    },
+    {
+      slide: (
         <>
           <Typography>
             Depending on exactly which numbers you picked for your passwords,
@@ -341,6 +383,14 @@ export default [
       inputType: "Alpha",
       inputLength: 6,
       phoneContent: guesser,
+    },
+    {
+      slide: (
+        <Typography>Take a look at the time comparison on the left!</Typography>
+      ),
+      timeDifference: true,
+      phoneContent: (userInput1, userInput2) =>
+        timeDifference(userInput1, userInput2, "alpha"),
     },
     {
       slide: (
