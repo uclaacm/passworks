@@ -18,14 +18,10 @@ const Typography = withStyles((theme) => ({
   },
 }))(MuiTypography)
 
-const guesser = (userInput, inputType, inputLength) => {
+const guesser = (userInput, inputType) => {
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
-      <PasswordGuesser
-        userInput={userInput}
-        inputType={inputType}
-        inputLength={inputLength}
-      />
+      <PasswordGuesser userInput={userInput} inputType={inputType} />
     </Box>
   )
 }
@@ -163,6 +159,7 @@ export default [
         </Typography>
       ),
       input: true,
+      inputNum: 1,
       inputType: "num",
       inputDesc: "4 digits",
       inputLength: 4,
@@ -177,7 +174,6 @@ export default [
           guesser to generate your 4-digit password!
         </Typography>
       ),
-      usesInput: true,
       inputType: "num",
       inputLength: 4,
       phoneContent: guesser,
@@ -190,6 +186,7 @@ export default [
         </Typography>
       ),
       input: true,
+      inputNum: 2,
       inputType: "num",
       inputDesc: "6 to 12 digits",
       inputLength: -1,
@@ -209,7 +206,7 @@ export default [
         </Typography>
       ),
       inputType: "num",
-      usesInput: true,
+      usesInput2: true,
       inputLength: -1,
       phoneContent: guesser,
     },
@@ -290,6 +287,7 @@ export default [
         </Typography>
       ),
       input: true,
+      inputNum: 1,
       inputType: "alpha",
       inputDesc: "6 lowercase letters from (a b c d e f)",
       inputLength: 6,
@@ -304,7 +302,6 @@ export default [
           6-letter lowercase password!
         </Typography>
       ),
-      usesInput: true,
       inputType: "alpha",
       inputLength: 6,
       phoneContent: guesser,
@@ -319,6 +316,7 @@ export default [
         </Typography>
       ),
       input: true,
+      inputNum: 2,
       inputType: "Alpha",
       inputDesc: "6 letters from (a b c d e f), with at least 2 uppercase",
       inputLength: 6,
@@ -339,7 +337,7 @@ export default [
           6-letter mixed-case password!
         </Typography>
       ),
-      usesInput: true,
+      usesInput2: true,
       inputType: "Alpha",
       inputLength: 6,
       phoneContent: guesser,
