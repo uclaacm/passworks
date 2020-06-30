@@ -30,3 +30,25 @@ export const fromLetters = (str, alphabet) => {
 
 export const alphaLower = "abcdef"
 export const alphaMixed = "abcdefABCDEF"
+
+export const formatTime = (num) => {
+  const days = Math.floor(num / 86400)
+  const hours = Math.floor((num % 86400) / 3600)
+  const minutes = Math.floor((num % 3600) / 60)
+  const seconds = num % 60
+
+  let result = ""
+  if (days !== 0) {
+    result += `${days}d`
+  }
+  if (hours !== 0) {
+    result += `${hours}h `
+  }
+  if (minutes !== 0) {
+    result += `${minutes}m `
+  }
+  if (seconds !== 0) {
+    result += `${seconds.toFixed(5)}s`
+  }
+  return result
+}

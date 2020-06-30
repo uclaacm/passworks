@@ -10,7 +10,12 @@ import Browser from "../components/Browser/Browser"
 import Comparison from "../components/Comparison/Comparison"
 import Chat from "../components/Chat/Chat"
 
-import { fromLetters, alphaLower, alphaMixed } from "../util/password"
+import {
+  fromLetters,
+  alphaLower,
+  alphaMixed,
+  formatTime,
+} from "../util/password"
 
 const Typography = withStyles((theme) => ({
   root: {
@@ -20,18 +25,19 @@ const Typography = withStyles((theme) => ({
   },
 }))(MuiTypography)
 
+const Typography1 = withStyles({
+  root: {
+    fontSize: "1em",
+    textAlign: "center",
+  },
+})(MuiTypography)
+
 const guesser = (userInput, inputType) => {
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
       <PasswordGuesser userInput={userInput} inputType={inputType} />
     </Box>
   )
-}
-
-const formatTime = (num) => {
-  const min = Math.floor(num / 60)
-  const sec = num % 60
-  return min !== 0 ? `${String(min)}m ${sec.toFixed(5)}s` : `${sec.toFixed(5)}s`
 }
 
 const timeDifference = (userInput1, userInput2, inputType) => {
@@ -48,14 +54,42 @@ const timeDifference = (userInput1, userInput2, inputType) => {
 
   return (
     <>
-      <Typography style={{ textAlign: "center", paddingBottom: ".5em" }}>
-        Your first password was {userInput1}, taking {formatTime(duration1)} to
-        generate!
-      </Typography>
-      <Typography style={{ textAlign: "center", paddingBottom: ".5em" }}>
-        Your second password was {userInput2}, taking {formatTime(duration2)} to
-        generate!
-      </Typography>
+      <div
+        style={{
+          padding: 4,
+          borderRadius: 4,
+          margin: 4,
+          border: "1px solid black",
+        }}
+      >
+        <Typography1>Your first password was</Typography1>
+        <Typography1 style={{ fontFamily: "Monospace", fontSize: "1.5rem" }}>
+          {userInput1}
+        </Typography1>
+        <Typography1>and took</Typography1>
+        <Typography1 style={{ fontFamily: "Monospace", fontSize: "1.5rem" }}>
+          {formatTime(duration1)}
+        </Typography1>
+        <Typography1>to brute force!</Typography1>
+      </div>
+      <div
+        style={{
+          padding: 4,
+          borderRadius: 4,
+          margin: 4,
+          border: "1px solid black",
+        }}
+      >
+        <Typography1>Your second password was</Typography1>
+        <Typography1 style={{ fontFamily: "Monospace", fontSize: "1.5rem" }}>
+          {userInput2}
+        </Typography1>
+        <Typography1>and took</Typography1>
+        <Typography1 style={{ fontFamily: "Monospace", fontSize: "1.5rem" }}>
+          {formatTime(duration2)}
+        </Typography1>
+        <Typography1>to brute force!</Typography1>
+      </div>
     </>
   )
 }
@@ -246,7 +280,10 @@ export default [
     },
     {
       slide: (
-        <Typography>Take a look at the time comparison on the left!</Typography>
+        <Typography>
+          Take a look at the time comparison on the left! Not what you expected?
+          Try going back and submitting different values!
+        </Typography>
       ),
       timeDifference: true,
       phoneContent: (userInput1, userInput2) =>
@@ -386,7 +423,10 @@ export default [
     },
     {
       slide: (
-        <Typography>Take a look at the time comparison on the left!</Typography>
+        <Typography>
+          Take a look at the time comparison on the left! Not what you expected?
+          Try going back and submitting different values!
+        </Typography>
       ),
       timeDifference: true,
       phoneContent: (userInput1, userInput2) =>
