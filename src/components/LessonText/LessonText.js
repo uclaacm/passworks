@@ -12,11 +12,11 @@ class LessonText extends React.Component {
     const isLastLesson = lessonNum === allLessons.length - 1
     const isLastSlide = count === allLessons[lessonNum].length - 1
     const isInputSlide = allLessons[lessonNum][count].input
-    const { usesInput } = allLessons[lessonNum][count]
+    const isFirstSlide = count === 0
 
     const renderNextLesson = !isLastLesson && isLastSlide
     const renderNext = !isLastSlide && !isInputSlide
-    const renderBack = usesInput
+    const renderBack = !isFirstSlide
     const renderEnd = isLastLesson && isLastSlide
 
     const nextLessonButton = (
@@ -47,7 +47,7 @@ class LessonText extends React.Component {
         disableRipple
         variant="outlined"
         onClick={() => {
-          setLessonAndCount(lessonNum, count - 1)
+          setCount(count - 1)
         }}
       >
         Back

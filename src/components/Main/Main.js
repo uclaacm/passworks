@@ -44,7 +44,8 @@ class Main extends React.Component {
       count: 0,
       lessonNum: 0,
       value: "",
-      userInput: "",
+      userInput1: "",
+      userInput2: "",
       inputLength: 0,
       inputError: false,
       errorString: "",
@@ -62,8 +63,8 @@ class Main extends React.Component {
     event.preventDefault()
     const { lessonNum, count, value } = this.state
 
-    const { inputDesc } = allLessons[lessonNum][count]
-    const { checkInput } = allLessons[lessonNum][count]
+    const { inputDesc, checkInput, inputNum } = allLessons[lessonNum][count]
+    const inputNumber = inputNum === 2 ? 2 : 1
 
     let newError
     let inputValid = true
@@ -76,8 +77,12 @@ class Main extends React.Component {
       newError = `Please enter ${inputDesc}.`
       this.setState({ value: "", errorString: newError, inputError: true })
     } else {
+      if (inputNumber === 2) {
+        this.setState({ userInput2: value })
+      } else {
+        this.setState({ userInput1: value })
+      }
       this.setState({
-        userInput: value,
         inputLength: value.length,
         value: "",
         inputError: false,
@@ -99,7 +104,8 @@ class Main extends React.Component {
     this.setState({
       lessonNum: newLessonNum,
       value: "",
-      userInput: "",
+      userInput1: "",
+      userInput2: "",
       inputLength: 0,
       errorString: "",
       inputError: false,
@@ -163,7 +169,12 @@ class Main extends React.Component {
             className={i === lessonNum ? classes.selectedLesson : null}
             onClick={() => {
               this.setLessonAndCount(i, 0)
-              this.setState({ userInput: "", value: "", inputLength: 0 })
+              this.setState({
+                userInput1: "",
+                userInput2: "",
+                value: "",
+                inputLength: 0,
+              })
             }}
           >
             {lesson[0].title}
@@ -190,15 +201,15 @@ class Main extends React.Component {
   render() {
     const { lessonNum, count, value, inputError, errorString } = this.state
     const { classes } = this.props
-    const { userInput } = this.state
-    const { inputType } = allLessons[lessonNum][count]
-    const { inputLength } = this.state
+    const { userInput1, userInput2, inputLength } = this.state
+    const { inputType, usesInput2 } = allLessons[lessonNum][count]
 
     let phoneContent
     const renderPhoneContent = allLessons[lessonNum][count].phoneContent
     if (renderPhoneContent === null) {
       phoneContent = null
     } else if (allLessons[lessonNum][count].input) {
+      // render randomize button
       let randomButton
       if ("defaultInput" in allLessons[lessonNum][count]) {
         randomButton = (
@@ -218,6 +229,7 @@ class Main extends React.Component {
       } else {
         randomButton = null
       }
+      // render input form
       phoneContent = renderPhoneContent(
         classes,
         value,
@@ -228,9 +240,15 @@ class Main extends React.Component {
         randomButton
       )
     } else if (allLessons[lessonNum][count].comparison) {
+      // render math comparison
       phoneContent = renderPhoneContent(inputLength)
+    } else if (allLessons[lessonNum][count].timeDifference) {
+      // time difference
+      phoneContent = renderPhoneContent(userInput1, userInput2)
     } else {
-      phoneContent = renderPhoneContent(userInput, inputType, inputLength)
+      // chat, profile, commonpassword, or guesser
+      const userInput = usesInput2 ? userInput2 : userInput1
+      phoneContent = renderPhoneContent(userInput, inputType)
     }
 
     return (

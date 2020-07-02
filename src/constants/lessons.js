@@ -10,6 +10,13 @@ import Browser from "../components/Browser/Browser"
 import Comparison from "../components/Comparison/Comparison"
 import Chat from "../components/Chat/Chat"
 
+import {
+  fromLetters,
+  alphaLower,
+  alphaMixed,
+  formatTime,
+} from "../util/password"
+
 const Typography = withStyles((theme) => ({
   root: {
     fontSize: "1em",
@@ -18,15 +25,89 @@ const Typography = withStyles((theme) => ({
   },
 }))(MuiTypography)
 
-const guesser = (userInput, inputType, inputLength) => {
+const Typography1 = withStyles({
+  root: {
+    fontSize: "1em",
+    textAlign: "center",
+  },
+})(MuiTypography)
+
+const guesser = (userInput, inputType) => {
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
-      <PasswordGuesser
-        userInput={userInput}
-        inputType={inputType}
-        inputLength={inputLength}
-      />
+      <PasswordGuesser userInput={userInput} inputType={inputType} />
     </Box>
+  )
+}
+
+const timeDifference = (userInput1, userInput2, inputType) => {
+  let duration1
+  let duration2
+  let diffMsg
+
+  if (inputType === "num") {
+    duration1 = parseInt(userInput1, 10) / 100000
+    duration2 = parseInt(userInput2, 10) / 100000
+    diffMsg = `With more digits in your password, it would take
+      ${(duration2 / duration1).toFixed(1)}x as long to brute force your
+      password!`
+  } else if (inputType === "alpha") {
+    duration1 = fromLetters(userInput1, alphaLower) / 10000
+    duration2 = fromLetters(userInput2, alphaMixed) / 10000
+    diffMsg = `With more variety in your password, it would take
+      ${(duration2 / duration1).toFixed(1)}x as long to brute force your
+      password!`
+  }
+
+  return (
+    <>
+      <div
+        style={{
+          padding: 4,
+          borderRadius: 4,
+          margin: 4,
+          border: "1px solid black",
+        }}
+      >
+        <Typography1>Your first password was</Typography1>
+        <Typography1 style={{ fontFamily: "Monospace", fontSize: "1.5rem" }}>
+          {userInput1}
+        </Typography1>
+        <Typography1>and would take</Typography1>
+        <Typography1 style={{ fontFamily: "Monospace", fontSize: "1.5rem" }}>
+          {formatTime(duration1)}
+        </Typography1>
+        <Typography1>for our password generator to guess!</Typography1>
+      </div>
+      <div
+        style={{
+          padding: 4,
+          borderRadius: 4,
+          margin: 4,
+          border: "1px solid black",
+        }}
+      >
+        <Typography1>Your second password was</Typography1>
+        <Typography1 style={{ fontFamily: "Monospace", fontSize: "1.5rem" }}>
+          {userInput2}
+        </Typography1>
+        <Typography1>and would take</Typography1>
+        <Typography1 style={{ fontFamily: "Monospace", fontSize: "1.5rem" }}>
+          {formatTime(duration2)}
+        </Typography1>
+        <Typography1>for our password generator to guess!</Typography1>
+      </div>
+      <div
+        style={{
+          padding: 4,
+          borderRadius: 4,
+          margin: 4,
+          border: "1px solid black",
+        }}
+      >
+        <Typography1>{diffMsg}</Typography1>
+      </div>
+    </>
   )
 }
 
@@ -163,6 +244,7 @@ export default [
         </Typography>
       ),
       input: true,
+      inputNum: 1,
       inputType: "num",
       inputDesc: "4 digits",
       inputLength: 4,
@@ -177,7 +259,6 @@ export default [
           guesser to generate your 4-digit password!
         </Typography>
       ),
-      usesInput: true,
       inputType: "num",
       inputLength: 4,
       phoneContent: guesser,
@@ -186,16 +267,17 @@ export default [
       slide: (
         <Typography>
           Wow, that was really fast! Now let’s try using a longer password!
-          Enter a password consisting of 6–12 digits.
+          Enter a password consisting of 6–8 digits.
         </Typography>
       ),
       input: true,
+      inputNum: 2,
       inputType: "num",
       inputDesc: "6 to 12 digits",
       inputLength: -1,
-      checkInput: (str) => /^\d{6,12}$/.test(str),
+      checkInput: (str) => /^\d{6,8}$/.test(str),
       defaultInput: () => {
-        const len = randomInt(6, 12)
+        const len = randomInt(6, 8)
         return getRandom("0123456789", len)
       },
       phoneContent: inputForm,
@@ -209,9 +291,20 @@ export default [
         </Typography>
       ),
       inputType: "num",
-      usesInput: true,
+      usesInput2: true,
       inputLength: -1,
       phoneContent: guesser,
+    },
+    {
+      slide: (
+        <Typography>
+          Take a look at the time comparison on the left! Not what you expected?
+          Try going back and submitting different values!
+        </Typography>
+      ),
+      timeDifference: true,
+      phoneContent: (userInput1, userInput2) =>
+        timeDifference(userInput1, userInput2, "num"),
     },
     {
       slide: (
@@ -290,6 +383,7 @@ export default [
         </Typography>
       ),
       input: true,
+      inputNum: 1,
       inputType: "alpha",
       inputDesc: "6 lowercase letters from (a b c d e f)",
       inputLength: 6,
@@ -304,7 +398,6 @@ export default [
           6-letter lowercase password!
         </Typography>
       ),
-      usesInput: true,
       inputType: "alpha",
       inputLength: 6,
       phoneContent: guesser,
@@ -319,6 +412,7 @@ export default [
         </Typography>
       ),
       input: true,
+      inputNum: 2,
       inputType: "Alpha",
       inputDesc: "6 letters from (a b c d e f), with at least 2 uppercase",
       inputLength: 6,
@@ -339,10 +433,21 @@ export default [
           6-letter mixed-case password!
         </Typography>
       ),
-      usesInput: true,
+      usesInput2: true,
       inputType: "Alpha",
       inputLength: 6,
       phoneContent: guesser,
+    },
+    {
+      slide: (
+        <Typography>
+          Take a look at the time comparison on the left! Not what you expected?
+          Try going back and submitting different values!
+        </Typography>
+      ),
+      timeDifference: true,
+      phoneContent: (userInput1, userInput2) =>
+        timeDifference(userInput1, userInput2, "alpha"),
     },
     {
       slide: (
