@@ -48,13 +48,13 @@ const timeDifference = (userInput1, userInput2, inputType) => {
   if (inputType === "num") {
     duration1 = parseInt(userInput1, 10) / 100000
     duration2 = parseInt(userInput2, 10) / 100000
-    diffMsg = `With more digits in your password, the computer took
+    diffMsg = `With more digits in your password, it would take
       ${(duration2 / duration1).toFixed(1)}x as long to brute force your
       password!`
   } else if (inputType === "alpha") {
     duration1 = fromLetters(userInput1, alphaLower) / 10000
     duration2 = fromLetters(userInput2, alphaMixed) / 10000
-    diffMsg = `With more variety in your password, the computer took
+    diffMsg = `With more variety in your password, it would take
       ${(duration2 / duration1).toFixed(1)}x as long to brute force your
       password!`
   }
@@ -73,10 +73,11 @@ const timeDifference = (userInput1, userInput2, inputType) => {
         <Typography1 style={{ fontFamily: "Monospace", fontSize: "1.5rem" }}>
           {userInput1}
         </Typography1>
-        <Typography1>and took</Typography1>
+        <Typography1>and would take</Typography1>
         <Typography1 style={{ fontFamily: "Monospace", fontSize: "1.5rem" }}>
           {formatTime(duration1)}
         </Typography1>
+        <Typography1>for our password generator to guess!</Typography1>
       </div>
       <div
         style={{
@@ -90,10 +91,11 @@ const timeDifference = (userInput1, userInput2, inputType) => {
         <Typography1 style={{ fontFamily: "Monospace", fontSize: "1.5rem" }}>
           {userInput2}
         </Typography1>
-        <Typography1>and took</Typography1>
+        <Typography1>and would take</Typography1>
         <Typography1 style={{ fontFamily: "Monospace", fontSize: "1.5rem" }}>
           {formatTime(duration2)}
         </Typography1>
+        <Typography1>for our password generator to guess!</Typography1>
       </div>
       <div
         style={{
@@ -265,7 +267,7 @@ export default [
       slide: (
         <Typography>
           Wow, that was really fast! Now let’s try using a longer password!
-          Enter a password consisting of 6–12 digits.
+          Enter a password consisting of 6–8 digits.
         </Typography>
       ),
       input: true,
@@ -273,9 +275,9 @@ export default [
       inputType: "num",
       inputDesc: "6 to 12 digits",
       inputLength: -1,
-      checkInput: (str) => /^\d{6,12}$/.test(str),
+      checkInput: (str) => /^\d{6,8}$/.test(str),
       defaultInput: () => {
-        const len = randomInt(6, 12)
+        const len = randomInt(6, 8)
         return getRandom("0123456789", len)
       },
       phoneContent: inputForm,
