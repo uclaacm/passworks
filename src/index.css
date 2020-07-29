@@ -71,7 +71,7 @@
   border-radius: 5px 5px 0px 0px;
   height: 20px;
   width: 100%;
-  background-color: #DEE0E5;
+  background-color: #dee0e5;
   z-index: 1000;
 }
 
@@ -86,15 +86,15 @@
 }
 
 #red-dot {
-  background-color: #DB615A;
+  background-color: #db615a;
 }
 
 #yellow-dot {
-  background-color: #EDC041;
+  background-color: #edc041;
 }
 
 #green-dot {
-  background-color: #7DCE50;
+  background-color: #7dce50;
 }
 
 .browser-content {
@@ -175,7 +175,7 @@
 .sent .message {
   color: white;
   margin-left: 25%;
-  background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+  background: linear-gradient(to bottom, #00d0ea 0%, #0085d1 100%);
   background-attachment: fixed;
   position: relative;
 }
@@ -188,7 +188,7 @@
   right: -8px;
   height: 20px;
   width: 20px;
-  background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+  background: linear-gradient(to bottom, #00d0ea 0%, #0085d1 100%);
   background-attachment: fixed;
   border-bottom-left-radius: 15px;
 }
@@ -209,7 +209,7 @@
   /* background: linear-gradient(180deg,rgba(255,255,255,0) 10%, #ffdcc4 10%); */
   padding: 10px 10px;
   border-radius: 10px;
-  border: 2px solid #A1D900;
+  border: 2px solid #a1d900;
 }
 
 a {
@@ -241,4 +241,11 @@ a {
 
 p {
   text-align: left;
+}
+
+.text-non-selectable {
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
 }
