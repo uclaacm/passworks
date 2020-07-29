@@ -62,7 +62,10 @@ export default function Post({
           className={classes.profileImg}
         />
         <div>
-          <Typography variant="body1" className={classes.headerName}>
+          <Typography
+            variant="body1"
+            className={`${classes.headerName} text-non-selectable`}
+          >
             {poster}
           </Typography>
           <Typography variant="body1" className={classes.smallerText}>
