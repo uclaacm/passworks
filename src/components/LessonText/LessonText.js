@@ -1,13 +1,49 @@
 import React from "react"
+import { useHistory } from "react-router-dom"
 import PropTypes from "prop-types"
 import Button from "@material-ui/core/Button"
 import Box from "@material-ui/core/Box"
 import TextSlide from "./TextSlide/TextSlide"
 import allLessons from "../../constants/lessons"
 
+function EndButton() {
+  const history = useHistory()
+
+  function handleClick() {
+    history.push("/end")
+  }
+
+  return (
+    <Button disableRipple variant="contained" onClick={handleClick}>
+      Wrap It Up
+    </Button>
+  )
+}
+
+function NextLessonButton(props) {
+  const history = useHistory()
+  const { i } = props
+  return (
+    <Button
+      disableRipple
+      variant="outlined"
+      onClick={() => {
+        history.push(`/activity/${i + 1}`)
+      }}
+    >
+      {" "}
+      Next Lesson
+    </Button>
+  )
+}
+
+NextLessonButton.propTypes = {
+  i: PropTypes.objectOf(PropTypes.number).isRequired,
+}
+
 class LessonText extends React.Component {
   renderButtons = () => {
-    const { lessonNum, count, setLessonAndCount, setCount } = this.props
+    const { lessonNum, count, setCount } = this.props
 
     const isLastLesson = lessonNum === allLessons.length - 1
     const isLastSlide = count === allLessons[lessonNum].length - 1
@@ -19,18 +55,7 @@ class LessonText extends React.Component {
     const renderBack = !isFirstSlide
     const renderEnd = isLastLesson && isLastSlide
 
-    const nextLessonButton = (
-      <Button
-        disableRipple
-        variant="outlined"
-        onClick={() => {
-          setLessonAndCount(lessonNum + 1, 0)
-        }}
-      >
-        {" "}
-        Next Lesson
-      </Button>
-    )
+    const nextLessonButton = <NextLessonButton i={lessonNum + 1} />
     const nextButton = (
       <Button
         disableRipple
@@ -53,11 +78,7 @@ class LessonText extends React.Component {
         Back
       </Button>
     )
-    const endButton = (
-      <Button disableRipple variant="contained" href="#EndSection">
-        Continue
-      </Button>
-    )
+    const endButton = <EndButton />
 
     return (
       <Box>
@@ -84,7 +105,6 @@ class LessonText extends React.Component {
 LessonText.propTypes = {
   lessonNum: PropTypes.number.isRequired,
   count: PropTypes.number.isRequired,
-  setLessonAndCount: PropTypes.func.isRequired,
   setCount: PropTypes.func.isRequired,
   lessonItems: PropTypes.arrayOf(PropTypes.any).isRequired,
 }

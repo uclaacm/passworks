@@ -1,11 +1,10 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react"
-import { useHistory } from "react-router-dom"
 
 import Typography from "@material-ui/core/Typography"
 import makeStyles from "@material-ui/core/styles/makeStyles"
 import Button from "@material-ui/core/Button"
 import Container from "@material-ui/core/Container"
-import { ReactComponent as LandingImg } from "./landing-img.svg"
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -29,22 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function StartButton() {
-  const classes = useStyles()
-  const history = useHistory()
-
-  function handleClick() {
-    history.push("/activity")
-  }
-
-  return (
-    <Button variant="contained" className={classes.start} onClick={handleClick}>
-      Start
-    </Button>
-  )
-}
-
-export default function Landing() {
+export default function Gasme() {
   const classes = useStyles()
 
   return (
@@ -53,20 +37,25 @@ export default function Landing() {
         <div className="hero-body">
           <div>
             <Typography variant="h1" component="h1" className={classes.title}>
-              Passworks
+              Does Your Pass Work?
             </Typography>
             <Typography
               variant="body1"
               component="h2"
               className={classes.subtitle}
             >
-              What makes a good password? More importantly, what makes a bad
-              password? In this mini-lesson, we’ll teach you about various
-              aspects of password security. Are you ready?
+              Okay, so now you're a password-creating pro.
             </Typography>
-            <StartButton />
+            <Typography
+              variant="body1"
+              component="h2"
+              className={classes.subtitle}
+            >
+              Let's test just how much of a pro you are.
+            </Typography>
+            <Button variant="contained">Pick the Best Password</Button>
+            <Button variant="contained">Create an Amazing Password</Button>
           </div>
-          <LandingImg className={classes.img} height="100%" width="100%" />
         </div>
       </section>
     </Container>

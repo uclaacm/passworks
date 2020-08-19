@@ -84,7 +84,7 @@ export default function End() {
   })
 
   return (
-    <Container maxWidth="lg" id="EndSection">
+    <Container maxWidth="lg">
       <section className="hero is-fullheight">
         <div className="hero-body">
           <div>

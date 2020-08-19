@@ -1,4 +1,5 @@
 import React from "react"
+import { useHistory } from "react-router-dom"
 import PropTypes from "prop-types"
 import Typography from "@material-ui/core/Typography"
 import Container from "@material-ui/core/Container"
@@ -35,14 +36,46 @@ const useStyles = (theme) => ({
       borderColor: theme.palette.primary.main,
     },
   },
+  mainContainer: {
+    paddingTop: 70,
+  },
 })
+
+function LessonNavButton(props) {
+  const history = useHistory()
+  const { classes, i, lesson, lessonNum } = props
+  return (
+    <>
+      <Button
+        variant="outlined"
+        disableRipple
+        className={i === lessonNum ? classes.selectedLesson : null}
+        onClick={() => {
+          history.push(`/activity/${props.i + 1}`)
+        }}
+      >
+        {lesson[0].title}
+      </Button>
+      {i === allLessons.length - 1 ? null : (
+        <TrendingFlatIcon className={classes.arrowIcon} />
+      )}
+    </>
+  )
+}
+
+LessonNavButton.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.any).isRequired,
+  i: PropTypes.objectOf(PropTypes.number).isRequired,
+  lesson: PropTypes.objectOf(PropTypes.any).isRequired,
+  lessonNum: PropTypes.objectOf(PropTypes.number).isRequired,
+}
 
 class Main extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       count: 0,
-      lessonNum: 0,
+      lessonNum: props.lessonNum,
       value: "",
       userInput1: "",
       userInput2: "",
@@ -100,23 +133,6 @@ class Main extends React.Component {
     })
   }
 
-  setLessonNum = (newLessonNum) => {
-    this.setState({
-      lessonNum: newLessonNum,
-      value: "",
-      userInput1: "",
-      userInput2: "",
-      inputLength: 0,
-      errorString: "",
-      inputError: false,
-    })
-  }
-
-  setLessonAndCount = (newLessonNum, newCount) => {
-    this.setLessonNum(newLessonNum)
-    this.setCount(newCount)
-  }
-
   renderLessonName = (classes) => {
     const { lessonNum } = this.state
 
@@ -152,7 +168,6 @@ class Main extends React.Component {
         lessonNum={lessonNum}
         setCount={this.setCount}
         lessonItems={lessonItems}
-        setLessonAndCount={this.setLessonAndCount}
       />
     )
   }
@@ -162,27 +177,12 @@ class Main extends React.Component {
 
     const lessonButtons = allLessons.map((lesson, i) => {
       return (
-        <React.Fragment key={lesson[0].title.props.children}>
-          <Button
-            variant="outlined"
-            disableRipple
-            className={i === lessonNum ? classes.selectedLesson : null}
-            onClick={() => {
-              this.setLessonAndCount(i, 0)
-              this.setState({
-                userInput1: "",
-                userInput2: "",
-                value: "",
-                inputLength: 0,
-              })
-            }}
-          >
-            {lesson[0].title}
-          </Button>
-          {i === allLessons.length - 1 ? null : (
-            <TrendingFlatIcon className={classes.arrowIcon} />
-          )}
-        </React.Fragment>
+        <LessonNavButton
+          classes={classes}
+          i={i}
+          lesson={lesson}
+          lessonNum={lessonNum}
+        />
       )
     })
 
@@ -252,33 +252,34 @@ class Main extends React.Component {
     }
 
     return (
-      <section className="hero is-fullheight">
-        <div className="hero-body">
-          <Container maxWidth="lg" id="MainSection">
-            <Box display="flex" flexDirection="column" alignItems="center">
-              {this.renderNavBar(classes)}
-              {this.renderLessonName(classes)}
-              <Grid container spacing={3} alignItems="center" justify="center">
-                <Grid item sm={12} md={5}>
-                  <Phone
-                    content={phoneContent}
-                    topContent={allLessons[lessonNum][count].topContent}
-                  />
-                </Grid>
-                <Grid item sm={8} md={5}>
-                  {this.renderLessonText()}
-                </Grid>
-              </Grid>
-            </Box>
-          </Container>
-        </div>
-      </section>
+      <Container maxWidth="lg">
+        <Box className={classes.mainContainer}>
+          {this.renderNavBar(classes)}
+          {this.renderLessonName(classes)}
+          <Grid container spacing={3} alignItems="center" justify="center">
+            <Grid item sm={12} md={5}>
+              <Phone
+                content={phoneContent}
+                topContent={allLessons[lessonNum][count].topContent}
+              />
+            </Grid>
+            <Grid item sm={8} md={5}>
+              {this.renderLessonText()}
+            </Grid>
+          </Grid>
+        </Box>
+      </Container>
     )
   }
 }
 
 Main.propTypes = {
   classes: PropTypes.objectOf(PropTypes.any).isRequired,
+  lessonNum: PropTypes.objectOf(PropTypes.number),
+}
+
+Main.defaultProps = {
+  lessonNum: 0,
 }
 
 export default withStyles(useStyles)(Main)
