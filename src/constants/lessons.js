@@ -198,7 +198,7 @@ const getChatKey = () => {
 export default [
   [
     {
-      title: <>Lesson 1: Password Length</>,
+      title: <>Activity 1: Password Length</>,
       slide: (
         <>
           <Typography>
@@ -332,7 +332,7 @@ export default [
     // using vowels (as opposed to a full alphabet or just consonants) circumvents
     // the need to check for profanity.
     {
-      title: <>Lesson 2: Password Variety</>,
+      title: <>Activity 2: Password Variety</>,
       slide: (
         <>
           <Typography>
@@ -470,7 +470,7 @@ export default [
   ],
   [
     {
-      title: <>Lesson 3: Don’t Be Basic</>,
+      title: <>Activity 3: Don’t Be Basic</>,
       slide: (
         <>
           <Typography>
@@ -595,7 +595,7 @@ export default [
   ],
   [
     {
-      title: <>Lesson 4: Social Engineering</>,
+      title: <>Activity 4: Social Engineering</>,
       slide: (
         <>
           <Typography>
