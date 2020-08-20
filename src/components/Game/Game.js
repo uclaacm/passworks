@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function Gasme() {
+export default function Game() {
   const classes = useStyles()
 
   return (
