@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react"
+import { useHistory } from "react-router-dom"
 
 import Typography from "@material-ui/core/Typography"
 import makeStyles from "@material-ui/core/styles/makeStyles"
@@ -30,7 +31,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Game() {
   const classes = useStyles()
-
+  const history = useHistory()
+  const sendTo = (location) => {
+    history.push(location)
+  }
   return (
     <Container maxWidth="lg">
       <section className="hero is-fullheight">
@@ -54,7 +58,9 @@ export default function Game() {
               Let's test just how much of a pro you are.
             </Typography>
             <Button variant="contained">Pick the Best Password</Button>
-            <Button variant="contained">Create an Amazing Password</Button>
+            <Button variant="contained" onClick={() => sendTo("/game/create")}>
+              Create an Amazing Password
+            </Button>
           </div>
         </div>
       </section>

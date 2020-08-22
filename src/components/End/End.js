@@ -1,13 +1,14 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react"
-import Typography from "@material-ui/core/Typography"
+
+import { useHistory } from "react-router-dom"
+
+import { Box, Button, Container, Grid, Typography } from "@material-ui/core"
 import makeStyles from "@material-ui/core/styles/makeStyles"
-import Container from "@material-ui/core/Container"
-import Grid from "@material-ui/core/Grid"
 
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import GitHubIcon from "@material-ui/icons/GitHub"
 
-import { Box } from "@material-ui/core"
 import { ReactComponent as CommonImg } from "./common.svg"
 import { ReactComponent as LengthImg } from "./length.svg"
 import { ReactComponent as SpiceImg } from "./spice.svg"
@@ -55,6 +56,7 @@ const cards = [
 
 export default function End() {
   const classes = useStyles()
+  const history = useHistory()
 
   const cardItems = cards.map((item) => {
     return (
@@ -99,29 +101,27 @@ export default function End() {
               variant="body1"
               style={{
                 textAlign: "center",
-                maxWidth: "800px",
+                maxWidth: "1000px",
                 marginLeft: "auto",
                 marginRight: "auto",
                 paddingTop: "20px",
               }}
             >
               Remember these tips when creating your own passwords! However, you
-              should also try to make your passwords memorable. You can still
-              use words, but capitalize some letters and put numbers and symbols
-              between them. For example, instead of using redcherries2015, you
-              could try something like chErr20iesRE?D
+              should also try to make your passwords memorable. If you can't
+              remember your password, then it's really useless!
             </Typography>
-            <Typography
-              variant="body1"
-              style={{
-                textAlign: "center",
-                maxWidth: "800px",
-                marginLeft: "auto",
-                marginRight: "auto",
-                paddingTop: "20px",
-              }}
-            >
-              If you want to get more advanced, try using a password manager!
+            <hr />
+            <Typography className={classes.header}>
+              Think you're a pro? Test your mettle in our Password Games!
+            </Typography>
+            <Button variant="contained" onClick={() => history.push("/game")}>
+              Password Games
+            </Button>
+            <hr />
+            <Typography style={{ paddingTop: "20px", textAlign: "center" }}>
+              We hope you really enjoyed this interactive learning lab - we had
+              a lot of fun making it!
             </Typography>
             <Typography style={{ paddingTop: "20px", textAlign: "center" }}>
               made with{" "}
