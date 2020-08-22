@@ -23,15 +23,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.5rem",
     padding: "1rem",
   },
-  start: {
-    fontSize: "2rem",
-    padding: "4px 40px",
-  },
-  img: {
-    [theme.breakpoints.down("sm")]: {
-      width: 0,
-    },
-  },
 }))
 
 export default function ListOfCommonPasswords() {
