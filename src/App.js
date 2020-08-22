@@ -9,6 +9,7 @@ import Main from "./components/Main/Main"
 import Landing from "./components/Landing/Landing"
 import End from "./components/End/End"
 import Game from "./components/Game/Game"
+import ListOfCommonPasswords from "./components/ListOfCommonPasswords/ListOfCommonPasswords"
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -39,6 +40,9 @@ function App() {
           <Button color="inherit" onClick={() => sendTo("/game")}>
             Password Game
           </Button>
+          <Button color="inherit" onClick={() => sendTo("/common")}>
+            Most Common Passwords
+          </Button>
         </Toolbar>
       </AppBar>
       <Switch>
@@ -60,6 +64,9 @@ function App() {
         </Route>
         <Route path="/game">
           <Game />
+        </Route>
+        <Route path="/common">
+          <ListOfCommonPasswords />
         </Route>
         <Route path="/">
           <Landing />
