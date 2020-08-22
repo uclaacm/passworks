@@ -103,7 +103,6 @@ export default function CreateGame() {
 
   const onTestPassChange = (e) => {
     setTestPass(e.target.value)
-    console.log(zxcvbn(testPass))
   }
 
   return (
