@@ -57,7 +57,9 @@ export default function Game() {
             >
               Let's test just how much of a pro you are.
             </Typography>
-            <Button variant="contained">Pick the Best Password</Button>
+            <Button variant="contained" onClick={() => sendTo("/game/pick")}>
+              Pick the Best Password
+            </Button>
             <Button variant="contained" onClick={() => sendTo("/game/create")}>
               Create an Amazing Password
             </Button>
