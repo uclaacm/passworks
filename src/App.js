@@ -10,6 +10,7 @@ import Landing from "./components/Landing/Landing"
 import End from "./components/End/End"
 import Game from "./components/Game/Game"
 import CreateGame from "./components/Game/Create"
+import PickGame from "./components/Game/Pick"
 import ListOfCommonPasswords from "./components/ListOfCommonPasswords/ListOfCommonPasswords"
 
 const useStyles = makeStyles(() => ({
@@ -65,6 +66,9 @@ function App() {
         </Route>
         <Route path="/game/create">
           <CreateGame />
+        </Route>
+        <Route path="/game/pick">
+          <PickGame />
         </Route>
         <Route path="/game">
           <Game />
