@@ -17,8 +17,10 @@ import {
 } from "@material-ui/core"
 import Alert from "@material-ui/lab/Alert"
 
-import goodPWs from "../../constants/good-bois.json"
-import badPWs from "../../constants/bad-bois.json"
+import goodLengthPWs from "../../constants/good-bois.json"
+import badLengthPWs from "../../constants/bad-bois.json"
+import goodOriginalPWs from "../../constants/hard.json"
+import badOriginalPWs from "../../constants/easy.json"
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -50,9 +52,15 @@ function getRandom(arr, n) {
 }
 
 const getQuestionSet = () => {
+  // seed picks what set of PWs to pick from: originality or length
+  const seed = Math.floor(Math.random() * 2)
+  const goodArr = seed ? goodLengthPWs : goodOriginalPWs
+  const badArr = seed ? badLengthPWs : badOriginalPWs
+
+  // now, we populate 3 bad answers and one good answer
   const correctPos = Math.floor(Math.random() * 4)
-  const options = getRandom(badPWs, 3)
-  const randCorrect = goodPWs[Math.floor(Math.random() * goodPWs.length)]
+  const options = getRandom(badArr, 3)
+  const randCorrect = goodArr[Math.floor(Math.random() * goodArr.length)]
   options.splice(correctPos, 0, randCorrect)
   return {
     correct: correctPos + 1,
