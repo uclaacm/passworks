@@ -44,7 +44,15 @@ export default function ListOfCommonPasswords() {
               List of the 1000 Most Common Passwords*
             </Typography>
             <Typography variant="body1" component="h2">
-              *this list is curated from: ___
+              *this list is curated from{" "}
+              <Link
+                color="secondary"
+                href="https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10-million-password-list-top-100000.txt"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                this list of password breaches
+              </Link>
             </Typography>
             <Typography variant="body1" component="h2">
               There are lots of other common password lists too! One really
