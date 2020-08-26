@@ -1,12 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react"
 
-import Typography from "@material-ui/core/Typography"
 import makeStyles from "@material-ui/core/styles/makeStyles"
-import Button from "@material-ui/core/Button"
-import Container from "@material-ui/core/Container"
-import Grid from "@material-ui/core/Grid"
-import Paper from "@material-ui/core/Paper"
+import {
+  Button,
+  Container,
+  Grid,
+  Link,
+  Typography,
+  Paper,
+} from "@material-ui/core"
 
 import CommonPassword from "../CommonPassword/CommonPassword"
 
@@ -23,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.5rem",
     padding: "1rem",
   },
+  textCenter: {
+    textAlign: "center",
+  },
 }))
 
 export default function ListOfCommonPasswords() {
@@ -35,8 +41,26 @@ export default function ListOfCommonPasswords() {
         <div className="hero-body">
           <div>
             <Typography variant="h1" component="h1" className={classes.title}>
-              List of the 1000 Most Common Passwords
+              List of the 1000 Most Common Passwords*
             </Typography>
+            <Typography variant="body1" component="h2">
+              *this list is curated from: ___
+            </Typography>
+            <Typography variant="body1" component="h2">
+              There are lots of other common password lists too! One really
+              popular one is{" "}
+              <Link
+                color="secondary"
+                href="https://haveibeenpwned.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                haveibeenpwned
+              </Link>
+              , which lets you search by your email (and tells you if your email
+              and password have been posted online)!
+            </Typography>
+            <hr />
             <Typography
               variant="body1"
               component="h2"
@@ -63,7 +87,9 @@ export default function ListOfCommonPasswords() {
                 {commonPws.slice(0, 100).map((pw) => {
                   return (
                     <Grid item xs={3}>
-                      {pw}
+                      <Typography className={classes.textCenter}>
+                        {pw}
+                      </Typography>
                     </Grid>
                   )
                 })}
@@ -82,10 +108,12 @@ export default function ListOfCommonPasswords() {
                 alignItems="center"
               >
                 {showRest &&
-                  commonPws.slice(100, 900).map((pw) => {
+                  commonPws.slice(100, 1000).map((pw) => {
                     return (
                       <Grid item xs={3}>
-                        {pw}
+                        <Typography className={classes.textCenter}>
+                          {pw}
+                        </Typography>
                       </Grid>
                     )
                   })}
