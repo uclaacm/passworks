@@ -4,7 +4,7 @@ import List from "@material-ui/core/List"
 import ListSubheader from "@material-ui/core/ListSubheader"
 
 import Post from "./Post/Post"
-import profilePic from "../../images/profilePic.png"
+import profilePic from "../../images/profilePic.jpg"
 import instaLogo from "../../images/instaLogo.png"
 import birthday from "../../images/birthday.jpg"
 import mufasa from "../../images/mufasa_baby.jpg"
