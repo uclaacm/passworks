@@ -9,10 +9,10 @@ const useStyles = makeStyles({
     padding: "10px 0px",
   },
   profileImg: {
-    width: "50px",
-    height: "50px",
+    width: "40px",
+    height: "40px",
     float: "left",
-    padding: -5,
+    padding: 5,
   },
   headerName: {
     fontWeight: 600,

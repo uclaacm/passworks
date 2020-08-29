@@ -621,7 +621,7 @@ export default [
               pos: "",
               contents: (
                 <>
-                  i’m trying to convince my friend jason that security is
+                  i’m trying to convince my friend caitlin that security is
                   important
                 </>
               ),
@@ -629,7 +629,7 @@ export default [
             {
               type: "rec",
               pos: "last",
-              contents: <>can you try to break into his account for me?</>,
+              contents: <>can you try to break into her account for me?</>,
             },
             { type: "sent", pos: "", contents: <>idk much about hacking...</> },
             {
@@ -645,15 +645,15 @@ export default [
       slide: (
         <>
           <Typography>
-            We want to hack into Jason’s account. Suppose Hackerman already gave
-            us Jason’s username and password, but we need to answer some
+            We want to hack into Caitlin’s account. Suppose Hackerman already
+            gave us Caitlin’s username and password, but we need to answer some
             security questions!
           </Typography>
           <Typography>
-            Luckily, we have access to his Instagram posts, so let’s see if we
+            Luckily, we have access to her Instagram posts, so let’s see if we
             can social engineer the answers by doing a little research! Try
-            looking through Jason’s Instagram posts to answer the security
-            questions for his account.
+            looking through Caitlin’s Instagram posts to answer the security
+            questions for her account.
           </Typography>
         </>
       ),
@@ -669,8 +669,8 @@ export default [
         <>
           <Typography>
             As you can see, social engineering is quite a powerful tool! In this
-            case, Jason made the mistake of using security questions that anyone
-            with access to his Instagram could answer.
+            case, Caitlin made the mistake of using security questions that
+            anyone with access to her Instagram could answer.
           </Typography>
           <Typography>
             However, hackers can socially engineer information in other ways.
@@ -692,17 +692,37 @@ export default [
             { type: "sent", pos: "last", contents: <>i’m in, hackerman</> },
             { type: "rec", pos: "", contents: <>ayyy</> },
             { type: "rec", pos: "last", contents: <>how was it?</> },
-            { type: "sent", pos: "", contents: <>not too bad tbh</> },
             {
               type: "sent",
-              pos: "last",
-              contents: <>all the info was posted on his instagram lol</>,
+              pos: "",
+              contents: (
+                <>not too bad tbh, all the info was posted on her instagram</>
+              ),
             },
+            { type: "sent", pos: "last", contents: <>check her acc</> },
             { type: "rec", pos: "", contents: <>awesome, thanks!</> },
             {
               type: "rec",
               pos: "last",
-              contents: <>hopefully this gives him a wake-up call</>,
+              contents: <>...you turned it into a riverdale fan account?</>,
+            },
+            {
+              type: "sent",
+              pos: "last",
+              contents: (
+                <span
+                  role="img"
+                  aria-label="devil horns"
+                  alt="devil horns emoji"
+                >
+                  😈
+                </span>
+              ),
+            },
+            {
+              type: "rec",
+              pos: "last",
+              contents: <>well, hopefully this gives her a wake-up call</>,
             },
           ]}
         />
