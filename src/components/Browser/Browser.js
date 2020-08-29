@@ -10,17 +10,17 @@ const securityQuestions = [
   {
     q: "Where did you grow up?",
     match: (str) => str === "san francisco",
-    hint: "Hint: Try checking the locations of Jason’s instagram posts",
+    hint: "Hint: Try checking the locations of Caitlin’s instagram posts",
   },
   {
     q: "What is your favorite animal?",
     match: (str) => /^cats?$/.test(str),
-    hint: "Hint: Look at Jason’s username",
+    hint: "Hint: Look at Caitlin’s username",
   },
   {
     q: "What was the name of your first pet?",
     match: (str) => str === "mufasa",
-    hint: "Hint: Read the captions of Jason’s posts more carefully",
+    hint: "Hint: Read the captions of Caitlin’s posts more carefully",
   },
 ]
 
@@ -89,7 +89,7 @@ class Browser extends React.Component {
           }}
         />
         <Typography variant="body1" style={{ textAlign: "center" }}>
-          Welcome, Jason!
+          Welcome, Caitlin!
         </Typography>
         <Button
           variant="contained"

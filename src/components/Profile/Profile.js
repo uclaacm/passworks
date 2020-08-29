@@ -16,7 +16,7 @@ import boba from "../../images/boba.jpg"
 import moon from "../../images/moon.jpg"
 import decode from "../../images/decode.jpg"
 
-const username = "jas0nlovescatz"
+const username = "ca1tl1nlovescatz"
 
 const posts = [
   {
