@@ -1,70 +1,40 @@
-# passworks
+# Passworks
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Lint](https://github.com/uclaacm/passworks/workflows/Lint/badge.svg)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a10e42ae-1fa7-4282-b932-becd75562b1d/deploy-status)](https://app.netlify.com/sites/stupefied-varahamihira-55e231/deploys)
 
-## Available Scripts
+**Passworks** is one of [ACM Teach LA](https://teachla.uclaacm.com)'s first _learning labs_, a set of interactive online web modules designed to make learning easier. This specific learning lab is focused on **password security**: we teach students about using long and complex passwords, not using common passwords, and a taste of social engineering. We designed the content in conjunction with [ACM Cyber](https://acmcyber.com/). Big thanks to our content lead, Alyssa Wang, and our lead developer, [Jamie Liu](https://github.com/jamieliu386)!
 
-In the project directory, you can run:
+We ran a beta-test of Passworks with [CityLab at UCLA](https://www.facebook.com/citylabatucla/) for our [Cyber Day with CityLab](https://teachla.uclaacm.com/citylab-cyber) in August 2020.
 
-### `npm start`
+This project was written with [React](https://reactjs.org/), primarily relying on [Material-UI](https://material-ui.com/) components. We also make use of [react-router](https://reactrouter.com/) and Dropbox's [zxcvbn](https://github.com/dropbox/zxcvbn), as well as a list of the most common passwords from Wikipedia. It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It is deployed with [Netlify](https://www.netlify.com/).
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Development Setup
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+We'll use a really common Node.js project workflow!
 
-### `npm test`
+First, let's clone our repository, and install all of our node dependencies:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+git clone https://github.com/uclaacm/passworks.git
+cd passworks
+npm install
+```
 
-### `npm run build`
+To start our app, you just need to run `npm start`!
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npm start
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+And to build our project for production (with CRA's webpack bundling and all that goodness),
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm run build
+```
 
-### `npm run eject`
+_Note_: we've added a pre-commit hook (with [husky](https://github.com/typicode/husky)) that runs [Prettier](https://prettier.io/) and [ESLint](https://eslint.org/). Admittedly, our rules are tighter than most, so we recommend you install an IDE plugin to make your development workflow easier.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Licensing & Attribution
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project and its code are licensed under the MIT License. You're free to use them however you wish, though we'd love to hear from you if you found this useful!
