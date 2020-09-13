@@ -1,5 +1,6 @@
 # Passworks
 
+![Node.js CI Build](https://github.com/uclaacm/passworks/workflows/Node.js%20CI%20Build/badge.svg)
 ![Lint](https://github.com/uclaacm/passworks/workflows/Lint/badge.svg)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a10e42ae-1fa7-4282-b932-becd75562b1d/deploy-status)](https://app.netlify.com/sites/stupefied-varahamihira-55e231/deploys)
 
