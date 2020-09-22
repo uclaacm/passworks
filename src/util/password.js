@@ -1,12 +1,17 @@
 // function to convert a number to a string based on the given alphabet
 //    example: if alphabet is 'abc',
-//      0 -> 'a'
-//      1 -> 'b'
-//      2 -> 'c'
-//      3 -> 'aa'
-//      4 -> 'ab'
-//      5 -> 'ac'
-//      6 -> 'ba'
+//      0  -> 'a'
+//      1  -> 'b'
+//      2  -> 'c'
+//      3  -> 'ba'
+//      4  -> 'bb'
+//      5  -> 'bc'
+//      6  -> 'ca'
+//      7  -> 'cb'
+//      8  -> 'cc'
+//      9  -> 'baa'
+//      10 -> 'bab'
+//      11 -> 'bac'
 //      ...
 export const toLetters = (num, alphabet) => {
   const mod = num % alphabet.length
@@ -16,16 +21,18 @@ export const toLetters = (num, alphabet) => {
 }
 
 // function to convert a string to a number based on the given alphabet
-// see example for toLetters
+// note: the first character is considered a padding character, and
+//       all sequences containing only that character are mapped to 0
+// for the alphabet in the toLetters example:
+//   'a', 'aa', 'aaa', 'aaaa', ... -> 0
 export const fromLetters = (str, alphabet) => {
-  let out = 0
-  const len = str.length
-  let pos = len
-  while (pos > 0) {
-    pos -= 1
-    out += alphabet.indexOf(str[pos]) * alphabet.length ** (len - 1 - pos)
+  if (str.length === 0) {
+    return 0
   }
-  return out
+  const out = str[str.length - 1]
+  const pow = fromLetters(str.slice(0, -1), alphabet)
+  const mod = alphabet.indexOf(out)
+  return pow * alphabet.length + mod
 }
 
 export const alphaLower = "abcdef"
