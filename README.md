@@ -6,6 +6,8 @@
 
 **Passworks** is one of [ACM Teach LA](https://teachla.uclaacm.com)'s first _learning labs_, a set of interactive online web modules designed to make learning easier. This specific learning lab is focused on **password security**: we teach students about using long and complex passwords, not using common passwords, and a taste of social engineering. We designed the content in conjunction with [ACM Cyber](https://acmcyber.com/). Big thanks to our content lead, Alyssa Wang, and our lead developer, [Jamie Liu](https://github.com/jamieliu386)!
 
+*We wrote a [blog post](https://teachla.uclaacm.com/blog/dev/2020/09/23/the-making-of-passworks/) explaining how this module was made - check it out!*
+
 We ran a beta-test of Passworks with [CityLab at UCLA](https://www.facebook.com/citylabatucla/) for our [Cyber Day with CityLab](https://teachla.uclaacm.com/citylab-cyber) in August 2020.
 
 This project was written with [React](https://reactjs.org/), primarily relying on [Material-UI](https://material-ui.com/) components. We also make use of [react-router](https://reactrouter.com/) and Dropbox's [zxcvbn](https://github.com/dropbox/zxcvbn), as well as a list of the most common passwords from Wikipedia. It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It is deployed with [Netlify](https://www.netlify.com/).
