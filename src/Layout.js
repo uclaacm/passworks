@@ -97,23 +97,21 @@ const overwrittenTheme = responsiveFontSizes(
   })
 )
 
-const Layout = ({ children }) => {
-  return (
-    <ThemeProvider theme={overwrittenTheme}>
-      <Helmet>
-        <link
-          href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css?family=Chivo:300,400|Palanquin+Dark|Palanquin"
-          rel="stylesheet"
-        />
-      </Helmet>
-      <main>{children}</main>
-    </ThemeProvider>
-  )
-}
+const Layout = ({ children }) => (
+  <ThemeProvider theme={overwrittenTheme}>
+    <Helmet>
+      <link
+        href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css?family=Chivo:300,400|Palanquin+Dark|Palanquin"
+        rel="stylesheet"
+      />
+    </Helmet>
+    <main>{children}</main>
+  </ThemeProvider>
+)
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

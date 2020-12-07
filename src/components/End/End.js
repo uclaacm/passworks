@@ -58,32 +58,30 @@ export default function End() {
   const classes = useStyles()
   const history = useHistory()
 
-  const cardItems = cards.map((item) => {
-    return (
-      <Grid item xs={12} sm={6} md={3} key={item.description}>
-        <Box
-          display="flex"
-          flexDirection="column"
-          justifyContent="space-between"
-          height="100%"
-          borderRadius="7px"
-          border="2px solid black"
+  const cardItems = cards.map((item) => (
+    <Grid item xs={12} sm={6} md={3} key={item.description}>
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-between"
+        height="100%"
+        borderRadius="7px"
+        border="2px solid black"
+      >
+        <Typography className={classes.subtitle}>{item.title}</Typography>
+        <div>{item.img}</div>
+        <Typography
+          style={{
+            padding: "5px 10px 10px",
+            wordWrap: "break-word",
+            textAlign: "center",
+          }}
         >
-          <Typography className={classes.subtitle}>{item.title}</Typography>
-          <div>{item.img}</div>
-          <Typography
-            style={{
-              padding: "5px 10px 10px",
-              wordWrap: "break-word",
-              textAlign: "center",
-            }}
-          >
-            {item.description}
-          </Typography>
-        </Box>
-      </Grid>
-    )
-  })
+          {item.description}
+        </Typography>
+      </Box>
+    </Grid>
+  ))
 
   return (
     <Container maxWidth="lg">

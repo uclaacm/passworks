@@ -175,16 +175,14 @@ class Main extends React.Component {
   renderNavBar = (classes) => {
     const { lessonNum } = this.state
 
-    const lessonButtons = allLessons.map((lesson, i) => {
-      return (
-        <LessonNavButton
-          classes={classes}
-          i={i}
-          lesson={lesson}
-          lessonNum={lessonNum}
-        />
-      )
-    })
+    const lessonButtons = allLessons.map((lesson, i) => (
+      <LessonNavButton
+        classes={classes}
+        i={i}
+        lesson={lesson}
+        lessonNum={lessonNum}
+      />
+    ))
 
     return (
       <Box

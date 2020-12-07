@@ -129,16 +129,14 @@ export default function PickGame() {
                       value={String(currentAnswer)}
                       onChange={handleChange}
                     >
-                      {possibleAnswers.map((answer, index) => {
-                        return (
-                          <FormControlLabel
-                            key={answer}
-                            value={String(index + 1)}
-                            control={<Radio />}
-                            label={answer}
-                          />
-                        )
-                      })}
+                      {possibleAnswers.map((answer, index) => (
+                        <FormControlLabel
+                          key={answer}
+                          value={String(index + 1)}
+                          control={<Radio />}
+                          label={answer}
+                        />
+                      ))}
                     </RadioGroup>
                     <FormHelperText>
                       Don't forget everything we've talked about :)
