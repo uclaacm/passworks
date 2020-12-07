@@ -92,15 +92,11 @@ export default function ListOfCommonPasswords() {
                 justify="center"
                 alignItems="center"
               >
-                {commonPws.slice(0, 100).map((pw) => {
-                  return (
-                    <Grid item xs={3}>
-                      <Typography className={classes.textCenter}>
-                        {pw}
-                      </Typography>
-                    </Grid>
-                  )
-                })}
+                {commonPws.slice(0, 100).map((pw) => (
+                  <Grid item xs={3}>
+                    <Typography className={classes.textCenter}>{pw}</Typography>
+                  </Grid>
+                ))}
               </Grid>
               <br />
               <Button
@@ -116,15 +112,13 @@ export default function ListOfCommonPasswords() {
                 alignItems="center"
               >
                 {showRest &&
-                  commonPws.slice(100, 1000).map((pw) => {
-                    return (
-                      <Grid item xs={3}>
-                        <Typography className={classes.textCenter}>
-                          {pw}
-                        </Typography>
-                      </Grid>
-                    )
-                  })}
+                  commonPws.slice(100, 1000).map((pw) => (
+                    <Grid item xs={3}>
+                      <Typography className={classes.textCenter}>
+                        {pw}
+                      </Typography>
+                    </Grid>
+                  ))}
               </Grid>
             </Paper>
           </div>

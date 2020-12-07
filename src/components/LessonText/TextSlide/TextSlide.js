@@ -23,13 +23,7 @@ export default function TextSlide({ lessonItems, count }) {
     )
   })
 
-  return (
-    <>
-      {slidingItems.map((slide, i) => {
-        return count === i ? slide : null
-      })}
-    </>
-  )
+  return <>{slidingItems.map((slide, i) => (count === i ? slide : null))}</>
 }
 
 TextSlide.propTypes = {

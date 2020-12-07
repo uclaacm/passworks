@@ -19,20 +19,18 @@ const useStyles = makeStyles({
 export default function Chat({ messages }) {
   const classes = useStyles()
 
-  const chatMessages = messages.map((message) => {
-    return (
-      <div
-        className={`${message.type} messages`}
-        key={message.contents.props.children}
-      >
-        <div className={`message ${message.pos}`}>
-          <Typography variant="body1" className={classes.textMessage}>
-            {message.contents}
-          </Typography>
-        </div>
+  const chatMessages = messages.map((message) => (
+    <div
+      className={`${message.type} messages`}
+      key={message.contents.props.children}
+    >
+      <div className={`message ${message.pos}`}>
+        <Typography variant="body1" className={classes.textMessage}>
+          {message.contents}
+        </Typography>
       </div>
-    )
-  })
+    </div>
+  ))
 
   return (
     <VisibilitySensor>

@@ -22,31 +22,21 @@ export default function PasswordGuesser({ userInput, inputType }) {
     speed = 100000
     decimals = 5
     duration = genEnd / speed
-    genFormattingFn = (num) => {
-      return String(num).padStart(userInput.length, "0")
-    }
+    genFormattingFn = (num) => String(num).padStart(userInput.length, "0")
   } else if (inputType === "alpha") {
     genEnd = fromLetters(userInput, alphaLower)
     speed = 10000
     decimals = 4
     duration = genEnd / speed
-    genFormattingFn = (num) => {
-      return toLetters(num, alphaLower).padStart(
-        userInput.length,
-        alphaLower[0]
-      )
-    }
+    genFormattingFn = (num) =>
+      toLetters(num, alphaLower).padStart(userInput.length, alphaLower[0])
   } else if (inputType === "Alpha") {
     genEnd = fromLetters(userInput, alphaMixed)
     speed = 10000
     decimals = 4
     duration = genEnd / speed
-    genFormattingFn = (num) => {
-      return toLetters(num, alphaMixed).padStart(
-        userInput.length,
-        alphaMixed[0]
-      )
-    }
+    genFormattingFn = (num) =>
+      toLetters(num, alphaMixed).padStart(userInput.length, alphaMixed[0])
   }
 
   const timeFormattingFn = (num) => {

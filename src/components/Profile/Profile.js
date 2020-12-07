@@ -112,20 +112,18 @@ const useStyles = makeStyles({
 export default function Profile() {
   const classes = useStyles()
 
-  const postList = posts.map((post) => {
-    return (
-      <Post
-        profileImg={post.profileImg}
-        postImg={post.image}
-        poster={post.username}
-        caption={post.caption}
-        location={post.location}
-        date={post.date}
-        likes={post.likes}
-        key={post.date}
-      />
-    )
-  })
+  const postList = posts.map((post) => (
+    <Post
+      profileImg={post.profileImg}
+      postImg={post.image}
+      poster={post.username}
+      caption={post.caption}
+      location={post.location}
+      date={post.date}
+      likes={post.likes}
+      key={post.date}
+    />
+  ))
 
   return (
     <List

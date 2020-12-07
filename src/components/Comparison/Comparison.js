@@ -130,9 +130,7 @@ export default function Comparison({ type, inputLength }) {
         <Typography>
           Now let’s count how many ways there are to make a two digit password.
         </Typography>
-        {counter(99, 5, (num) => {
-          return String(num).padStart(2, "0")
-        })}
+        {counter(99, 5, (num) => String(num).padStart(2, "0"))}
       </>,
       <>
         <Typography>
@@ -190,18 +188,18 @@ export default function Comparison({ type, inputLength }) {
           Let’s count the number of 6-letter passwords possible with just these
           lowercase characters: a, b, c, d, e, and f.
         </Typography>
-        {counter(fromLetters("ffffff", alphaLower), 10, (num) => {
-          return toLetters(num, alphaLower).padStart(6, alphaLower[0])
-        })}
+        {counter(fromLetters("ffffff", alphaLower), 10, (num) =>
+          toLetters(num, alphaLower).padStart(6, alphaLower[0])
+        )}
       </>,
       <>
         <Typography>
           Now let’s count the number of 6-letter passwords possible when we
           include both uppercase and lowercase characters.
         </Typography>
-        {counter(fromLetters("FFFFFF", alphaMixed), 15, (num) => {
-          return toLetters(num, alphaMixed).padStart(6, alphaMixed[0])
-        })}
+        {counter(fromLetters("FFFFFF", alphaMixed), 15, (num) =>
+          toLetters(num, alphaMixed).padStart(6, alphaMixed[0])
+        )}
       </>,
       <>
         <Typography>Where do these values come from?</Typography>

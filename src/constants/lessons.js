@@ -32,13 +32,11 @@ const Typography1 = withStyles({
   },
 })(MuiTypography)
 
-const guesser = (userInput, inputType) => {
-  return (
-    <Box display="flex" flexDirection="column" alignItems="center">
-      <PasswordGuesser userInput={userInput} inputType={inputType} />
-    </Box>
-  )
-}
+const guesser = (userInput, inputType) => (
+  <Box display="flex" flexDirection="column" alignItems="center">
+    <PasswordGuesser userInput={userInput} inputType={inputType} />
+  </Box>
+)
 
 const timeDifference = (userInput1, userInput2, inputType) => {
   let duration1
@@ -119,41 +117,38 @@ const inputForm = (
   inputError,
   errorString,
   randomButton
-) => {
-  return (
-    <form onSubmit={handleInputSubmit}>
-      <Box display="flex" flexDirection="column" alignItems="center">
-        <input
-          type="text"
-          className={classes.inputText}
-          value={value}
-          onChange={handleInputChange}
-        />
-        {inputError ? (
-          <Typography color="error" style={{ textAlign: "center" }}>
-            {errorString}
-          </Typography>
-        ) : null}
-        <Box>
-          <Button
-            disableRipple
-            variant="contained"
-            disableElevation
-            type="submit"
-          >
-            Submit
-          </Button>
-          {randomButton}
-        </Box>
+) => (
+  <form onSubmit={handleInputSubmit}>
+    <Box display="flex" flexDirection="column" alignItems="center">
+      <input
+        type="text"
+        className={classes.inputText}
+        value={value}
+        onChange={handleInputChange}
+      />
+      {inputError ? (
+        <Typography color="error" style={{ textAlign: "center" }}>
+          {errorString}
+        </Typography>
+      ) : null}
+      <Box>
+        <Button
+          disableRipple
+          variant="contained"
+          disableElevation
+          type="submit"
+        >
+          Submit
+        </Button>
+        {randomButton}
       </Box>
-    </form>
-  )
-}
+    </Box>
+  </form>
+)
 
-const randomInt = (min, max) => {
+const randomInt = (min, max) =>
   // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min)
-}
+  Math.floor(Math.random() * (max - min + 1) + min)
 
 const getRandom = (str, n) => {
   let result = ""
@@ -174,9 +169,9 @@ const shuffleString = (str) => {
   return res.join("")
 }
 
-const comparison = (type, inputLength) => {
-  return <Comparison type={type} inputLength={inputLength} />
-}
+const comparison = (type, inputLength) => (
+  <Comparison type={type} inputLength={inputLength} />
+)
 
 let chatKey = 0
 
@@ -658,9 +653,9 @@ export default [
         </>
       ),
       input: true,
-      slideAdd: (count, setCount) => {
-        return <Browser count={count} setCount={setCount} />
-      },
+      slideAdd: (count, setCount) => (
+        <Browser count={count} setCount={setCount} />
+      ),
       topContent: true,
       phoneContent: () => <Profile />,
     },
